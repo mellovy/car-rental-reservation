@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_2203703_car_re_0_reservation</collection>
+        <condition/>
+        <description>Blocks the reservation when the selected car is not available.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>22-Car unavailability</name>
+        <order>90</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[/**
+ * 22-Car unavailability
+ *
+ * Blocks the reservation when the selected Car is not available.
+ * Only evaluated when the Car is set or changed, so existing reservations can
+ * still be closed or cancelled after a car is taken out of service.
+ */
+(function executeRule(/** @type {any} */ current, /** @type {any} */ previous) {
+    if (!current.car.changes()) {
+        return;
+    }
+
+    var carId = current.getValue('car');
+    if (!carId) {
+        return;
+    }
+
+    var car = new GlideRecord('x_2203703_car_re_0_car');
+    if (!car.get(carId)) {
+        return;
+    }
+
+    if (car.getValue('available') !== '1') {
+        gs.addErrorMessage(
+            'The car "' + car.getValue('name') + '" is currently unavailable and cannot be reserved.'
+        );
+        current.setAbortAction(true);
+    }
+})(current, previous);
+]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-09 15:48:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>28d69ff2533b4c789b47b19b2f0f7c3a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>22-Car unavailability</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_28d69ff2533b4c789b47b19b2f0f7c3a</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-09 15:48:44</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=28d69ff2533b4c789b47b19b2f0f7c3a"/>
+</record_update>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" audit="true" db_object_id="dc26e906de364689a71e1c880d79e7bf" label="Reservation" name="x_2203703_car_re_0_reservation" type="collection">
+        <element label="Car" mandatory="true" name="car" reference="x_2203703_car_re_0_car" type="reference"/>
+        <element label="End Date" name="end_date" type="glide_date"/>
+        <element display="true" label="Driver Name" max_length="100" name="driver_name" type="string"/>
+        <element label="Applicant" mandatory="true" name="applicant" reference="sys_user" type="reference"/>
+        <element choice="3" default="reserved" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Closed" sequence="2" value="closed"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="3" value="cancelled"/>
+                <element inactive_on_update="false" label="Reserved" sequence="1" value="reserved"/>
+            </choice>
+        </element>
+        <element choice="1" label="Rental Duration" max_length="40" name="rental_duration" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Daily" sequence="1" value="daily"/>
+                <element inactive_on_update="false" label="Monthly" sequence="3" value="monthly"/>
+                <element inactive_on_update="false" label="Weekly" sequence="2" value="weekly"/>
+            </choice>
+        </element>
+        <element label="Remarks" max_length="1000" name="remarks" type="string"/>
+        <element label="Drivers License" max_length="100" name="drivers_license" type="string"/>
+        <element label="Start Date" name="start_date" type="glide_date"/>
+        <index name="index">
+            <element name="applicant"/>
+        </index>
+        <index name="index2">
+            <element name="car"/>
+        </index>
+    </element>
+</database>

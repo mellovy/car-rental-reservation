@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" audit="true" db_object_id="74e24f4f94384885b59c5b945897e297" label="Car" name="x_2203703_car_re_0_car" type="collection">
+        <element default="true" label="Available" name="available" type="boolean"/>
+        <element choice="1" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Convertible" sequence="6" value="convertible"/>
+                <element inactive_on_update="false" label="Hatchback" sequence="3" value="hatchback"/>
+                <element inactive_on_update="false" label="SUV" sequence="1" value="suv"/>
+                <element inactive_on_update="false" label="Van" sequence="4" value="van"/>
+                <element inactive_on_update="false" label="Sedan" sequence="2" value="sedan"/>
+                <element inactive_on_update="false" label="Pickup" sequence="5" value="pickup"/>
+                <element inactive_on_update="false" label="Coupe" sequence="7" value="coupe"/>
+            </choice>
+        </element>
+        <element label="Seating Capacity" max_length="40" name="seating_capacity" type="integer"/>
+        <element display="true" label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element label="Rent" max_length="20" name="rent" type="currency"/>
+        <element label="Insurance" max_length="255" name="insurance" type="string"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element choice="1" label="Add Ons" max_length="255" name="add_ons" type="glide_list">
+            <choice>
+                <element inactive_on_update="false" label="GPS" sequence="3" value="gps"/>
+                <element inactive_on_update="false" label="Child Seat" sequence="4" value="child_seat"/>
+                <element inactive_on_update="false" label="Extra Tire" sequence="1" value="extra_tire"/>
+                <element inactive_on_update="false" label="Roof Rack" sequence="5" value="roof_rack"/>
+                <element inactive_on_update="false" label="Safety Indicators" sequence="2" value="safety_indicators"/>
+            </choice>
+        </element>
+    </element>
+</database>

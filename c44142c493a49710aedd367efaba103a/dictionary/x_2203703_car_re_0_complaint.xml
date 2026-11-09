@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" audit="true" db_object_id="2898a38910cd4a98a049c624c7499fb4" label="Complaint" name="x_2203703_car_re_0_complaint" type="collection">
+        <element display="true" label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Car" mandatory="true" name="car" reference="x_2203703_car_re_0_car" type="reference"/>
+        <element choice="1" label="Issue Type" max_length="40" name="issue_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Needs Clean-up" sequence="3" value="needs_clean_up"/>
+                <element inactive_on_update="false" label="Other" sequence="4" value="other"/>
+                <element inactive_on_update="false" label="Engine" sequence="1" value="engine"/>
+                <element inactive_on_update="false" label="Battery" sequence="2" value="battery"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="car"/>
+        </index>
+    </element>
+</database>

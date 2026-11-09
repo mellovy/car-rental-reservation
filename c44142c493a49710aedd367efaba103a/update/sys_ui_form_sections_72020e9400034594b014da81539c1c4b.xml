@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="72020e9400034594b014da81539c1c4b" sys_domain="global" table="x_2203703_car_re_0_cal_day" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fe158dd1a1e646e9a15c86023fb3d9cf</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_2203703_car_re_0_cal_day" name="x_2203703_car_re_0_cal_day" sys_domain="global" view="Default view">72020e9400034594b014da81539c1c4b</sys_ui_form>
+            <sys_ui_section caption="Calendar Day" display_value="Calendar Day" name="x_2203703_car_re_0_cal_day" sys_domain="global" view="Default view">61f3fe9bc29f46f99b7c9e080296604a</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_2203703_car_re_0_cal_day</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>72020e9400034594b014da81539c1c4b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_2203703_car_re_0_cal_day</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+            <sys_update_name>sys_ui_form_sections_72020e9400034594b014da81539c1c4b</sys_update_name>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

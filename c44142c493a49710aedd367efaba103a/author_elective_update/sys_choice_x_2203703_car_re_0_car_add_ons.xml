@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="add_ons" table="x_2203703_car_re_0_car" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>add_ons</element>
+            <name>x_2203703_car_re_0_car</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:28</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>add_ons</sys_name>
+            <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+            <sys_update_name>sys_choice_x_2203703_car_re_0_car_add_ons</sys_update_name>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:28</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>add_ons</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Extra Tire</label>
+            <language>en</language>
+            <name>x_2203703_car_re_0_car</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:28</sys_updated_on>
+            <value>extra_tire</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>add_ons</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Safety Indicators</label>
+            <language>en</language>
+            <name>x_2203703_car_re_0_car</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:28</sys_updated_on>
+            <value>safety_indicators</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>add_ons</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>GPS</label>
+            <language>en</language>
+            <name>x_2203703_car_re_0_car</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:28</sys_updated_on>
+            <value>gps</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>add_ons</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Child Seat</label>
+            <language>en</language>
+            <name>x_2203703_car_re_0_car</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:28</sys_updated_on>
+            <value>child_seat</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>add_ons</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Roof Rack</label>
+            <language>en</language>
+            <name>x_2203703_car_re_0_car</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:28</sys_updated_on>
+            <value>roof_rack</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

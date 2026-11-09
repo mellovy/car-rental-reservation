@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Alerts the total rent (car rent x rental days) once Start Date, End Date and Car are populated.</description>
+        <field>end_date</field>
+        <global>true</global>
+        <isolate_script>false</isolate_script>
+        <messages/>
+        <name>19-Show rent total (End Date)</name>
+        <order/>
+        <script><![CDATA[/**
+ * 19-Show rent total
+ *
+ * Runs onChange of Start Date, End Date and Car. Once all three are populated
+ * it alerts the total rent = car rent x number of rental days.
+ */
+function onChange(control, oldValue, newValue, isLoading) {
+    if (isLoading || isLoading === 'true') {
+        return;
+    }
+
+    var startDate = g_form.getValue('start_date');
+    var endDate = g_form.getValue('end_date');
+    var carId = g_form.getValue('car');
+
+    if (!startDate || !endDate || !carId) {
+        return;
+    }
+
+    var startMs = parseFormDate(startDate);
+    var endMs = parseFormDate(endDate);
+    if (startMs === null || endMs === null) {
+        return;
+    }
+
+    if (endMs < startMs) {
+        g_form.addErrorMessage('End Date cannot be earlier than Start Date.');
+        return;
+    }
+
+    var days = Math.round((endMs - startMs) / 86400000);
+    if (days < 1) {
+        days = 1;
+    }
+
+    g_form.getReference('car', function (carRecord) {
+        if (!carRecord) {
+            return;
+        }
+
+        var rent = parseCurrency(carRecord.rent);
+        var total = rent * days;
+
+        alert(
+            'Rental summary\n\n' +
+                'Car: ' + carRecord.name + '\n' +
+                'Rent per day: ' + rent.toFixed(2) + '\n' +
+                'Rental days: ' + days + '\n' +
+                'Total rent: ' + total.toFixed(2)
+        );
+    });
+
+    /**
+     * Converts a form date value into milliseconds. Uses the user's date format
+     * first and falls back to the internal yyyy-MM-dd format.
+     */
+    function parseFormDate(value) {
+        var ms = null;
+
+        if (typeof getDateFromFormat === 'function' && typeof g_user_date_format !== 'undefined') {
+            ms = getDateFromFormat(value, g_user_date_format);
+        }
+
+        if (!ms) {
+            var parts = value.substring(0, 10).split('-');
+            if (parts.length === 3) {
+                ms = Date.UTC(
+                    parseInt(parts[0], 10),
+                    parseInt(parts[1], 10) - 1,
+                    parseInt(parts[2], 10)
+                );
+            }
+        }
+
+        return isNaN(ms) || ms === null || ms === 0 ? null : ms;
+    }
+
+    /**
+     * Currency fields are returned as "CUR;amount" - take the numeric part.
+     */
+    function parseCurrency(value) {
+        var raw = value === null || typeof value === 'undefined' ? '' : String(value);
+        var parts = raw.split(';');
+        var amount = parseFloat(parts[parts.length - 1]);
+        return isNaN(amount) ? 0 : amount;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-09 15:48:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4e57f545a64341a7a9da7c37699e9a6c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>19-Show rent total (End Date)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_client_4e57f545a64341a7a9da7c37699e9a6c</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-09 15:48:44</sys_updated_on>
+        <table>x_2203703_car_re_0_reservation</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

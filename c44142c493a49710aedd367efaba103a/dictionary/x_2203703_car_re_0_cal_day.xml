@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="e45c4f082ff6426689cc752d4cc71d22" label="Calendar Day" name="x_2203703_car_re_0_cal_day" type="collection">
+        <element choice="1" label="Day Type" max_length="40" name="day_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Holiday" sequence="2" value="holiday"/>
+                <element inactive_on_update="false" label="Business Day" sequence="1" value="business_day"/>
+            </choice>
+        </element>
+        <element display="true" label="Date" mandatory="true" name="date" type="glide_date"/>
+    </element>
+</database>
