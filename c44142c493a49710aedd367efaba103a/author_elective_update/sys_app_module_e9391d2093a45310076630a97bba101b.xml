@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="Car Rental">2198f43279b14c24937c6bb20918662e</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <karuna_route/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>10-Business Days and Holidays</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_2203703_car_re_0_cal_day</name>
+        <order>100</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <require_confirmation>true</require_confirmation>
+        <roles>x_2203703_car_re_0.admin</roles>
+        <route/>
+        <screen/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>4-suganob</sys_created_by>
+        <sys_created_on>2026-11-11 02:17:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e9391d2093a45310076630a97bba101b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>10-Business Days and Holidays</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_app_module_e9391d2093a45310076630a97bba101b</sys_update_name>
+        <sys_updated_by>4-suganob</sys_updated_by>
+        <sys_updated_on>2026-11-11 02:17:44</sys_updated_on>
+        <timeline_page/>
+        <title>10-Business Days and Holidays</title>
+        <uncancelable>false</uncancelable>
+        <ux_list/>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</application>
+        <file_path/>
+        <instance_id>567a911e93a9c794d9f6ddd548373c76</instance_id>
+        <instance_name>dev409824</instance_name>
+        <name>sys_app_module_e9391d2093a45310076630a97bba101b</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Car Rental">2198f43279b14c24937c6bb20918662e</application><assessment/><device_type/><filter/><hint/><homepage/><image/><karuna_route/><link_type>LIST</link_type><map_page/><mobile_title>10-Business Days and Holidays</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>x_2203703_car_re_0_cal_day</name><order>100</order><override_menu_roles>false</override_menu_roles><query/><report/><require_confirmation>true</require_confirmation><roles>x_2203703_car_re_0.admin</roles><route/><screen/><sys_class_name>sys_app_module</sys_class_name><sys_created_by>4-suganob</sys_created_by><sys_created_on>2026-11-11 02:17:44</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>e9391d2093a45310076630a97bba101b</sys_id><sys_mod_count>0</sys_mod_count><sys_name>10-Business Days and Holidays</sys_name><sys_overrides/><sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package><sys_policy/><sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope><sys_update_name>sys_app_module_e9391d2093a45310076630a97bba101b</sys_update_name><sys_updated_by>4-suganob</sys_updated_by><sys_updated_on>2026-11-11 02:17:44</sys_updated_on><timeline_page/><title>10-Business Days and Holidays</title><uncancelable>false</uncancelable><ux_list/><view_name/><window_name/></sys_app_module></record_update>]]></payload>
+        <payload_hash>1048188986</payload_hash>
+        <record_name>10-Business Days and Holidays</record_name>
+        <reverted_from/>
+        <source>ecf515a893645310076630a97bba10f1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>4-suganob</sys_created_by>
+        <sys_created_on>2026-11-11 02:17:44</sys_created_on>
+        <sys_id>ef7161ec93a45310076630a97bba1064</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a1c8659c9c0000001</sys_recorded_at>
+        <sys_updated_by>4-suganob</sys_updated_by>
+        <sys_updated_on>2026-11-11 02:17:44</sys_updated_on>
+        <type>Module</type>
+        <update_guid>af7161ecfea453103ebe77992afb8763</update_guid>
+        <update_guid_history>af7161ecfea453103ebe77992afb8763:1048188986</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="10-Business Days and Holidays">b8226dec93a45310076630a97bba101c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>4-suganob</sys_created_by>
+        <sys_created_on>2026-11-11 02:20:34</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>13b3a03bfd004854858d0e347dab2910</sys_id>
+        <sys_metadata>e9391d2093a45310076630a97bba101b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>10-Business Days and Holidays</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_scope_delete display_value="">4dbe8c6d9e05468caa89f2346c50fa31</sys_scope_delete>
+        <sys_update_name>sys_app_module_e9391d2093a45310076630a97bba101b</sys_update_name>
+        <sys_update_version display_value="sys_app_module_e9391d2093a45310076630a97bba101b">ef7161ec93a45310076630a97bba1064</sys_update_version>
+        <sys_updated_by>4-suganob</sys_updated_by>
+        <sys_updated_on>2026-11-11 02:20:34</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
