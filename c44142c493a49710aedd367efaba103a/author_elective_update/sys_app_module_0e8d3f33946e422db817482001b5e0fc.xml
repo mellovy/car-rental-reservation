@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="Car Rental">2198f43279b14c24937c6bb20918662e</application>
+        <assessment/>
+        <device_type/>
+        <filter table="x_2203703_car_re_0_reservation">state=reserved<item display_value="Reserved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="reserved"/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <karuna_route/>
+        <link_type>FILTER</link_type>
+        <map_page/>
+        <mobile_title/>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_2203703_car_re_0_reservation</name>
+        <order>900</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <require_confirmation>true</require_confirmation>
+        <roles>x_2203703_car_re_0.receptionist,admin</roles>
+        <route/>
+        <screen/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-09 15:37:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>0e8d3f33946e422db817482001b5e0fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>11-Close Reservations</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_app_module_0e8d3f33946e422db817482001b5e0fc</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-09 15:37:21</sys_updated_on>
+        <timeline_page/>
+        <title>11-Close Reservations</title>
+        <uncancelable>false</uncancelable>
+        <ux_list/>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</application>
+        <file_path/>
+        <instance_id>567a911e93a9c794d9f6ddd548373c76</instance_id>
+        <instance_name>dev409824</instance_name>
+        <name>sys_app_module_0e8d3f33946e422db817482001b5e0fc</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Car Rental">2198f43279b14c24937c6bb20918662e</application>
+        <assessment/>
+        <device_type/>
+        <filter table="x_2203703_car_re_0_reservation">state=reserved<item display_value="Reserved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="reserved"/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <karuna_route/>
+        <link_type>FILTER</link_type>
+        <map_page/>
+        <mobile_title/>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_2203703_car_re_0_reservation</name>
+        <order>900</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <require_confirmation>true</require_confirmation>
+        <roles>x_2203703_car_re_0.receptionist,admin</roles>
+        <route/>
+        <screen/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-09 15:37:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>0e8d3f33946e422db817482001b5e0fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>11-Close Reservations</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_app_module_0e8d3f33946e422db817482001b5e0fc</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-09 15:37:21</sys_updated_on>
+        <timeline_page/>
+        <title>11-Close Reservations</title>
+        <uncancelable>false</uncancelable>
+        <ux_list/>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>]]></payload>
+        <payload_hash>-774989874</payload_hash>
+        <record_name>11-Close Reservations</record_name>
+        <reverted_from/>
+        <source>63592a1093e01310076630a97bba10b6</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-10 12:53:28</sys_created_on>
+        <sys_id>c6696e1093e01310076630a97bba10d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a1c58546ed0000001</sys_recorded_at>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-10 12:53:28</sys_updated_on>
+        <type>Module</type>
+        <update_guid>86696e1002e01310132d3fc8e5dbead3</update_guid>
+        <update_guid_history>86696e1002e01310132d3fc8e5dbead3:-774989874</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="11-Close Reservations">94eacaa893e85310076630a97bba10fd</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-11 05:18:34</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>1a32b55cd9c542d48f16100808582429</sys_id>
+        <sys_metadata>0e8d3f33946e422db817482001b5e0fc</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>11-Close Reservations</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_scope_delete display_value="">4dbe8c6d9e05468caa89f2346c50fa31</sys_scope_delete>
+        <sys_update_name>sys_app_module_0e8d3f33946e422db817482001b5e0fc</sys_update_name>
+        <sys_update_version display_value="sys_app_module_0e8d3f33946e422db817482001b5e0fc">c6696e1093e01310076630a97bba10d3</sys_update_version>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-11 05:18:34</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
