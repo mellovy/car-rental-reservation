@@ -47,7 +47,7 @@
         <message_html><![CDATA[<p>&lt;div style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333333; max-width: 600px;"&gt;<br>&nbsp; &lt;div style="background-color: #1f4e79; color: #ffffff; padding: 14px 20px;"&gt;<br>&nbsp; &nbsp; &lt;h2 style="margin: 0; font-size: 18px;"&gt;Reservation Updated&lt;/h2&gt;<br>&nbsp; &lt;/div&gt;<br>&nbsp; &lt;div style="padding: 20px; border: 1px solid #dddddd; border-top: none;"&gt;<br>&nbsp; &nbsp; &lt;p&gt;Hello,&lt;/p&gt;<br>&nbsp; &nbsp; &lt;p&gt;Reservation &lt;b&gt;${number}&lt;/b&gt; has been updated. Details are below.&lt;/p&gt;<br>&nbsp; &nbsp; &lt;table style="border-collapse: collapse; width: 100%;"&gt;<br>&nbsp; &nbsp; &nbsp; &lt;tr&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd; background-color: #f5f5f5; width: 35%;"&gt;&lt;b&gt;Client&lt;/b&gt;&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd;"&gt; ${applicant.last_name}&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &lt;/tr&gt;<br>&nbsp; &nbsp; &nbsp; &lt;tr&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd; background-color: #f5f5f5;"&gt;&lt;b&gt;Car&lt;/b&gt;&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd;"&gt;${car.name}&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &lt;/tr&gt;<br>&nbsp; &nbsp; &nbsp; &lt;tr&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd; background-color: #f5f5f5;"&gt;&lt;b&gt;Start date&lt;/b&gt;&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd;"&gt;${start_date}&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &lt;/tr&gt;<br>&nbsp; &nbsp; &nbsp; &lt;tr&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd; background-color: #f5f5f5;"&gt;&lt;b&gt;End date&lt;/b&gt;&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd;"&gt;${end_date}&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &lt;/tr&gt;<br>&nbsp; &nbsp; &nbsp; &lt;tr&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd; background-color: #f5f5f5;"&gt;&lt;b&gt;Status&lt;/b&gt;&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd;"&gt;${status}&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &lt;/tr&gt;<br>&nbsp; &nbsp; &nbsp; &lt;tr&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd; background-color: #f5f5f5;"&gt;&lt;b&gt;Updated by&lt;/b&gt;&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; &lt;td style="padding: 8px; border: 1px solid #dddddd;"&gt;${sys_updated_by}&lt;/td&gt;<br>&nbsp; &nbsp; &nbsp; &lt;/tr&gt;<br>&nbsp; &nbsp; &lt;/table&gt;<br>&nbsp; &nbsp; &lt;p style="margin-top: 20px;"&gt;<br>&nbsp; &nbsp; &nbsp; &lt;a href="${URI}" style="background-color: #1f4e79; color: #ffffff; padding: 10px 18px; text-decoration: none; border-radius: 4px;"&gt;Open reservation&lt;/a&gt;<br>&nbsp; &nbsp; &lt;/p&gt;<br>&nbsp; &lt;/div&gt;<br>&nbsp; &lt;p style="font-size: 12px; color: #888888;"&gt;This is an automated message. Please do not reply.&lt;/p&gt;<br>&lt;/div&gt;</p>]]></message_html>
         <message_list/>
         <message_text/>
-        <name>24 -Reservation updated </name>
+        <name>24-Reservation updated – notify</name>
         <omit_watermark>false</omit_watermark>
         <order>100</order>
         <push_message_only>false</push_message_only>
@@ -66,15 +66,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e2c6733d9360db10076630a97bba1078</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>24 -Reservation updated </sys_name>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>24-Reservation updated – notify</sys_name>
         <sys_overrides/>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sysevent_email_action_e2c6733d9360db10076630a97bba1078</sys_update_name>
-        <sys_updated_by>4-andriano</sys_updated_by>
-        <sys_updated_on>2026-11-15 10:33:48</sys_updated_on>
+        <sys_updated_by>4-gaviola</sys_updated_by>
+        <sys_updated_on>2026-11-16 04:03:38</sys_updated_on>
         <sys_version>2</sys_version>
         <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
         <type>email</type>
