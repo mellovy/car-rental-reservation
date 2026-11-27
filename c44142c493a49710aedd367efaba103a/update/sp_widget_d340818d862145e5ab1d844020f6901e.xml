@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function(spUtil, $window) {
+  var c = this;
+  c.busy = false;
+  c.refresh = function() { spUtil.update(c); };
+  c.cancel = function(r) {
+    if (!$window.confirm('Cancel your reservation for ' + r.car + ' (' + r.start_date + ')?')) return;
+    c.busy = true;
+    c.server.get({ action: 'cancel', sys_id: r.sys_id }).then(function(res) {
+      c.busy = false;
+      if (res.data.error) { $window.alert(res.data.error); return; }
+      $window.location.reload();
+    });
+  };
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.cr-head{background:linear-gradient(120deg,#0e6b7d,#12889c);color:#fff;border-radius:14px;padding:22px 26px;margin-bottom:18px}
+.cr-head h1{margin:0 0 4px;font-size:23px;font-weight:600;letter-spacing:-.01em;color:#fff}
+.cr-head p{margin:0;font-size:13px;color:rgba(255,255,255,.82)}
+.cr-card{background:#fff;border:1px solid #e3e8ee;border-radius:12px;padding:20px 22px;margin-bottom:16px}
+.cr-card h3{margin:0 0 6px;font-size:16px;color:#16232e}
+.cr-sub{color:#6b7c8a;font-size:13px;margin:0 0 14px}
+.cr-alert{border-radius:10px;padding:11px 14px;font-size:13px;margin-bottom:14px}
+.cr-alert-err{background:#fdeceb;color:#a13b32;border:1px solid #f3c9c4}
+.cr-alert-ok{background:#eaf7ee;color:#1e7a45;border:1px solid #c6e7d1}
+.cr-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#0e6b7d;color:#fff;border:1px solid #0e6b7d;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s,box-shadow .15s}
+.cr-btn:hover,.cr-btn:focus{background:#0b5766;border-color:#0b5766;color:#fff;text-decoration:none;box-shadow:0 2px 8px rgba(14,107,125,.22)}
+.cr-btn-sm{padding:7px 13px;font-size:12px}
+.cr-btn-ghost{background:#fff;color:#3f5261;border:1px solid #d4dde5}
+.cr-btn-ghost:hover,.cr-btn-ghost:focus{background:#f4f7f9;border-color:#b7c4cf;color:#16232e;box-shadow:none}
+.cr-btn-danger{background:#fff;color:#b3423a;border:1px solid #e6c2be}
+.cr-btn-danger:hover,.cr-btn-danger:focus{background:#fdeceb;border-color:#d99b95;color:#932f28;box-shadow:none}
+.cr-btn:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
+.my-item{display:flex;justify-content:space-between;gap:16px;align-items:center;background:#fff;border:1px solid #e3e8ee;border-radius:12px;padding:16px 18px;margin-bottom:12px;transition:box-shadow .18s,border-color .18s}
+.my-item:hover{box-shadow:0 8px 20px rgba(16,32,48,.08);border-color:#cfd9e2}
+.my-main{min-width:0}
+.my-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.my-car{font-size:16px;color:#16232e}
+.my-state{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+.my-state.is-reserved{background:#e6f3f6;color:#0f5c6b}
+.my-state.is-closed{background:#e7f5ec;color:#1e7a45}
+.my-state.is-cancelled{background:#f2f4f6;color:#7a8b99}
+.my-meta{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;color:#5a6b7a}
+.my-k{color:#9aa9b6;font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-right:3px}
+.my-actions{display:flex;gap:8px;flex-shrink:0;align-items:center}
+.my-link{color:#0e6b7d;font-size:13px;font-weight:600;text-decoration:none;padding:7px 6px}
+.my-link:hover{text-decoration:underline}
+@media(max-width:680px){.my-item{flex-direction:column;align-items:stretch}.my-actions{justify-content:flex-end}}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_2203703_car_re_0_my_reservations</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>My Car Reservations</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function () {
+    data.table = 'x_2203703_car_re_0_reservation';
+    data.loggedIn = gs.isLoggedIn();
+    data.reservations = [];
+    data.error = '';
+    data.success = '';
+
+    if (!data.loggedIn) {
+        return;
+    }
+
+    if (input && input.action == 'cancel' && input.sys_id) {
+        var t2 = new GlideRecord(data.table);
+        if (t2.get(input.sys_id) && String(t2.getValue('applicant')) == gs.getUserID()) {
+            if (t2.getValue('state') == 'reserved') {
+                t2.setValue('state', 'cancelled');
+                if (t2.update()) {
+                    data.success = 'Your reservation was cancelled.';
+                } else {
+                    data.error = gs.getErrorMessage() || 'That reservation could not be cancelled.';
+                }
+            } else {
+                data.error = 'Only active reservations can be cancelled.';
+            }
+        } else {
+            data.error = 'Reservation not found.';
+        }
+    }
+
+    var labels = { reserved: 'Reserved', closed: 'Completed', cancelled: 'Cancelled' };
+
+    var gr = new GlideRecord(data.table);
+    gr.addQuery('applicant', gs.getUserID());
+    gr.orderByDesc('start_date');
+    gr.setLimit(50);
+    gr.query();
+
+    while (gr.next()) {
+        var state = gr.getValue('state') || '';
+        data.reservations.push({
+            sys_id: gr.getUniqueValue(),
+            car: gr.getDisplayValue('car'),
+            rental_duration: gr.getDisplayValue('rental_duration'),
+            start_date: gr.getDisplayValue('start_date'),
+            end_date: gr.getDisplayValue('end_date'),
+            state: labels[state] || state,
+            state_value: state,
+            driver_name: gr.getDisplayValue('driver_name')
+        });
+    }
+    data.count = data.reservations.length;
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:52</sys_created_on>
+        <sys_id>d340818d862145e5ab1d844020f6901e</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>My Car Reservations</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_widget_d340818d862145e5ab1d844020f6901e</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 11:10:13</sys_updated_on>
+        <template><![CDATA[<div class="cr-head">
+  <h1>My reservations</h1>
+  <p>Cancel an active booking up to 72 hours before pick-up.</p>
+</div>
+
+<div class="cr-alert cr-alert-err" ng-if="c.data.error">{{c.data.error}}</div>
+<div class="cr-alert cr-alert-ok" ng-if="c.data.success">{{c.data.success}}</div>
+
+<div class="cr-card" ng-if="!c.data.loggedIn">
+  <h3>Sign in to see your bookings</h3>
+  <p class="cr-sub">Your reservations are tied to your account.</p>
+  <a class="cr-btn" href="?id=reserve_a_car">Reserve a car</a>
+</div>
+
+<div class="cr-card" ng-if="c.data.loggedIn && c.data.count === 0">
+  <h3>No reservations yet</h3>
+  <p class="cr-sub">When you book a car it will show up here.</p>
+  <a class="cr-btn" href="?id=reserve_a_car">Reserve a car</a>
+</div>
+
+<div class="my-list" ng-if="c.data.loggedIn && c.data.count > 0">
+  <div class="my-item" ng-repeat="r in c.data.reservations track by r.sys_id">
+    <div class="my-main">
+      <div class="my-top">
+        <strong class="my-car">{{r.car}}</strong>
+        <span class="my-state" ng-class="'is-' + r.state_value">{{r.state}}</span>
+      </div>
+      <div class="my-meta">
+        <span><span class="my-k">Pick-up</span> {{r.start_date}}</span>
+        <span><span class="my-k">Return</span> {{r.end_date}}</span>
+        <span><span class="my-k">Duration</span> {{r.rental_duration}}</span>
+        <span ng-if="r.driver_name"><span class="my-k">Driver</span> {{r.driver_name}}</span>
+      </div>
+    </div>
+    <div class="my-actions">
+      <a class="my-link" ng-href="?id=form&table=x_2203703_car_re_0_reservation&sys_id={{r.sys_id}}&view=sp">Details</a>
+      <button class="cr-btn cr-btn-danger cr-btn-sm" ng-if="r.state_value == 'reserved'"
+              ng-click="c.cancel(r)" ng-disabled="c.busy">Cancel booking</button>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($window, $timeout, $document) {
+  var c = this;
+  var HIDE = ['Home', 'Reserve a Car', 'My Reservations', 'File a Complaint'];
+  $timeout(function() {
+    var links = $document[0].querySelectorAll('header a, .navbar a, nav a, .sp-nav a');
+    for (var i = 0; i < links.length; i++) {
+      var txt = (links[i].textContent || '').replace(/\s+/g, ' ').trim();
+      for (var j = 0; j < HIDE.length; j++) {
+        if (txt === HIDE[j]) {
+          var el = links[i];
+          while (el && el.tagName !== 'LI' && el !== $document[0].body) el = el.parentNode;
+          (el && el.tagName === 'LI' ? el : links[i]).style.display = 'none';
+          break;
+        }
+      }
+    }
+  }, 400);
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.cr-head{background:linear-gradient(135deg,#0f5c6b 0%,#17879c 100%);border-radius:12px;margin-bottom:16px}
+.cr-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cr-chip{border:1px solid transparent;border-radius:999px;padding:6px 14px;font-size:12.5px}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Links to the receptionist desk queue and the admin console.</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>car_rental_staff_links</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Staff Links</name>
+        <option_schema/>
+        <public>true</public>
+        <roles>x_2203703_car_re_0.receptionist,x_2203703_car_re_0.admin</roles>
+        <script><![CDATA[(function() {
+  data.links = [];
+  var u = gs.getUser();
+  try {
+    if (u.hasRole('x_2203703_car_re_0.admin')) {
+      data.links.push({ label: 'Admin console', id: 'admin_console' });
+      data.links.push({ label: 'Desk', id: 'desk' });
+    } else if (u.hasRole('x_2203703_car_re_0.receptionist')) {
+      data.links.push({ label: 'Desk', id: 'desk' });
+      data.links.push({ label: 'My reservations', id: 'my_reservations' });
+    } else {
+      data.links.push({ label: 'Home', id: 'car_availability' });
+    }
+  } catch (e) {
+    gs.error('Staff Links: ' + e.message);
+  }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-27 10:14:05</sys_created_on>
+        <sys_id>4df721319374d710076630a97bba1054</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Staff Links</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_widget_4df721319374d710076630a97bba1054</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 11:06:50</sys_updated_on>
+        <template><![CDATA[<div class="cr-head" style="padding:16px 22px">
+  <div class="cr-chips" style="gap:10px">
+    <a class="cr-chip" style="background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff;text-decoration:none"
+       ng-repeat="l in data.links" ng-href="?id={{l.id}}">{{l.label}}</a>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

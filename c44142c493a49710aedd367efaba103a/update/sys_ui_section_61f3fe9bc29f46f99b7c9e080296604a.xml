@@ -28,6 +28,34 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>label</element>
+            <position>2</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-27 09:45:21</sys_created_on>
+            <sys_id>d8612d719334d710076630a97bba104c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Calendar Day" display_value="Calendar Day" name="x_2203703_car_re_0_cal_day" sys_domain="global" view="Default view">61f3fe9bc29f46f99b7c9e080296604a</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-27 09:45:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>cutoff_time</element>
+            <position>3</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-27 09:45:25</sys_created_on>
+            <sys_id>89616d719334d710076630a97bba1045</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Calendar Day" display_value="Calendar Day" name="x_2203703_car_re_0_cal_day" sys_domain="global" view="Default view">61f3fe9bc29f46f99b7c9e080296604a</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-27 09:45:25</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption>Calendar Day</caption>
             <header>false</header>

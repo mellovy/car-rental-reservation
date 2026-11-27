@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($window) {
+  var c = this;
+  if (c.data.target) $window.location.replace(c.data.target);
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Sends receptionist/admin users to their own workspace.</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>car_rental_staff_redirect</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Staff Redirect</name>
+        <option_schema/>
+        <public>true</public>
+        <roles>x_2203703_car_re_0.receptionist,x_2203703_car_re_0.admin</roles>
+        <script><![CDATA[(function() {
+  data.role = '';
+  if (gs.hasRole('x_2203703_car_re_0.admin')) data.role = 'admin';
+  else if (gs.hasRole('x_2203703_car_re_0.receptionist')) data.role = 'receptionist';
+  data.target = data.role == 'admin' ? '/carrental?id=admin_console' : '/carrental?id=desk';
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-27 10:33:34</sys_created_on>
+        <sys_id>5e6c61b99374d710076630a97bba107e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Staff Redirect</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_widget_5e6c61b99374d710076630a97bba107e</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 10:33:34</sys_updated_on>
+        <template><![CDATA[<div ng-if="c.data.target" class="alert alert-info">Taking you to your staff workspace&hellip;</div>]]></template>
+    </sp_widget>
+</record_update>

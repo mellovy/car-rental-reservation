@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_2203703_car_re_0_reservation</collection>
+        <condition/>
+        <description>Blocks a reservation when the same car already has a reserved booking overlapping the requested dates.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>24-Prevent double booking</name>
+        <order>110</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous) {
+    if (!current.car.changes() && !current.start_date.changes() && !current.end_date.changes() && !current.state.changes()) {
+        return;
+    }
+    var st = current.getValue('state');
+    if (st == 'cancelled' || st == 'closed') {
+        return;
+    }
+    var carId = current.getValue('car');
+    var start = current.getValue('start_date');
+    if (!carId || !start) {
+        return;
+    }
+    var end = current.getValue('end_date') || start;
+
+    var other = new GlideRecord('x_2203703_car_re_0_reservation');
+    other.addQuery('car', carId);
+    other.addQuery('state', 'reserved');
+    other.addQuery('start_date', '<=', end);
+    other.addQuery('sys_id', '!=', current.getUniqueValue());
+    other.orderBy('start_date');
+    other.query();
+    while (other.next()) {
+        var otherEnd = other.getValue('end_date') || other.getValue('start_date');
+        if (otherEnd >= start) {
+            gs.addErrorMessage('The car "' + current.getDisplayValue('car') + '" is already reserved from ' +
+                other.getDisplayValue('start_date') + ' to ' + other.getDisplayValue('end_date') +
+                '. Choose another car or other dates.');
+            current.setAbortAction(true);
+            return;
+        }
+    }
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-27 10:33:33</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d26cad799374d710076630a97bba1030</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>24-Prevent double booking</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_d26cad799374d710076630a97bba1030</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 10:37:15</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=d26cad799374d710076630a97bba1030"/>
+</record_update>

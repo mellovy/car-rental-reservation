@@ -1,12 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function() {
-  /* widget controller */
+        <client_script><![CDATA[api.controller = function() {
   var c = this;
+  c.type = 'all';
+  c.onlyFree = false;
+  c.view = [];
+  c.typeList = [];
+
+  c.filter = function() {
+    var out = [];
+    var cars = c.data.cars || [];
+    for (var i = 0; i < cars.length; i++) {
+      var x = cars[i];
+      if (c.type !== 'all' && x.type_key !== c.type) continue;
+      if (c.onlyFree && !x.available) continue;
+      out.push(x);
+    }
+    c.view = out;
+  };
+
+  c.setType = function(t) { c.type = t; c.filter(); };
+  c.toggleFree = function() { c.onlyFree = !c.onlyFree; c.filter(); };
+
+  var seen = {};
+  for (var i = 0; i < (c.data.cars || []).length; i++) {
+    var k = c.data.cars[i].type_key;
+    if (k && !seen[k]) { seen[k] = 1; c.typeList.push(k); }
+  }
+  c.typeList.sort();
+  c.filter();
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.ca-hero{background:linear-gradient(135deg,#0f5c6b 0%,#17879c 100%);color:#fff;border-radius:14px;padding:30px;margin-bottom:22px}
+.ca-hero h1{margin:0 0 6px;font-size:27px;font-weight:600;color:#fff;letter-spacing:-.01em}
+.ca-hero p{margin:0;font-size:14px;opacity:.85;color:#fff}
+.ca-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.ca-chip{border:1px solid #d7dde3;background:#fff;color:#3b4a56;border-radius:999px;padding:7px 15px;font-size:13px;cursor:pointer;transition:all .15s;user-select:none}
+.ca-chip:hover{border-color:#9fb3c1}
+.ca-chip.is-active{background:#0f5c6b;border-color:#0f5c6b;color:#fff}
+.ca-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.ca-card{background:#fff;border:1px solid #e3e8ee;border-radius:12px;padding:18px;display:flex;flex-direction:column;transition:box-shadow .18s,transform .18s,border-color .18s;box-shadow:0 1px 2px rgba(16,32,48,.04)}
+.ca-card:hover{box-shadow:0 10px 24px rgba(16,32,48,.10);transform:translateY(-2px);border-color:#cfd9e2}
+.ca-card.is-off{opacity:.7;background:#fbfcfd}
+.ca-title{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.ca-name{font-size:17px;font-weight:600;color:#16232e;margin:0;line-height:1.3}
+.ca-type{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:#5a6b7a;background:#f1f5f8;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.ca-meta{display:flex;gap:16px;margin:12px 0 8px;font-size:13px;color:#5a6b7a;align-items:baseline}
+.ca-meta small{color:#8fa0ae;font-size:12px}
+.ca-desc{font-size:13px;color:#6b7c8a;margin:0 0 12px;line-height:1.45}
+.ca-dates{font-size:12px;color:#6b7c8a;margin:0 0 16px;min-height:20px}
+.ca-pill{display:inline-block;background:#fdecea;color:#a13b32;border-radius:6px;padding:2px 8px;margin:0 4px 4px 0;font-size:11.5px}
+.ca-badge-free{display:inline-block;background:#e7f5ec;color:#1e7a45;border-radius:6px;padding:3px 9px;font-size:11.5px;font-weight:500}
+.ca-badge-off{display:inline-block;background:#eef1f4;color:#7a8b99;border-radius:6px;padding:3px 9px;font-size:11.5px}
+.ca-actions{margin-top:auto}
+.ca-btn{display:inline-block;background:#0f5c6b;color:#fff;border-radius:8px;padding:10px 18px;font-size:13.5px;font-weight:500;text-decoration:none}
+.ca-btn:hover,.ca-btn:focus{background:#0d4e5b;color:#fff;text-decoration:none}
+.ca-empty{text-align:center;color:#7a8b99;padding:40px 0}
+@media(max-width:520px){.ca-hero{padding:22px}.ca-grid{grid-template-columns:1fr}}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -22,20 +73,75 @@
         <option_schema/>
         <public>true</public>
         <roles/>
-        <script><![CDATA[   (function() {
+        <script><![CDATA[(function() {
+  var CAR_TABLE = 'x_2203703_car_re_0_car';
+  var RES_TABLE = 'x_2203703_car_re_0_reservation';
+
   data.cars = [];
-  var gr = new GlideRecord('x_2203703_car_re_0_car');
-  gr.addQuery('available', true);
-  gr.orderBy('name');
-  gr.query();
-  while (gr.next()) {
-    data.cars.push({
-      sys_id: gr.getUniqueValue(),
-      name: gr.getValue('name'),
-      type: gr.getDisplayValue('type'),
-      seats: gr.getValue('seating_capacity'),
-      rent: gr.getDisplayValue('rent')
-    });
+  data.err = '';
+
+  var today = new GlideDateTime().getLocalDate().getValue().substring(0, 10);
+  data.today = today;
+
+  function fmtDate(v) {
+    if (!v) return '';
+    var s = String(v);
+    return s.length > 10 ? s.substring(0, 10) : s;
+  }
+
+  function nextFree(list) {
+    var cursor = today;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].start <= cursor && list[i].end >= cursor) {
+        var d = new GlideDateTime(list[i].end + ' 00:00:00');
+        d.addDaysUTC(1);
+        cursor = d.getLocalDate().getValue().substring(0, 10);
+      }
+    }
+    return cursor;
+  }
+
+  try {
+    var bookings = {};
+    var bg = new GlideRecord(RES_TABLE);
+    bg.addQuery('state', 'reserved');
+    bg.addQuery('end_date', '>=', today);
+    bg.orderBy('start_date');
+    bg.query();
+    while (bg.next()) {
+      var cid = bg.getValue('car');
+      if (!cid) continue;
+      if (!bookings[cid]) bookings[cid] = [];
+      bookings[cid].push({
+        start: fmtDate(bg.getValue('start_date')),
+        end: fmtDate(bg.getValue('end_date') || bg.getValue('start_date'))
+      });
+    }
+
+    var gr = new GlideRecord(CAR_TABLE);
+    gr.orderBy('name');
+    gr.query();
+    while (gr.next()) {
+      var id = gr.getUniqueValue();
+      var b = bookings[id] || [];
+      var av = String(gr.getValue('available'));
+      data.cars.push({
+        sys_id: id,
+        name: String(gr.getValue('name') || ''),
+        type: String(gr.getDisplayValue('type') || ''),
+        type_key: String(gr.getValue('type') || ''),
+        seats: String(gr.getValue('seating_capacity') || ''),
+        rent: String(gr.getDisplayValue('rent') || ''),
+        desc: String(gr.getValue('description') || ''),
+        available: (av == '1' || av == 'true'),
+        bookings: b.slice(0, 3),
+        more: Math.max(0, b.length - 3),
+        next_free: b.length ? nextFree(b) : today
+      });
+    }
+  } catch (e) {
+    data.err = 'Could not load the fleet: ' + e.message;
+    if (typeof gs !== 'undefined' && gs.error) gs.error('Car Availability: ' + e.message);
   }
 })();]]></script>
         <servicenow>false</servicenow>
@@ -43,33 +149,58 @@
         <sys_created_by>4-andriano</sys_created_by>
         <sys_created_on>2026-11-10 17:17:35</sys_created_on>
         <sys_id>1e95e7d893681310076630a97bba107d</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Car Availability</sys_name>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sp_widget_1e95e7d893681310076630a97bba107d</sys_update_name>
-        <sys_updated_by>4-bocado</sys_updated_by>
-        <sys_updated_on>2026-11-14 16:05:20</sys_updated_on>
-        <template><![CDATA[<div class="panel panel-default">
-  <div class="panel-heading"><h3 class="panel-title">Available Cars</h3></div>
-  <table class="table table-striped">
-    <thead>
-      <tr><th>Car</th><th>Type</th><th>Seats</th><th>Rent</th><th></th></tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="c in data.cars">
-        <td>{{c.name}}</td>
-        <td>{{c.type}}</td>
-        <td>{{c.seats}}</td>
-        <td>{{c.rent}}</td>
-        <td><a class="btn btn-primary btn-sm" href="?id=reserve_a_car&car={{c.sys_id}}">Reserve</a></td>
-      </tr>
-      <tr ng-if="!data.cars.length">
-        <td colspan="5" class="text-center">No cars are available right now.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>]]></template>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 10:50:27</sys_updated_on>
+        <template><![CDATA[<div class="cr-alert" style="background:#fdecea;color:#a13b32;border:1px solid #f5d2cd;border-radius:9px;padding:12px 14px;margin-bottom:16px" ng-if="c.data.err">{{c.data.err}}</div>
+
+<div class="ca-hero">
+  <h1>Find your ride</h1>
+  <p>{{c.data.cars.length || 0}} cars in the fleet &middot; book by the day, week or month</p>
+</div>
+
+<div class="ca-chips">
+  <span class="ca-chip" ng-class="{'is-active': c.type == 'all'}" ng-click="c.setType('all')">All cars</span>
+  <span class="ca-chip" ng-repeat="t in c.typeList" ng-class="{'is-active': c.type == t}" ng-click="c.setType(t)" style="text-transform:capitalize">{{t}}</span>
+  <span class="ca-chip" ng-class="{'is-active': c.onlyFree}" ng-click="c.toggleFree()">Available only</span>
+</div>
+
+<div class="ca-grid">
+  <div class="ca-card" ng-class="{'is-off': !car.available}" ng-repeat="car in c.view track by car.sys_id">
+    <div class="ca-title">
+      <h3 class="ca-name">{{car.name}}</h3>
+      <span class="ca-type">{{car.type}}</span>
+    </div>
+
+    <div class="ca-meta">
+      <span>{{car.seats}} seats</span>
+      <span>{{car.rent}}<small> /day</small></span>
+    </div>
+
+    <p class="ca-desc" ng-if="car.desc">{{car.desc}}</p>
+
+    <div class="ca-dates">
+      <span class="ca-badge-off" ng-if="!car.available">Out of service</span>
+      <span class="ca-badge-free" ng-if="car.available && !car.bookings.length">Available now</span>
+      <span ng-if="car.available && car.bookings.length">
+        <span class="ca-pill" ng-repeat="b in car.bookings track by $index">{{b.start}} &rarr; {{b.end}}</span>
+        <span class="ca-pill" ng-if="car.more">+{{car.more}} more</span>
+        <div style="margin-top:4px">Next free: <strong>{{car.next_free}}</strong></div>
+      </span>
+    </div>
+
+    <div class="ca-actions">
+      <a class="ca-btn" ng-if="car.available" ng-href="?id=reserve_a_car&car={{car.sys_id}}">Reserve</a>
+      <span class="ca-badge-off" ng-if="!car.available">Not bookable</span>
+    </div>
+  </div>
+</div>
+
+<div class="ca-empty" ng-if="!c.view.length">No cars match that filter.</div>]]></template>
     </sp_widget>
 </record_update>

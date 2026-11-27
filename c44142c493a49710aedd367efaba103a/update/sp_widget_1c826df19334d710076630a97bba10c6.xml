@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($window) {
+  var c = this;
+  c.busy = false;
+  c.act = function(id, action) {
+    c.busy = true;
+    c.server.get({ action: action, sys_id: id }).then(function(r) {
+      c.busy = false;
+      var msg = (r.data && r.data.message) || '';
+      if (msg.indexOf('Could not') === 0) { $window.alert(msg); return; }
+      $window.location.reload();
+    });
+  };
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.cr-head{background:linear-gradient(135deg,#0f5c6b 0%,#17879c 100%);color:#fff;border-radius:14px;padding:24px 28px;margin-bottom:20px}
+.cr-head h1{margin:0 0 4px;font-size:24px;font-weight:600;color:#fff}
+.cr-head p{margin:0;font-size:13.5px;opacity:.85;color:#fff}
+.cr-card{background:#fff;border:1px solid #e3e8ee;border-radius:12px;box-shadow:0 1px 2px rgba(16,32,48,.04);padding:18px;margin-bottom:16px}
+.cr-card h3{margin:0 0 2px;font-size:15.5px;font-weight:600;color:#16232e}
+.cr-sub{font-size:12.5px;color:#7a8b99;margin:0 0 14px}
+.cr-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px}
+.cr-stat{background:#fff;border:1px solid #e3e8ee;border-radius:12px;padding:16px 18px}
+.cr-stat .v{font-size:26px;font-weight:600;color:#0f5c6b;line-height:1.15}
+.cr-stat .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:#7a8b99;margin-top:2px}
+.cr-btn{display:inline-block;background:#0f5c6b;color:#fff;border:0;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer}
+.cr-btn:hover,.cr-btn:focus{background:#0d4e5b;color:#fff;text-decoration:none}
+.cr-btn-ghost{background:#fff;color:#a13b32;border:1px solid #f0c9c5}
+.cr-btn-ghost:hover{background:#fdecea;color:#a13b32}
+.cr-btn-sm{padding:6px 12px;font-size:12px;border-radius:7px}
+.cr-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px}
+.cr-table th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#7a8b99;font-weight:600;padding:8px 10px;border-bottom:1px solid #eef2f6;white-space:nowrap}
+.cr-table td{padding:11px 10px;border-bottom:1px solid #f4f7fa;color:#33424f;vertical-align:middle}
+.cr-table tr:last-child td{border-bottom:0}
+.cr-table tbody tr:hover td{background:#fafcfd}
+.cr-tag{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:3px 9px;display:inline-block}
+.cr-tag.ok{background:#e7f5ec;color:#1e7a45}
+.cr-tag.no{background:#f2f4f6;color:#7a8b99}
+.cr-tag.hol{background:#fdecea;color:#a13b32}
+.cr-tag.day{background:#e6f3f6;color:#0f5c6b}
+.cr-chips{display:flex;flex-wrap:wrap;gap:6px}
+.cr-chip{background:#f1f5f8;border:1px solid #e6ecf1;border-radius:8px;padding:5px 9px;font-size:11.5px;color:#3b4a56;white-space:nowrap}
+.cr-chip b{font-weight:600;color:#16232e}
+.cr-empty{color:#9aa9b6;font-size:13px;padding:14px 0}
+@media(max-width:700px){.cr-table{display:block;overflow-x:auto;white-space:nowrap}}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Front desk queue: today's pickups, returns and upcoming reservations.</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>car_rental_desk</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Desk Queue</name>
+        <option_schema/>
+        <public>true</public>
+        <roles>x_2203703_car_re_0.receptionist,x_2203703_car_re_0.admin</roles>
+        <script><![CDATA[(function() {
+  var RES_TABLE = 'x_2203703_car_re_0_reservation';
+  data.message = '';
+  data.today = '';
+  data.pickups = [];
+  data.returns = [];
+  data.upcoming = [];
+  data.active = [];
+  data.err = '';
+
+  function ymd(v) {
+    if (!v) return '';
+    return String(v).substring(0, 10);
+  }
+
+  try {
+    if (input && input.action && input.sys_id) {
+      var target = new GlideRecord(RES_TABLE);
+      if (target.get(input.sys_id)) {
+        target.setValue('state', input.action == 'cancel' ? 'cancelled' : 'closed');
+        if (target.update()) {
+          data.message = 'Reservation ' + (input.action == 'cancel' ? 'cancelled' : 'closed') + '.';
+        } else {
+          data.message = gs.getErrorMessage() || 'Could not update that reservation.';
+        }
+      }
+    }
+
+    var today = ymd(new GlideDateTime().getLocalDate().getValue());
+    data.today = today;
+
+    var gr = new GlideRecord(RES_TABLE);
+    gr.addQuery('state', 'reserved');
+    gr.orderBy('start_date');
+    gr.query();
+    while (gr.next()) {
+      var start = ymd(gr.getValue('start_date'));
+      var end = ymd(gr.getValue('end_date'));
+      var row = {
+        sys_id: gr.getUniqueValue(),
+        car: gr.getDisplayValue('car'),
+        client: gr.getValue('client_type') == 'guest'
+          ? (gr.getValue('guest_name') || 'Guest')
+          : (gr.getDisplayValue('applicant') || 'Unknown'),
+        type: gr.getValue('client_type'),
+        start: start,
+        end: end,
+        duration: gr.getDisplayValue('rental_duration')
+      };
+      data.active.push(row);
+      if (start == today) data.pickups.push(row);
+      if (end == today) data.returns.push(row);
+      if (start > today) data.upcoming.push(row);
+    }
+  } catch (e) {
+    data.err = String(e && e.message ? e.message : e);
+    gs.error('Desk Queue: ' + data.err);
+  }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-27 09:50:17</sys_created_on>
+        <sys_id>1c826df19334d710076630a97bba10c6</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Desk Queue</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_widget_1c826df19334d710076630a97bba10c6</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 11:01:31</sys_updated_on>
+        <template><![CDATA[<div class="cr-head">
+  <h1>Front desk</h1>
+  <p>Walk-in bookings, pick-ups and returns. Staff bookings skip the online cutoff.</p>
+</div>
+
+<div class="cr-stats">
+  <div class="cr-stat"><div class="v">{{c.data.pickups.length}}</div><div class="k">Pick-ups today</div></div>
+  <div class="cr-stat"><div class="v">{{c.data.returns.length}}</div><div class="k">Returns today</div></div>
+  <div class="cr-stat"><div class="v">{{c.data.upcoming.length}}</div><div class="k">Upcoming</div></div>
+  <div class="cr-stat"><div class="v">{{c.data.active.length}}</div><div class="k">Active reservations</div></div>
+</div>
+
+<div class="cr-card">
+  <h3>Active reservations</h3>
+  <p class="cr-sub">Mark a car Returned when it comes back, or cancel a booking.</p>
+  <table class="cr-table">
+    <thead><tr><th>Car</th><th>Client</th><th>Start</th><th>End</th><th>Duration</th><th></th></tr></thead>
+    <tbody>
+      <tr ng-repeat="r in c.data.active">
+        <td><strong>{{r.car}}</strong></td>
+        <td>{{r.client}} <span class="cr-tag" ng-class="r.type == 'guest' ? 'no' : 'day'">{{r.type}}</span></td>
+        <td>{{r.start}}</td>
+        <td>{{r.end}}</td>
+        <td style="text-transform:capitalize">{{r.duration}}</td>
+        <td style="text-align:right;white-space:nowrap">
+          <button class="cr-btn cr-btn-sm" ng-click="c.act(r.sys_id,'close')" ng-disabled="c.busy">Returned</button>
+          <button class="cr-btn cr-btn-ghost cr-btn-sm" ng-click="c.act(r.sys_id,'cancel')" ng-disabled="c.busy">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="cr-empty" ng-if="!c.data.active.length">No active reservations.</div>
+</div>
+
+<div class="cr-card">
+  <h3>Pick-ups today <span class="cr-sub" style="display:inline">· {{c.data.today}}</span></h3>
+  <table class="cr-table">
+    <thead><tr><th>Car</th><th>Client</th><th>Return</th><th></th></tr></thead>
+    <tbody>
+      <tr ng-repeat="r in c.data.pickups">
+        <td>{{r.car}}</td><td>{{r.client}}</td><td>{{r.end}}</td>
+        <td style="text-align:right"><a ng-href="?id=form&table=x_2203703_car_re_0_reservation&sys_id={{r.sys_id}}">Open</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="cr-empty" ng-if="!c.data.pickups.length">Nothing due for pick-up today.</div>
+</div>
+
+<div class="cr-card">
+  <h3>Returns today</h3>
+  <table class="cr-table">
+    <thead><tr><th>Car</th><th>Client</th><th>Picked up</th><th></th></tr></thead>
+    <tbody>
+      <tr ng-repeat="r in c.data.returns">
+        <td>{{r.car}}</td><td>{{r.client}}</td><td>{{r.start}}</td>
+        <td style="text-align:right"><a ng-href="?id=form&table=x_2203703_car_re_0_reservation&sys_id={{r.sys_id}}">Open</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="cr-empty" ng-if="!c.data.returns.length">Nothing due back today.</div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

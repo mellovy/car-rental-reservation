@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
+    <sys_user_role_contains action="DELETE">
+        <contains/>
+        <role/>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-27 10:17:21</sys_created_on>
+        <sys_id>b8b8e5719374d710076630a97bba10bc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_user_role_contains_b8b8e5719374d710076630a97bba10bc</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 10:17:21</sys_updated_on>
+    </sys_user_role_contains>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</application>
+        <file_path/>
+        <instance_id>567a911e93a9c794d9f6ddd548373c76</instance_id>
+        <instance_name>dev409824</instance_name>
+        <name>sys_user_role_contains_b8b8e5719374d710076630a97bba10bc</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains"><sys_user_role_contains action="INSERT_OR_UPDATE"><contains/><role/><sys_class_name>sys_user_role_contains</sys_class_name><sys_created_by>4-cabahug</sys_created_by><sys_created_on>2026-11-27 10:17:21</sys_created_on><sys_id>b8b8e5719374d710076630a97bba10bc</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package><sys_policy/><sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope><sys_update_name>sys_user_role_contains_b8b8e5719374d710076630a97bba10bc</sys_update_name><sys_updated_by>4-cabahug</sys_updated_by><sys_updated_on>2026-11-27 10:17:21</sys_updated_on></sys_user_role_contains></record_update>]]></payload>
+        <payload_hash>793554894</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>feed5a8d93b49310076630a97bba1054</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-27 10:17:21</sys_created_on>
+        <sys_id>f4b8e5719374d710076630a97bba10c2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a21c8274590000001</sys_recorded_at>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 10:17:21</sys_updated_on>
+        <type>Contained Role</type>
+        <update_guid>b4b8e571b374d710b56cba8a888be9c1</update_guid>
+        <update_guid_history>b4b8e571b374d710b56cba8a888be9c1:793554894</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-27 10:18:11</sys_created_on>
+        <sys_db_object display_value="" name="sys_user_role_contains">sys_user_role_contains</sys_db_object>
+        <sys_id>20257d561fda42aaa742282e62d09d59</sys_id>
+        <sys_metadata>b8b8e5719374d710076630a97bba10bc</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_scope_delete display_value="">4dbe8c6d9e05468caa89f2346c50fa31</sys_scope_delete>
+        <sys_update_name>sys_user_role_contains_b8b8e5719374d710076630a97bba10bc</sys_update_name>
+        <sys_update_version display_value="sys_user_role_contains_b8b8e5719374d710076630a97bba10bc">f4b8e5719374d710076630a97bba10c2</sys_update_version>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 10:18:11</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

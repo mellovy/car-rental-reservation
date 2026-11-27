@@ -7,7 +7,9 @@
         <affected_field_on_event/>
         <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
         <collection>x_2203703_car_re_0_reservation</collection>
-        <condition/>
+        <condition table="x_2203703_car_re_0_reservation">state=reserved^EQ<item display_value="Reserved" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="reserved"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
         <content_type>text/html</content_type>
         <default_digest>false</default_digest>
         <default_interval/>
@@ -18,14 +20,15 @@
         <digest_separator_html><![CDATA[<p>&nbsp;</p>
 <hr>
 <p>&nbsp;</p>]]></digest_separator_html>
-        <digest_separator_text><![CDATA[\n--------------------------------------------------------------------------------\n]]></digest_separator_text>
+        <digest_separator_text><![CDATA[--------------------------------------------------------------------------------
+]]></digest_separator_text>
         <digest_subject/>
         <digest_template/>
         <digest_text/>
         <digest_type>single</digest_type>
         <digestable>false</digestable>
         <enable_dynamic_translation>false</enable_dynamic_translation>
-        <event_name>activate.life.cycle.migration</event_name>
+        <event_name/>
         <event_parm_1>false</event_parm_1>
         <event_parm_2>false</event_parm_2>
         <exclude_delegates>false</exclude_delegates>
@@ -38,24 +41,24 @@
         <item_table/>
         <mandatory>false</mandatory>
         <message/>
-        <message_html><![CDATA[<p>&lt;h2&gt;New Car Reservation Received&lt;/h2&gt;</p>
-<p>&lt;p&gt;A new car reservation has been submitted.&lt;/p&gt;</p>
-<p>&lt;p&gt;&lt;b&gt;Applicant:&lt;/b&gt; ${applicant.name}&lt;/p&gt;<br>&lt;p&gt;&lt;b&gt;Email:&lt;/b&gt; ${applicant.email}&lt;/p&gt;<br>&lt;p&gt;&lt;b&gt;Car:&lt;/b&gt; ${car}&lt;/p&gt;<br>&lt;p&gt;&lt;b&gt;Driver Name:&lt;/b&gt; ${driver_name}&lt;/p&gt;<br>&lt;p&gt;&lt;b&gt;Start Date:&lt;/b&gt; ${start_date}&lt;/p&gt;<br>&lt;p&gt;&lt;b&gt;End Date:&lt;/b&gt; ${end_date}&lt;/p&gt;<br>&lt;p&gt;&lt;b&gt;Rental Duration:&lt;/b&gt; ${rental_duration}&lt;/p&gt;<br>&lt;p&gt;&lt;b&gt;Remarks:&lt;/b&gt; ${remarks}&lt;/p&gt;</p>
-<p>&lt;p&gt;Please review the reservation in the system.&lt;/p&gt;</p>]]></message_html>
+        <message_html><![CDATA[<div style="font-family:Lato,Arial,sans-serif;line-height:24px;font-size:15px;color:#16232e">
+<div style="text-align:center;line-height:34px;padding-bottom:20px;border-bottom:1px solid #DADDE2"><span style="font-size:22px;font-weight:600">Your reservation is confirmed</span></div>
+<div style="padding-top:20px"><p>Hello ${driver_name},</p><p>We have your reservation.</p><p><strong>Car:</strong> ${car.name}<br/><strong>Pick-up:</strong> ${start_date}<br/><strong>Return:</strong> ${end_date}<br/><strong>Duration:</strong> ${rental_duration}</p><p>Online changes must be made at least 72 hours before the pick-up date.</p></div>
+<div style="padding-top:26px;color:#6b7c8a;font-size:13px">Thank you,<br/>Car Rental Team</div></div>]]></message_html>
         <message_list/>
         <message_text/>
-        <name>23-Car reserved – notify receptionist </name>
+        <name>23-Reservation received - notify client</name>
         <omit_watermark>false</omit_watermark>
         <order>100</order>
         <push_message_only>false</push_message_only>
-        <recipient_fields/>
-        <recipient_groups name="Receptionists">677b27359320db10076630a97bba1019</recipient_groups>
+        <recipient_fields>applicant.email,guest_email</recipient_fields>
+        <recipient_groups/>
         <recipient_users/>
         <reply_to/>
         <send_self>true</send_self>
         <sms_alternate/>
         <style/>
-        <subject>New Car Reservation Received</subject>
+        <subject>Your car rental is reserved: ${car.name} on ${start_date}</subject>
         <subscribable>false</subscribable>
         <sys_class_name>sysevent_email_action</sys_class_name>
         <sys_created_by>4-andriano</sys_created_by>
@@ -63,15 +66,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e69de7399320db10076630a97bba1053</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>23-Car reserved – notify receptionist </sys_name>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>23-Reservation received - notify client</sys_name>
         <sys_overrides/>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sysevent_email_action_e69de7399320db10076630a97bba1053</sys_update_name>
-        <sys_updated_by>4-gaviola</sys_updated_by>
-        <sys_updated_on>2026-11-16 03:59:52</sys_updated_on>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 10:42:51</sys_updated_on>
         <sys_version>2</sys_version>
         <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
         <type>email</type>
