@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Car Rental Management System — Documentation</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1c2b33; font-size: 10.5pt; line-height: 1.45; margin: 0; }
+  h1 { font-size: 22pt; margin: 0 0 4px; color: #0b6e6e; }
+  h2 { font-size: 15pt; color: #0b6e6e; border-bottom: 2px solid #0b6e6e; padding-bottom: 4px; margin: 26px 0 10px; page-break-after: avoid; }
+  h3 { font-size: 12pt; color: #124c4c; margin: 16px 0 6px; page-break-after: avoid; }
+  p, li { margin: 4px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 14px; font-size: 9.5pt; page-break-inside: avoid; }
+  th { background: #0b6e6e; color: #fff; text-align: left; padding: 5px 8px; }
+  td { border: 1px solid #cfd8d8; padding: 4px 8px; vertical-align: top; }
+  tr:nth-child(even) td { background: #f4f9f9; }
+  code { font-family: Consolas, monospace; font-size: 9pt; background: #eef4f4; padding: 1px 4px; border-radius: 3px; }
+  .cover { text-align: center; padding-top: 160px; page-break-after: always; }
+  .cover .sub { font-size: 13pt; color: #456; margin-top: 10px; }
+  .cover .meta { margin-top: 40px; color: #678; font-size: 10pt; }
+  .tag { display: inline-block; background: #e0f2f1; color: #0b6e6e; border-radius: 4px; padding: 1px 7px; font-size: 9pt; margin: 1px; }
+  .warn { background: #fff6e5; border-left: 4px solid #e6a23c; padding: 8px 12px; margin: 10px 0; }
+  .note { background: #eef7f7; border-left: 4px solid #0b6e6e; padding: 8px 12px; margin: 10px 0; }
+  .toc li { margin: 2px 0; }
+  .kpi { display: inline-block; border: 1px solid #cfd8d8; border-radius: 6px; padding: 6px 14px; margin: 3px; text-align: center; }
+  .kpi b { display: block; font-size: 14pt; color: #0b6e6e; }
+  .small { font-size: 9pt; color: #567; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Car Rental Management System</h1>
+  <div class="sub">ServiceNow Scoped Application — Technical &amp; User Documentation</div>
+  <div class="meta">
+    Instance: dev409824.service-now.com<br/>
+    Scope: <code>x_2203703_car_re_0</code><br/>
+    Service Portal: <code>/carrental</code><br/>
+    Repository: github.com/mellovy/car-rental-reservation<br/>
+    Generated: November 27, 2026
+  </div>
+</div>
+
+<h2>1. Overview</h2>
+<p>The Car Rental Management System is a ServiceNow scoped application that provides a customer-facing
+service portal for booking rental cars, and staff-facing desk/dashboard views for managing the fleet,
+the rental calendar, and reservations. It supports three kinds of bookers — logged-in patrons,
+anonymous guests, and reception staff (walk-ins) — and enforces a rental calendar with business days,
+holidays, and a per-day online booking cutoff.</p>
+
+<h3>1.1 Key facts</h3>
+<table>
+  <tr><th>Item</th><th>Value</th></tr>
+  <tr><td>Application</td><td>Car Rental Management System (scope <code>x_2203703_car_re_0</code>)</td></tr>
+  <tr><td>Scope sys_id</td><td><code>c44142c493a49710aedd367efaba103a</code></td></tr>
+  <tr><td>Service portal</td><td><code>/carrental</code> — title "Car Rental", homepage <b>Car Availability</b></td></tr>
+  <tr><td>Update set</td><td><code>feed5a8d93b49310076630a97bba1054</code> (Car Rental Management System - Manual Edit 1)</td></tr>
+  <tr><td>Fleet size</td><td>11 vehicles, daily rents ₱1,300 – ₱4,500</td></tr>
+  <tr><td>Rental calendar</td><td>44 business days (Mon–Fri, 2026-11-23 → 2027-01-29) + 6 holidays</td></tr>
+  <tr><td>Online cutoff</td><td>15:00 on each business day (per-day, configurable); staff bypass</td></tr>
+</table>
+
+<h3>1.2 Roles</h3>
+<table>
+  <tr><th>Role</th><th>Full name</th><th>Capabilities</th></tr>
+  <tr><td><code>patron</code></td><td>x_2203703_car_re_0.patron</td><td>Browse fleet, book online, view/cancel own reservations, file complaints</td></tr>
+  <tr><td><code>receptionist</code></td><td>x_2203703_car_re_0.receptionist</td><td>Desk view: queue of all reservations, pickups/returns today, walk-in booking (cutoff bypass), cancel/return on behalf of clients</td></tr>
+  <tr><td><code>admin</code></td><td>x_2203703_car_re_0.admin</td><td>Everything reception can do, plus Dashboard (fleet stats, business-day calendar) and platform modules</td></tr>
+</table>
+<p class="small">Role sys_ids: patron <code>e76468b4932c9310076630a97bba107a</code>, receptionist <code>184142c493a49710aedd367efaba10e1</code>, admin <code>984142c493a49710aedd367efaba10c8</code>.</p>
+
+<h3>1.3 Test users</h3>
+<table>
+  <tr><th>User</th><th>Role</th><th>user_name</th></tr>
+  <tr><td>Test Patron</td><td>patron</td><td>test.patron</td></tr>
+  <tr><td>Test Receptionist</td><td>receptionist</td><td>test.receptionist</td></tr>
+  <tr><td>Test Admin</td><td>admin</td><td>test.admin</td></tr>
+</table>
+<div class="note">Passwords were set directly by the application owner in the instance UI (per password policy — no name-derived passwords). Role grants live in <code>sys_user_role_contains</code> rows binding each user to their app role.</div>
+
+<h2>2. Service Portal</h2>
+<p>Portal record: <code>sp_portal 0c0cc72193605b10076630a97bba107b</code>, URL suffix <code>carrental</code>.
+Browser tab title: "Car Rental".</p>
+
+<h3>2.1 Pages</h3>
+<table>
+  <tr><th>Page</th><th>URL id</th><th>Audience</th><th>Contents</th></tr>
+  <tr><td>Car Availability (home)</td><td><code>car_availability</code></td><td>Everyone</td><td>Hero + filter chips (car type, "Available only"), responsive fleet cards with seats/rent/description, booked-date pills, "· maintenance" pills, next-free date, Reserve buttons</td></tr>
+  <tr><td>Reserve a Car</td><td><code>reserve_a_car</code></td><td>Everyone (guest fields for anonymous)</td><td>Two-column booking form + sidebar (live rent estimate, day count, pick-up/return summary, bookable-day chips with cutoffs, closed holiday chips)</td></tr>
+  <tr><td>My Reservations</td><td><code>my_reservations</code></td><td>Patrons</td><td>Booking cards with state pills, Details link, Cancel booking (72h rule enforced server-side)</td></tr>
+  <tr><td>Desk</td><td><code>desk</code></td><td>receptionist, admin</td><td>Front-desk queue: stat tiles, active reservations with Returned/Cancel actions, pickups/returns tables, walk-in reservation form</td></tr>
+  <tr><td>Dashboard</td><td><code>admin_console</code></td><td>admin</td><td>Fleet stats, fleet table with live status (Available / On rent / Booked &lt;date&gt; / Out of service / Out of service (dates)), month-grid business-day calendar with holidays</td></tr>
+  <tr><td>File a Complaint</td><td><code>sc_cat_item</code> + producer</td><td>Everyone</td><td>Record producer with complaint type, details, affected car (select box), guest contact fields (auto-hidden for logged-in users)</td></tr>
+</table>
+
+<h3>2.2 Navigation</h3>
+<ul>
+  <li>Header menu (<code>sp_rectangle_menu 25686efc4e5b40da9b3dd1af37b3f361</code>): Home, Reserve a Car, My Reservations, File a Complaint — all as direct URLs.</li>
+  <li><b>Staff redirect:</b> staff hitting Home, Reserve a Car or My Reservations are automatically redirected — admin → Dashboard, receptionist → Desk (Staff Redirect widget instances on those pages).</li>
+  <li><b>Header hiding:</b> the Staff Links widget hides the patron header links for staff and renders the staff chip bar: <b>Dashboard · Desk</b> (same two chips on both staff pages, active state highlighted; "Dashboard" chip appears only for admins on the Desk page).</li>
+</ul>
+
+<h3>2.3 Widget inventory</h3>
+<table>
+  <tr><th>Widget</th><th>id</th><th>sys_id</th><th>Purpose</th></tr>
+  <tr><td>Car Availability</td><td>car_availability</td><td><code>1e95e7d893681310076630a97bba107d</code></td><td>Public fleet catalog with filters, booking pills, maintenance pills</td></tr>
+  <tr><td>Reserve a Car</td><td>reserve_a_car</td><td><code>800377e193645b10076630a97bba104e</code></td><td>Guest/patron booking form with full client+server validation</td></tr>
+  <tr><td>My Reservations</td><td>my_reservations</td><td><code>d340818d862145e5ab1d844020f6901e</code></td><td>Patron's own bookings, cancel action</td></tr>
+  <tr><td>Desk Queue</td><td>car_rental_desk</td><td><code>1c826df19334d710076630a97bba10c6</code></td><td>Staff queue + Returned/Cancel actions + walk-in form instance</td></tr>
+  <tr><td>Dashboard</td><td>car_rental_admin</td><td><code>b482adf19334d710076630a97bba101c</code></td><td>Admin fleet stats, status table, calendar month grid</td></tr>
+  <tr><td>Staff Links</td><td>car_rental_staff_links</td><td><code>4df721319374d710076630a97bba1054</code></td><td>Role-aware nav chips + header-link hiding for staff</td></tr>
+  <tr><td>Staff Redirect</td><td>car_rental_staff_redirect</td><td><code>5e6c61b99374d710076630a97bba107e</code></td><td>Redirects staff away from patron pages</td></tr>
+</table>
+<p class="small">Widget server scripts are defensive: all <code>data.*</code> collections initialized first, date handling via local <code>ymd()</code> helpers (no <code>gs.dateFormat</code>), everything inside try/catch that surfaces <code>data.err</code> banners.</p>
+
+<h2>3. Data model</h2>
+
+<h3>3.1 Car (<code>x_2203703_car_re_0_car</code>)</h3>
+<p>Fields: name, type (van/hatchback/coupe/convertible/sedan/suv/pickup), seating_capacity, rent, available (flag), description, add_ons, insurance.</p>
+<table>
+  <tr><th>Vehicle</th><th>Type</th><th>Seats</th><th>Rent/day</th></tr>
+  <tr><td>Toyota Vios</td><td>Sedan</td><td>5</td><td>₱1,800</td></tr>
+  <tr><td>Honda City</td><td>Sedan</td><td>5</td><td>₱1,700</td></tr>
+  <tr><td>Nissan Almera</td><td>Sedan</td><td>5</td><td>₱1,600</td></tr>
+  <tr><td>Mitsubishi Mirage</td><td>Hatchback</td><td>5</td><td>₱1,500</td></tr>
+  <tr><td>Toyota Wigo</td><td>Hatchback</td><td>5</td><td>₱1,300</td></tr>
+  <tr><td>Toyota Fortuner</td><td>SUV</td><td>7</td><td>₱3,500</td></tr>
+  <tr><td>Toyota Innova</td><td>SUV</td><td>7</td><td>₱3,200</td></tr>
+  <tr><td>Mitsubishi Montero Sport</td><td>SUV</td><td>7</td><td>₱3,500</td></tr>
+  <tr><td>Mazda CX-5</td><td>SUV</td><td>5</td><td>₱3,000</td></tr>
+  <tr><td>Hyundai Starex</td><td>Van</td><td>12</td><td>₱4,000</td></tr>
+  <tr><td>Toyota Hiace</td><td>Van</td><td>15</td><td>₱4,500</td></tr>
+</table>
+<p class="small">All 11 cars currently <code>available = true</code>. Un-planned downtime is modeled by the available flag or by dated windows in Car Unavailability (§3.4).</p>
+
+<h3>3.2 Reservation (<code>x_2203703_car_re_0_reservation</code>)</h3>
+<p>Fields: applicant (patron user), car (reference), rental_duration (daily/weekly/monthly), start_date, end_date,
+driver_name, drivers_license, state, client_type (patron/guest), guest_name, guest_email, guest_contact_number, remarks.</p>
+<table>
+  <tr><th>State</th><th>Meaning</th><th>Set by</th></tr>
+  <tr><td><code>reserved</code></td><td>Active booking (default)</td><td>Portal form, walk-in form</td></tr>
+  <tr><td><code>closed</code></td><td>Car returned</td><td>Staff "Returned" action / Close Reservation UI action</td></tr>
+  <tr><td><code>cancelled</code></td><td>Cancelled</td><td>Patron (72h rule), staff (bypass)</td></tr>
+</table>
+
+<h3>3.3 Calendar Day (<code>x_2203703_car_re_0_cal_day</code>)</h3>
+<p>One row per calendar day: <code>date</code> (display field), <code>day_type</code> (business_day | holiday),
+<code>label</code> (holiday name), <code>cutoff_time</code> (HH:mm, default 15:00 — business days only).</p>
+<table>
+  <tr><th>Range</th><th>Content</th></tr>
+  <tr><td>2026-11-23 → 2027-01-29</td><td>All Mon–Fri as business days, cutoff 15:00. No weekends, no duplicates.</td></tr>
+  <tr><td>Holidays</td><td>2026-11-30 Bonifacio Day · 2026-12-08 Feast of the Immaculate Conception · 2026-12-24 Christmas Eve (special non-working day) · 2026-12-25 Christmas Day · 2026-12-31 New Year's Eve (special non-working day) · 2027-01-01 New Year's Day</td></tr>
+</table>
+<div class="note"><b>Cutoff semantics:</b> online (non-staff) bookings for a given day close at that day's cutoff time (15:00 default). Receptionists and admins may book past the cutoff (walk-ins at the desk). Holidays never accept bookings.</div>
+
+<h3>3.4 Car Unavailability (<code>x_2203703_car_re_0_car_unavail</code>)</h3>
+<p>Dated out-of-service windows per car: car (reference), start_date, end_date (mandatory), reason (choice), notes.
+Consumed by business rule "Car out of service for dates" (blocks overlapping reservations) and surfaced as
+"· maintenance" pills / "Out of service (dates)" status in the portal and dashboard.</p>
+
+<h2>4. Business rules (reservation table, before insert/update)</h2>
+<table>
+  <tr><th>#</th><th>Name</th><th>Order</th><th>Behavior</th></tr>
+  <tr><td>—</td><td>Date sanity</td><td>85</td><td>Aborts missing or inverted start/end dates (server-side guard, applies to all bookers)</td></tr>
+  <tr><td>—</td><td>Car out of service</td><td>90</td><td>Aborts when the selected car's <code>available</code> flag is false</td></tr>
+  <tr><td>—</td><td>Car out of service for dates</td><td>92</td><td>Aborts when dates overlap a Car Unavailability window (skips cancelled/closed records)</td></tr>
+  <tr><td>—</td><td>Car booked for those dates</td><td>95</td><td>Aborts when the car already has a state=reserved booking overlapping the requested range</td></tr>
+  <tr><td>—</td><td>Business days only</td><td>100</td><td>Start date must exist on the calendar and not be a holiday (re-checks when start_date changes)</td></tr>
+  <tr><td>—</td><td>Patron rental duration</td><td>100</td><td>Non-staff may only use daily/weekly/monthly (staff bypass)</td></tr>
+  <tr><td>—</td><td>Patrons may only cancel</td><td>100</td><td>Non-staff state changes are restricted to <code>cancelled</code> (insert-safe; staff bypass)</td></tr>
+  <tr><td>—</td><td>Cancel within 72 hours</td><td>100</td><td>Patrons can only cancel &gt;72h before pick-up (staff bypass)</td></tr>
+  <tr><td>—</td><td>No double booking</td><td>110</td><td>Hard server-side overlap guard per car (belt-and-braces with the widget's client check)</td></tr>
+  <tr><td>—</td><td>Booking cutoff</td><td>120</td><td>Non-staff online bookings abort once the start day's cutoff time has passed (staff bypass; also blocks past start dates)</td></tr>
+</table>
+<table>
+  <tr><th>Other tables</th><th>Rule</th></tr>
+  <tr><td>car_unavail</td><td>Unavailability date sanity (before, order 100) — rejects inverted windows</td></tr>
+</table>
+<p class="small">Guardrails were verified with live system-context inserts: valid booking inserted; overlap, holiday, Saturday, past date, inverted dates and unavailability overlap all blocked; staff close allowed; guest booking allowed.</p>
+
+<h2>5. Notifications (email)</h2>
+<p>All notifications target <code>x_2203703_car_re_0_reservation</code>, recipients resolved from
+<code>applicant.email</code> with <code>guest_email</code> fallback, branded inline HTML, <code>${car.name}</code>
+(note: bare <code>${car}</code> resolves empty at insert time — do not use).</p>
+<table>
+  <tr><th>#</th><th>Name</th><th>Trigger</th><th>Recipients</th></tr>
+  <tr><td>23</td><td>Reservation received — notify client</td><td>insert, state=reserved</td><td>client (applicant email / guest email)</td></tr>
+  <tr><td>24</td><td>Reservation updated — notify client</td><td>update when car/start/end/duration (or driver/license/remarks) changed, state≠cancelled</td><td>client</td></tr>
+  <tr><td>25</td><td>Reserved car changed</td><td>update, carVALCHANGES, state≠cancelled</td><td>client</td></tr>
+  <tr><td>26</td><td>Reservation cancelled — notify client</td><td>update, state=cancelled</td><td>client</td></tr>
+  <tr><td>27</td><td>New reservation — notify desk</td><td>insert</td><td>test.receptionist + test.admin (recipient_users)</td></tr>
+</table>
+<p class="small">Verified end-to-end: reservation creation produced <code>sys_email</code> rows reaching state <code>ready</code>; instance SMTP delivers (older mail shows <code>processed</code>).</p>
+
+<h2>6. Platform modules (All → Car Rental)</h2>
+<table>
+  <tr><th>Module</th><th>Order</th><th>Roles</th></tr>
+  <tr><td>Business Days and Holidays</td><td>100</td><td>receptionist, admin</td></tr>
+  <tr><td>Daily Reservations</td><td>200</td><td>receptionist, admin</td></tr>
+  <tr><td>Weekly Reservations</td><td>250</td><td>receptionist, admin</td></tr>
+  <tr><td>Monthly Reservations</td><td>260</td><td>receptionist, admin</td></tr>
+  <tr><td>Clients</td><td>300</td><td>receptionist, admin</td></tr>
+  <tr><td>Car Availability</td><td>400</td><td>receptionist, admin</td></tr>
+  <tr><td>New Car Availability</td><td>500</td><td>receptionist, admin</td></tr>
+  <tr><td>New Reservation</td><td>600</td><td>receptionist, admin</td></tr>
+  <tr><td>Close Reservations</td><td>650</td><td>receptionist, admin</td></tr>
+  <tr><td>All Reservations</td><td>700</td><td>receptionist, admin</td></tr>
+  <tr><td>Car Unavailability</td><td>800</td><td>receptionist, admin</td></tr>
+  <tr><td>New Car Unavailability</td><td>850</td><td>receptionist, admin</td></tr>
+  <tr><td>Complaints</td><td>900</td><td>receptionist, admin</td></tr>
+</table>
+<p class="small">All module filters were hard-tested; roles normalized (no bare "admin"), patrons intentionally excluded from platform navigation.</p>
+
+<h2>7. Record producers (catalog)</h2>
+<ul>
+  <li><b>Reserve a Car</b> — catalog item <code>9ceba24f…</code>; legacy catalog booking path, still functional.</li>
+  <li><b>File a Complaint</b> — producer <code>ad0801c2c7e0421192a4bc559a19ccaa</code>. Variables: complaint_type, complaint_details, affected_car (Select Box with all 11 cars — works for guests because the car table's staff-only read ACL would otherwise hide reference choices), submitter_type, and guest contact fields (contact_full_name, contact_email, contact_number) hidden by a catalog client script whenever the user is logged in.</li>
+</ul>
+
+<h2>8. Security</h2>
+<ul>
+  <li><b>Guest booking</b> is intentionally allowed: reservation create ACLs include an empty-script allow and a script <code>answer=true</code> row; anonymous users book through the portal widgets (client_type=guest).</li>
+  <li><b>Basic auth is disabled instance-wide</b> (<code>glide.authenticate.basic_auth.restriction.active=true</code>, restricted to <code>snc_basic_auth_api_access</code>) — REST API 401s for app users are platform policy, not an app defect. The portal widgets are the supported client path.</li>
+  <li><b>Read ACLs</b> on car/cal_day are staff-only. This causes no user-visible breakage because portal widget <code>GlideRecord</code> reads bypass table read ACLs, and the complaint form uses a select box. If hardening is desired: elevate <code>security_admin</code> in the UI and add <code>patron</code> (or clear roles for public read) to those ACLs — ACL writes require interactive elevation and cannot be automated.</li>
+  <li><b>Patron data isolation:</b> patrons see and act only on their own reservations (ownership checks in My Reservations; "Patrons may only cancel" rule server-side).</li>
+  <li><b>Passwords</b> follow the instance password policy (no name-derived passwords); test-user passwords were set by the owner in the UI.</li>
+</ul>
+
+<h2>9. Demo guide</h2>
+<h3>9.1 Guest books a car</h3>
+<ol>
+  <li>Open <code>https://dev409824.service-now.com/carrental</code> (logged out).</li>
+  <li>Browse the fleet; filters and booked/maintenance pills are visible without login.</li>
+  <li>Reserve → fill driver details + guest contact → confirm. Booking lands with state=reserved, client_type=guest; client + desk emails go out.</li>
+</ol>
+<h3>9.2 Patron cancels (72h rule)</h3>
+<ol>
+  <li>Log in as test.patron → My Reservations → Cancel booking.</li>
+  <li>Cancelling within 72h of pick-up is rejected with the rule message; outside 72h it succeeds and triggers the cancellation email.</li>
+</ol>
+<h3>9.3 Receptionist walk-in (cutoff bypass)</h3>
+<ol>
+  <li>Log in as test.receptionist → land on Desk.</li>
+  <li>Use "New reservation (walk-in)" — the cutoff time does not block desk bookings.</li>
+  <li>Use Returned / Cancel on any active reservation.</li>
+</ol>
+<h3>9.4 Admin dashboard</h3>
+<ol>
+  <li>Log in as test.admin → land on Dashboard.</li>
+  <li>Fleet table shows live status (On rent / Booked / Out of service / Out of service (dates)); calendar shows business days with cutoffs and holidays.</li>
+</ol>
+
+<h2>10. Operations &amp; repository</h2>
+<ul>
+  <li>Source of truth: the live instance (update set <code>feed5a8d93b49310076630a97bba1054</code>).</li>
+  <li>Local repo <code>github.com/mellovy/car-rental-reservation</code> mirrors <code>metadata/</code> (SDK layout) and the MCP write journal under <code>docs/instance/</code>. It is best-effort: newest live-only edits may not be mirrored until a deploy/export cycle.</li>
+  <li><code>npm run deploy</code> requires ServiceNow SDK credentials configured locally (credentials live only in the MCP profile on this machine).</li>
+  <li><b>Known platform limitation:</b> <code>sys_security_acl</code> writes require interactive <code>security_admin</code> elevation and cannot be automated via API.</li>
+</ul>
+
+<h2>11. Verified quality checks (final state)</h2>
+<ul>
+  <li>All 9 portal widgets audited: no deprecated/throwing date APIs, no unguarded client bindings, no Angular ng-repeat+ng-if conflicts, all server scripts try/catch-wrapped with visible error banners.</li>
+  <li>All 13 platform modules tested against their tables and filters.</li>
+  <li>All booking guardrails live-tested (valid/invalid paths) and cleaned up — reservation and unavailability tables end empty.</li>
+  <li>Notifications verified end-to-end through the instance SMTP.</li>
+  <li>Naming: no numeric prefixes anywhere in app artifacts; module orders de-duplicated.</li>
+</ul>
+
+<div class="note" style="margin-top:24px"><b>Support note:</b> to change the fleet or calendar, use the platform modules (§6) or the Dashboard; calendar rows control both bookability and the daily online cutoff. To extend the calendar beyond 2027-01-29, add Mon–Fri rows with cutoff 15:00.</div>
+
+</body>
+</html>
