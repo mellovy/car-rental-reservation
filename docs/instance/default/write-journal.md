@@ -4,137 +4,6 @@ Rendered from `write-journal.jsonl` (the last 200 entries, newest last). The JSO
 
 | Time | Action | Target | Fields | Result |
 | --- | --- | --- | --- | --- |
-| 2026-11-27T09:50:43.960Z | create | sys_user_role_contains/7e92e1359334d710076630a97bba102b | user, role | applied |
-| 2026-11-27T09:50:45.080Z | update | sys_user/4b6f9f0e93a81f10076630a97bba10bd | user_password, first_name, last_name, email, active | applied |
-| 2026-11-27T09:50:45.555Z | create | sys_user_role_contains/9f92e1359334d710076630a97bba1074 | user, role | applied |
-| 2026-11-27T09:50:46.543Z | update | sys_user/753d1f0a93a81f10076630a97bba10af | user_password, first_name, last_name, email, active | applied |
-| 2026-11-27T09:50:47.277Z | create | sys_user_role_contains/e792e1359334d710076630a97bba10bc | user, role | applied |
-| 2026-11-27T09:56:33.048Z | update | sys_user_role_contains/7e92e1359334d710076630a97bba102b | user, contains | applied |
-| 2026-11-27T09:57:13.747Z | delete | x_2203703_car_re_0_cal_day/0a7121b19334d710076630a97bba1073 | — | applied |
-| 2026-11-27T09:57:15.952Z | update | sys_user_role_contains/7e92e1359334d710076630a97bba102b | contains, role | applied |
-| 2026-11-27T09:57:16.687Z | update | sys_user_role_contains/9f92e1359334d710076630a97bba1074 | contains, role | applied |
-| 2026-11-27T09:57:17.441Z | update | sys_user_role_contains/e792e1359334d710076630a97bba10bc | contains, role | applied |
-| 2026-11-27T09:59:00.640Z | update | sys_user/d58624b8932c9310076630a97bba107e | user_password | applied |
-| 2026-11-27T10:07:22.319Z | create | sys_script/aa66613d9334d710076630a97bba10df | name, sys_name, collection, when, action_insert, action_update, action_delete, action_query, active, advanced, abort_action, add_message, order, priority, condition, description, script, sys_scope | applied |
-| 2026-11-27T10:07:24.025Z | update | sys_user/d58624b8932c9310076630a97bba107e | first_name | applied |
-| 2026-11-27T10:07:47.265Z | update | sys_user/4b6f9f0e93a81f10076630a97bba10bd | first_name | applied |
-| 2026-11-27T10:07:48.090Z | update | sys_user/753d1f0a93a81f10076630a97bba10af | first_name | applied |
-| 2026-11-27T10:09:44.681Z | local_write | docs/default/exports/sys_user_role_contains-2026-11-27T10-09-44-666Z.jsonl | 126802 bytes | applied |
-| 2026-11-27T10:14:04.706Z | update | sys_script/aa66613d9334d710076630a97bba10df | script, condition | applied |
-| 2026-11-27T10:14:05.459Z | create | sp_widget/4df721319374d710076630a97bba1054 | name, sys_name, id, category, script, template, css, client_script, roles, data_table, internal, public, has_preview, option_schema, demo_data, docs, description, field_list, link, controller_as, sys_scope | applied |
-| 2026-11-27T10:14:05.646Z | update | sys_user/d58624b8932c9310076630a97bba107e | first_name | applied |
-| 2026-11-27T10:14:07.557Z | create | sp_row/edf721319374d710076630a97bba10e6 | sp_container, order, class_name, aria_label, semantic_tag, sys_name, sys_scope | applied |
-| 2026-11-27T10:14:09.582Z | create | sp_column/02f761319374d710076630a97bba1024 | sp_row, order, size, class_name, aria_label, semantic_tag, sys_name, sys_scope | applied |
-| 2026-11-27T10:14:11.768Z | create | sp_instance/66f761319374d710076630a97bba109e | sp_column, sp_widget, title, order, active, color, size, class_name, roles, id, sys_scope | applied |
-| 2026-11-27T10:14:13.784Z | create | sp_row/c3f761319374d710076630a97bba10f4 | sp_container, order, class_name, aria_label, semantic_tag, sys_name, sys_scope | applied |
-| 2026-11-27T10:14:15.852Z | create | sp_column/6ff7a1319374d710076630a97bba1054 | sp_row, order, size, class_name, aria_label, semantic_tag, sys_name, sys_scope | applied |
-| 2026-11-27T10:14:17.856Z | create | sp_instance/c408a1319374d710076630a97bba10b5 | sp_column, sp_widget, title, order, active, color, size, class_name, roles, id, sys_scope | applied |
-| 2026-11-27T10:15:13.077Z | update | sys_user_role_contains/7e92e1359334d710076630a97bba102b | contains, role, sys_scope | applied |
-| 2026-11-27T10:15:13.831Z | update | sys_user_role_contains/9f92e1359334d710076630a97bba1074 | contains, role, sys_scope | applied |
-| 2026-11-27T10:15:14.607Z | update | sys_user_role_contains/e792e1359334d710076630a97bba10bc | contains, role, sys_scope | applied |
-| 2026-11-27T10:17:18.170Z | update | sys_user_role_contains/7e92e1359334d710076630a97bba102b | contains, role, sys_scope | applied |
-| 2026-11-27T10:17:18.887Z | update | sys_user_role_contains/9f92e1359334d710076630a97bba1074 | contains, role, sys_scope | applied |
-| 2026-11-27T10:17:19.605Z | update | sys_user_role_contains/e792e1359334d710076630a97bba10bc | contains, role, sys_scope | applied |
-| 2026-11-27T10:17:20.120Z | create | sys_user_role_contains/24b8e5719374d710076630a97bba107f | contains, role, sys_scope | applied |
-| 2026-11-27T10:17:20.575Z | create | sys_user_role_contains/a0b8e5719374d710076630a97bba108c | contains, role, sys_scope | applied |
-| 2026-11-27T10:17:21.174Z | create | sys_user_role_contains/b8b8e5719374d710076630a97bba10bc | contains, role, sys_scope | applied |
-| 2026-11-27T10:17:22.091Z | update | sys_script/aa66613d9334d710076630a97bba10df | active | applied |
-| 2026-11-27T10:17:22.859Z | update | sys_user/d58624b8932c9310076630a97bba107e | title, first_name | applied |
-| 2026-11-27T10:17:23.632Z | update | sys_user/4b6f9f0e93a81f10076630a97bba10bd | title, first_name | applied |
-| 2026-11-27T10:17:24.392Z | update | sys_user/753d1f0a93a81f10076630a97bba10af | title, first_name | applied |
-| 2026-11-27T10:18:04.274Z | delete | sys_user_role_contains/7e92e1359334d710076630a97bba102b | — | applied |
-| 2026-11-27T10:18:05.484Z | delete | sys_user_role_contains/9f92e1359334d710076630a97bba1074 | — | applied |
-| 2026-11-27T10:18:06.708Z | delete | sys_user_role_contains/e792e1359334d710076630a97bba10bc | — | applied |
-| 2026-11-27T10:18:08.630Z | delete | sys_user_role_contains/24b8e5719374d710076630a97bba107f | — | applied |
-| 2026-11-27T10:18:09.850Z | delete | sys_user_role_contains/a0b8e5719374d710076630a97bba108c | — | applied |
-| 2026-11-27T10:18:11.169Z | delete | sys_user_role_contains/b8b8e5719374d710076630a97bba10bc | — | applied |
-| 2026-11-27T10:18:12.551Z | delete | sys_script/aa66613d9334d710076630a97bba10df | — | applied |
-| 2026-11-27T10:20:26.119Z | update | sys_user/d58624b8932c9310076630a97bba107e | roles, user_password, password_needs_reset, active, locked_out | applied |
-| 2026-11-27T10:20:27.085Z | update | sys_user/4b6f9f0e93a81f10076630a97bba10bd | roles, user_password, password_needs_reset, active, locked_out | applied |
-| 2026-11-27T10:20:28.117Z | update | sys_user/753d1f0a93a81f10076630a97bba10af | roles, user_password, password_needs_reset, active, locked_out | applied |
-| 2026-11-27T10:21:11.046Z | create | sys_script/7c99e1f19374d710076630a97bba104f | name, collection, when, order, condition, script, active, sys_scope, aborts_action | applied |
-| 2026-11-27T10:21:11.845Z | update | sys_user/d58624b8932c9310076630a97bba107e | first_name | applied |
-| 2026-11-27T10:21:12.604Z | update | sys_user/4b6f9f0e93a81f10076630a97bba10bd | first_name | applied |
-| 2026-11-27T10:21:13.467Z | update | sys_user/753d1f0a93a81f10076630a97bba10af | first_name | applied |
-| 2026-11-27T10:21:15.757Z | update | sys_script/7c99e1f19374d710076630a97bba104f | active | applied |
-| 2026-11-27T10:21:35.871Z | update | sys_user/d58624b8932c9310076630a97bba107e | first_name, title | applied |
-| 2026-11-27T10:21:36.781Z | update | sys_user/4b6f9f0e93a81f10076630a97bba10bd | first_name, title | applied |
-| 2026-11-27T10:21:37.709Z | update | sys_user/753d1f0a93a81f10076630a97bba10af | first_name, title | applied |
-| 2026-11-27T10:21:39.173Z | delete | sys_script/7c99e1f19374d710076630a97bba104f | — | applied |
-| 2026-11-27T10:29:31.894Z | create | sp_row/937ba1399374d710076630a97bba10bd | sp_container, order, sys_name, sys_scope | applied |
-| 2026-11-27T10:29:32.420Z | create | sp_column/db7b25399374d710076630a97bba100a | sp_row, order, size, sys_name, sys_scope | applied |
-| 2026-11-27T10:29:32.902Z | create | sp_instance/6f7b25399374d710076630a97bba1020 | sp_column, sp_widget, title, order, active, color, size, roles, sys_scope | applied |
-| 2026-11-27T10:29:33.729Z | update | sp_widget/4df721319374d710076630a97bba1054 | script, template | applied |
-| 2026-11-27T10:33:33.719Z | create | sys_script/d26cad799374d710076630a97bba1030 | name, collection, when, order, condition, script, active, sys_scope, aborts_action, description | applied |
-| 2026-11-27T10:33:34.305Z | create | sp_widget/5e6c61b99374d710076630a97bba107e | name, sys_name, id, category, roles, script, client_script, template, css, link, controller_as, data_table, internal, public, has_preview, option_schema, demo_data, docs, description, field_list, sys_scope | applied |
-| 2026-11-27T10:33:55.181Z | create | sp_row/277ce1b99374d710076630a97bba10bc | sp_container, order, sys_name, sys_scope | applied |
-| 2026-11-27T10:33:55.635Z | create | sp_column/637ce1b99374d710076630a97bba10f8 | sp_row, order, size, sys_name, sys_scope | applied |
-| 2026-11-27T10:33:56.115Z | create | sp_instance/bb7c25b99374d710076630a97bba1033 | sp_column, sp_widget, title, order, active, size, color, roles, sys_scope | applied |
-| 2026-11-27T10:34:09.529Z | create | x_2203703_car_re_0_car/8f8ca5b99374d710076630a97bba1088 | name, type, seating_capacity, rent, available, sys_scope | applied |
-| 2026-11-27T10:34:10.086Z | create | x_2203703_car_re_0_car/878ca5b99374d710076630a97bba10b0 | name, type, seating_capacity, rent, available, sys_scope | applied |
-| 2026-11-27T10:34:11.104Z | create | x_2203703_car_re_0_car/1f8ca5b99374d710076630a97bba10d6 | name, type, seating_capacity, rent, available, sys_scope | applied |
-| 2026-11-27T10:34:11.534Z | create | x_2203703_car_re_0_car/678ca5b99374d710076630a97bba10f2 | name, type, seating_capacity, rent, available, sys_scope | applied |
-| 2026-11-27T10:34:12.064Z | create | x_2203703_car_re_0_car/6f8ca5b99374d710076630a97bba109b | name, type, seating_capacity, rent, available, sys_scope | applied |
-| 2026-11-27T10:34:12.512Z | create | x_2203703_car_re_0_car/3f8ce5b99374d710076630a97bba104f | name, type, seating_capacity, rent, available, sys_scope | applied |
-| 2026-11-27T10:34:13.040Z | create | x_2203703_car_re_0_car/ff8ce5b99374d710076630a97bba1021 | name, type, seating_capacity, rent, available, sys_scope | applied |
-| 2026-11-27T10:34:13.465Z | create | x_2203703_car_re_0_car/849ce5b99374d710076630a97bba1081 | name, type, seating_capacity, rent, available, sys_scope | applied |
-| 2026-11-27T10:34:14.334Z | create | sp_row/0c9ce5b99374d710076630a97bba1098 | sp_container, order, sys_name, sys_scope | applied |
-| 2026-11-27T10:34:14.789Z | create | sp_column/189ce5b99374d710076630a97bba10b3 | sp_row, order, size, sys_name, sys_scope | applied |
-| 2026-11-27T10:34:15.268Z | create | sp_instance/d49ca5b99374d710076630a97bba10fd | sp_column, sp_widget, order, active, size, color, roles, sys_scope | applied |
-| 2026-11-27T10:34:16.162Z | create | sp_row/a89ce5b99374d710076630a97bba10d3 | sp_container, order, sys_name, sys_scope | applied |
-| 2026-11-27T10:34:16.623Z | create | sp_column/b89ce5b99374d710076630a97bba10f5 | sp_row, order, size, sys_name, sys_scope | applied |
-| 2026-11-27T10:34:17.113Z | create | sp_instance/fc9c29b99374d710076630a97bba1023 | sp_column, sp_widget, order, active, size, color, roles, sys_scope | applied |
-| 2026-11-27T10:34:18.143Z | create | sp_row/819c29b99374d710076630a97bba1033 | sp_container, order, sys_name, sys_scope | applied |
-| 2026-11-27T10:34:18.594Z | create | sp_column/d99c29b99374d710076630a97bba1048 | sp_row, order, size, sys_name, sys_scope | applied |
-| 2026-11-27T10:34:19.167Z | create | sp_instance/5d9c29b99374d710076630a97bba1051 | sp_column, sp_widget, order, active, size, color, roles, sys_scope | applied |
-| 2026-11-27T10:34:55.782Z | update | sp_widget/800377e193645b10076630a97bba104e | script, client_script, template | applied |
-| 2026-11-27T10:34:56.844Z | update | x_2203703_car_re_0_car/20302f2d93605b10076630a97bba1003 | available | applied |
-| 2026-11-27T10:34:59.163Z | delete | x_2203703_car_re_0_reservation/03061ecd93749310076630a97bba10b4 | — | applied |
-| 2026-11-27T10:35:00.589Z | delete | x_2203703_car_re_0_reservation/0ca3f7759360db10076630a97bba10a1 | — | applied |
-| 2026-11-27T10:35:01.797Z | delete | x_2203703_car_re_0_reservation/1abf52cd93b49310076630a97bba1078 | — | applied |
-| 2026-11-27T10:35:03.101Z | delete | x_2203703_car_re_0_reservation/442b40bd93e45b10076630a97bba10c1 | — | applied |
-| 2026-11-27T10:35:04.380Z | delete | x_2203703_car_re_0_reservation/6688e1719374d710076630a97bba103e | — | applied |
-| 2026-11-27T10:35:05.846Z | delete | x_2203703_car_re_0_reservation/887c02c993349310076630a97bba105c | — | applied |
-| 2026-11-27T10:35:07.070Z | delete | x_2203703_car_re_0_reservation/ac9e460193749310076630a97bba104c | — | applied |
-| 2026-11-27T10:35:08.402Z | delete | x_2203703_car_re_0_reservation/c3184cf593e45b10076630a97bba1030 | — | applied |
-| 2026-11-27T10:35:09.609Z | delete | x_2203703_car_re_0_reservation/c724f7b59360db10076630a97bba107c | — | applied |
-| 2026-11-27T10:35:10.836Z | delete | x_2203703_car_re_0_reservation/c8e45e4d93749310076630a97bba1055 | — | applied |
-| 2026-11-27T10:35:12.091Z | delete | x_2203703_car_re_0_reservation/d8ea020993349310076630a97bba10c9 | — | applied |
-| 2026-11-27T10:35:13.385Z | delete | x_2203703_car_re_0_reservation/dd7f868193749310076630a97bba1080 | — | applied |
-| 2026-11-27T10:35:14.541Z | delete | x_2203703_car_re_0_reservation/e7e25e0993749310076630a97bba102d | — | applied |
-| 2026-11-27T10:35:15.820Z | delete | x_2203703_car_re_0_reservation/e8c94e4593349310076630a97bba1089 | — | applied |
-| 2026-11-27T10:35:17.056Z | delete | x_2203703_car_re_0_reservation/eb8f7b2993a45b10076630a97bba1030 | — | applied |
-| 2026-11-27T10:35:29.454Z | create | sp_row/66dc65f99374d710076630a97bba1042 | sp_container, order, sys_name, sys_scope | applied |
-| 2026-11-27T10:35:30.051Z | create | sp_column/e6dc65f99374d710076630a97bba1058 | sp_row, order, size, sys_name, sys_scope | applied |
-| 2026-11-27T10:35:30.587Z | create | sp_instance/badc65f99374d710076630a97bba1061 | sp_column, sp_widget, order, active, size, color, roles, sys_scope | applied |
-| 2026-11-27T10:35:36.460Z | update | x_2203703_car_re_0_car/20302f2d93605b10076630a97bba1003 | name | applied |
-| 2026-11-27T10:37:12.641Z | update | sp_widget/1c826df19334d710076630a97bba10c6 | script, client_script, template, controller_as | applied |
-| 2026-11-27T10:37:13.868Z | update | sys_script/17a0c97b1af64a0c87c3069aaef153a2 | script | applied |
-| 2026-11-27T10:37:15.190Z | update | sys_script/d26cad799374d710076630a97bba1030 | script | applied |
-| 2026-11-27T10:37:16.542Z | update | sp_widget/800377e193645b10076630a97bba104e | script | applied |
-| 2026-11-27T10:37:18.163Z | delete | sp_instance/66f761319374d710076630a97bba109e | — | applied |
-| 2026-11-27T10:37:19.622Z | delete | sp_instance/c408a1319374d710076630a97bba10b5 | — | applied |
-| 2026-11-27T10:37:21.008Z | delete | sp_instance/6f7b25399374d710076630a97bba1020 | — | applied |
-| 2026-11-27T10:37:51.091Z | create | sys_script/056da53d9374d710076630a97bba10ef | name, collection, when, order, condition, script, active, sys_scope, aborts_action, description | applied |
-| 2026-11-27T10:40:13.595Z | update | sp_widget/1e95e7d893681310076630a97bba107d | script, client_script, template, css | applied |
-| 2026-11-27T10:40:14.833Z | update | sys_security_acl/d827b2883ce049248334fbf5b5c7aebb | roles | refused |
-| 2026-11-27T10:40:16.095Z | update | sp_widget/b482adf19334d710076630a97bba101c | script | applied |
-| 2026-11-27T10:40:31.632Z | update | sp_widget/1e95e7d893681310076630a97bba107d | client_script, template | applied |
-| 2026-11-27T10:42:12.041Z | update | sysevent_email_action/e69de7399320db10076630a97bba1053 | name, subject, recipient_fields, message_html, condition, active, action_insert, action_update | applied |
-| 2026-11-27T10:42:12.840Z | update | sysevent_email_action/e2c6733d9360db10076630a97bba1078 | name, subject, recipient_fields, message_html, condition, active | applied |
-| 2026-11-27T10:42:13.631Z | update | sysevent_email_action/51630ab0af59483382cf98de87b4410f | recipient_fields, subject, message_html | applied |
-| 2026-11-27T10:42:14.151Z | create | sysevent_email_action/916e29bd9374d710076630a97bba10c6 | name, collection, action_insert, action_update, condition, recipient_fields, subject, message_html, active, sys_scope | applied |
-| 2026-11-27T10:42:14.649Z | create | sysevent_email_action/dd6e29bd9374d710076630a97bba10cf | name, collection, action_insert, action_update, condition, recipient_users, subject, message_html, active, sys_scope | applied |
-| 2026-11-27T10:42:28.550Z | create | x_2203703_car_re_0_reservation/f47ea9bd9374d710076630a97bba10b4 | car, state, rental_duration, start_date, end_date, driver_name, drivers_license, client_type, applicant | applied |
-| 2026-11-27T10:42:49.448Z | update | sysevent_email_action/dd6e29bd9374d710076630a97bba10cf | subject, message_html | applied |
-| 2026-11-27T10:42:50.267Z | update | sysevent_email_action/e2c6733d9360db10076630a97bba1078 | condition | applied |
-| 2026-11-27T10:42:51.130Z | update | sysevent_email_action/e69de7399320db10076630a97bba1053 | subject, message_html | applied |
-| 2026-11-27T10:42:52.461Z | delete | x_2203703_car_re_0_reservation/f47ea9bd9374d710076630a97bba10b4 | — | applied |
-| 2026-11-27T10:43:51.602Z | update | sp_widget/800377e193645b10076630a97bba104e | template, css | applied |
-| 2026-11-27T10:43:53.068Z | delete | sp_instance/aebce98ff73a40abb32fa0228df9553d | — | applied |
-| 2026-11-27T10:44:24.898Z | update | sp_widget/800377e193645b10076630a97bba104e | script | applied |
-| 2026-11-27T10:44:26.188Z | update | sp_widget/800377e193645b10076630a97bba104e | client_script | applied |
-| 2026-11-27T10:44:27.545Z | update | sp_widget/d340818d862145e5ab1d844020f6901e | script, template, css, client_script | applied |
 | 2026-11-27T10:44:53.689Z | update | sp_widget/1c826df19334d710076630a97bba10c6 | template, css | applied |
 | 2026-11-27T10:44:54.701Z | update | sp_widget/b482adf19334d710076630a97bba101c | template, css | applied |
 | 2026-11-27T10:45:11.539Z | update | sp_widget/b482adf19334d710076630a97bba101c | script, template | applied |
@@ -204,3 +73,134 @@ Rendered from `write-journal.jsonl` (the last 200 entries, newest last). The JSO
 | 2026-11-27T11:11:48.070Z | create | question_choice/9a25f53d93b4d710076630a97bba1044 | question, value, text, order, inactive, sys_scope | applied |
 | 2026-11-27T11:11:50.751Z | create | question_choice/b625f53d93b4d710076630a97bba10f4 | question, value, text, order, inactive, sys_scope | applied |
 | 2026-11-27T11:11:52.311Z | create | sys_cache_flush/1b25393d93b4d710076630a97bba1072 | name, level | applied |
+| 2026-11-27T11:24:56.458Z | update | sp_widget/1c826df19334d710076630a97bba10c6 | template, script, css | applied |
+| 2026-11-27T11:24:57.696Z | update | sp_widget/b482adf19334d710076630a97bba101c | template, css | applied |
+| 2026-11-27T11:24:58.560Z | update | sp_page/589261359334d710076630a97bba1061 | title | applied |
+| 2026-11-27T11:24:59.850Z | update | sp_widget/4df721319374d710076630a97bba1054 | script | applied |
+| 2026-11-27T11:25:00.659Z | create | sys_cache_flush/7b2875f193f4d710076630a97bba10c8 | name, level | applied |
+| 2026-11-27T11:25:25.055Z | update | sp_widget/b482adf19334d710076630a97bba101c | script, template | applied |
+| 2026-11-27T11:25:25.479Z | create | sys_cache_flush/0e4839f193f4d710076630a97bba10b1 | name, level | applied |
+| 2026-11-27T11:25:52.290Z | update | sp_widget/b482adf19334d710076630a97bba101c | template, script, css | applied |
+| 2026-11-27T11:25:52.714Z | create | sys_cache_flush/6c68f9f193f4d710076630a97bba109f | name, level | applied |
+| 2026-11-27T11:26:24.707Z | update | sp_widget/4df721319374d710076630a97bba1054 | script, client_script, template | applied |
+| 2026-11-27T11:26:26.611Z | create | sp_row/bc88fdf193f4d710076630a97bba10c6 | sp_container, order, sys_name, sys_scope | applied |
+| 2026-11-27T11:26:28.726Z | create | sp_column/d588313593f4d710076630a97bba1040 | sp_row, order, size, sys_name, sys_scope | applied |
+| 2026-11-27T11:26:30.855Z | create | sp_instance/3188313593f4d710076630a97bba10ae | sp_column, sp_widget, order, active, roles, title, sys_scope | applied |
+| 2026-11-27T11:26:32.982Z | create | sp_row/9a88313593f4d710076630a97bba10f7 | sp_container, order, sys_name, sys_scope | applied |
+| 2026-11-27T11:26:35.071Z | create | sp_column/8f88713593f4d710076630a97bba1032 | sp_row, order, size, sys_name, sys_scope | applied |
+| 2026-11-27T11:26:37.127Z | create | sp_instance/2388713593f4d710076630a97bba10a0 | sp_column, sp_widget, order, active, roles, title, sys_scope | applied |
+| 2026-11-27T11:26:39.207Z | create | sp_row/c498b13593f4d710076630a97bba101c | sp_container, order, sys_name, sys_scope | applied |
+| 2026-11-27T11:26:41.396Z | create | sp_column/e498b13593f4d710076630a97bba1089 | sp_row, order, size, sys_name, sys_scope | applied |
+| 2026-11-27T11:26:43.466Z | create | sp_instance/0998b13593f4d710076630a97bba10ed | sp_column, sp_widget, order, active, roles, title, sys_scope | applied |
+| 2026-11-27T11:26:44.532Z | create | sys_cache_flush/5198f13593f4d710076630a97bba1027 | name, level | applied |
+| 2026-11-27T11:27:11.913Z | update | sys_script/d26cad799374d710076630a97bba1030 | action_insert, action_update, action_delete, active | applied |
+| 2026-11-27T11:27:12.770Z | update | sys_script/056da53d9374d710076630a97bba10ef | action_insert, action_update, action_delete, active | applied |
+| 2026-11-27T11:27:13.609Z | update | sysevent_email_action/e2c6733d9360db10076630a97bba1078 | event_name, action_update, active | applied |
+| 2026-11-27T11:27:14.571Z | update | sysevent_email_action/916e29bd9374d710076630a97bba10c6 | event_name, action_update, active | applied |
+| 2026-11-27T11:27:29.467Z | update | sp_widget/4df721319374d710076630a97bba1054 | template | applied |
+| 2026-11-27T11:27:29.893Z | create | sys_cache_flush/50c8393593f4d710076630a97bba10f1 | name, level | applied |
+| 2026-11-27T11:27:56.852Z | update | sp_widget/b482adf19334d710076630a97bba101c | template, css | applied |
+| 2026-11-27T11:27:57.281Z | create | sys_cache_flush/4bd8f93593f4d710076630a97bba1086 | name, level | applied |
+| 2026-11-27T11:28:37.071Z | update | x_2203703_car_re_0_cal_day/067121b19334d710076630a97bba1055 | day_type, label, cutoff_time | applied |
+| 2026-11-27T11:28:37.801Z | update | x_2203703_car_re_0_cal_day/360f7f2993a45b10076630a97bba10cf | day_type, label, cutoff_time | applied |
+| 2026-11-27T11:28:38.560Z | update | x_2203703_car_re_0_cal_day/a67121b19334d710076630a97bba1089 | day_type, label, cutoff_time | applied |
+| 2026-11-27T11:28:39.372Z | update | x_2203703_car_re_0_cal_day/fb7904f993e45b10076630a97bba1091 | day_type, label, cutoff_time | applied |
+| 2026-11-27T11:28:40.614Z | update | sp_widget/b482adf19334d710076630a97bba101c | script | applied |
+| 2026-11-27T11:28:41.082Z | create | sys_cache_flush/fd09717593f4d710076630a97bba10f2 | name, level | applied |
+| 2026-11-27T11:30:22.633Z | update | sp_widget/b482adf19334d710076630a97bba101c | template | applied |
+| 2026-11-27T11:30:23.853Z | update | sp_widget/1c826df19334d710076630a97bba10c6 | template | applied |
+| 2026-11-27T11:30:24.589Z | create | sys_cache_flush/7a693d7593f4d710076630a97bba10fa | name, level | applied |
+| 2026-11-27T11:32:37.717Z | update | sys_script/056da53d9374d710076630a97bba10ef | script | applied |
+| 2026-11-27T11:32:50.754Z | update | sys_script/28d69ff2533b4c789b47b19b2f0f7c3a | name | applied |
+| 2026-11-27T11:32:51.690Z | update | sys_script/bd1889b5a3464f1fb008d538105528d2 | name | applied |
+| 2026-11-27T11:32:52.573Z | update | sys_script/2936c8e6ecdb4e8488ca8afb6b908cbc | name | applied |
+| 2026-11-27T11:32:53.385Z | update | sys_script/5b227555a45b4314b050ecdeb233bfe4 | name | applied |
+| 2026-11-27T11:32:54.218Z | update | sys_script/17a0c97b1af64a0c87c3069aaef153a2 | name | applied |
+| 2026-11-27T11:32:55.120Z | update | sys_script/056da53d9374d710076630a97bba10ef | name | applied |
+| 2026-11-27T11:32:56.030Z | update | sys_script/d26cad799374d710076630a97bba1030 | name | applied |
+| 2026-11-27T11:32:56.845Z | update | sys_script/d822a1f19334d710076630a97bba10da | name | applied |
+| 2026-11-27T11:32:57.740Z | update | sysevent_email_action/e69de7399320db10076630a97bba1053 | name | applied |
+| 2026-11-27T11:32:58.579Z | update | sysevent_email_action/e2c6733d9360db10076630a97bba1078 | name | applied |
+| 2026-11-27T11:32:59.413Z | update | sysevent_email_action/51630ab0af59483382cf98de87b4410f | name | applied |
+| 2026-11-27T11:33:00.209Z | update | sysevent_email_action/916e29bd9374d710076630a97bba10c6 | name | applied |
+| 2026-11-27T11:33:01.168Z | update | sysevent_email_action/dd6e29bd9374d710076630a97bba10cf | name | applied |
+| 2026-11-27T11:33:02.124Z | update | sp_widget/b482adf19334d710076630a97bba101c | name | applied |
+| 2026-11-27T11:33:02.976Z | update | sp_widget/d340818d862145e5ab1d844020f6901e | name | applied |
+| 2026-11-27T11:33:03.387Z | create | sys_cache_flush/790a31f593f4d710076630a97bba1089 | name, level | applied |
+| 2026-11-27T11:33:17.206Z | create | x_2203703_car_re_0_reservation/411a71f593f4d710076630a97bba108d | car, state, rental_duration, driver_name, drivers_license, start_date, end_date, client_type, guest_name, guest_email, guest_contact_number | applied |
+| 2026-11-27T11:33:17.668Z | create | x_2203703_car_re_0_reservation | car, state, rental_duration, driver_name, drivers_license, start_date, end_date, client_type, guest_name, guest_email, guest_contact_number | refused |
+| 2026-11-27T11:33:18.182Z | create | x_2203703_car_re_0_reservation | car, state, rental_duration, driver_name, drivers_license, start_date, end_date, client_type, guest_name, guest_email, guest_contact_number | refused |
+| 2026-11-27T11:33:18.541Z | create | x_2203703_car_re_0_reservation | car, state, rental_duration, driver_name, drivers_license, start_date, end_date, client_type, guest_name, guest_email, guest_contact_number | refused |
+| 2026-11-27T11:33:18.896Z | create | x_2203703_car_re_0_reservation | car, state, rental_duration, driver_name, drivers_license, start_date, end_date, client_type, guest_name, guest_email, guest_contact_number | refused |
+| 2026-11-27T11:33:19.247Z | create | x_2203703_car_re_0_reservation/a91a71f593f4d710076630a97bba10df | car, state, rental_duration, driver_name, drivers_license, start_date, end_date, client_type, guest_name, guest_email, guest_contact_number | applied |
+| 2026-11-27T11:33:20.090Z | update | x_2203703_car_re_0_reservation/411a71f593f4d710076630a97bba108d | state | applied |
+| 2026-11-27T11:33:21.390Z | delete | x_2203703_car_re_0_reservation/411a71f593f4d710076630a97bba108d | — | applied |
+| 2026-11-27T11:33:22.534Z | delete | x_2203703_car_re_0_reservation/a91a71f593f4d710076630a97bba10df | — | applied |
+| 2026-11-27T11:33:40.648Z | delete | x_2203703_car_re_0_reservation/059d2d3d9374d710076630a97bba1035 | — | applied |
+| 2026-11-27T11:33:42.063Z | delete | x_2203703_car_re_0_reservation/67f6717193f4d710076630a97bba1036 | — | applied |
+| 2026-11-27T11:33:43.201Z | delete | x_2203703_car_re_0_reservation/8244b9b993b4d710076630a97bba101c | — | applied |
+| 2026-11-27T11:33:44.389Z | delete | x_2203703_car_re_0_reservation/bdfce5f99374d710076630a97bba1066 | — | applied |
+| 2026-11-27T11:33:44.877Z | create | sys_script/fb2a75f593f4d710076630a97bba10cc | name, collection, when, order, action_insert, action_update, action_delete, active, condition, script, description, sys_scope | applied |
+| 2026-11-27T11:33:58.066Z | create | x_2203703_car_re_0_reservation | car, state, rental_duration, driver_name, drivers_license, client_type, guest_name, guest_email, guest_contact_number, start_date, end_date | refused |
+| 2026-11-27T11:33:58.409Z | create | x_2203703_car_re_0_reservation | car, state, rental_duration, driver_name, drivers_license, client_type, guest_name, guest_email, guest_contact_number, start_date, end_date | refused |
+| 2026-11-27T11:33:58.774Z | create | x_2203703_car_re_0_reservation | car, state, rental_duration, driver_name, drivers_license, client_type, guest_name, guest_email, guest_contact_number, start_date, end_date | refused |
+| 2026-11-27T11:34:27.857Z | update | sp_widget/1c826df19334d710076630a97bba10c6 | template | applied |
+| 2026-11-27T11:34:28.653Z | update | sp_widget/1e95e7d893681310076630a97bba107d | id | applied |
+| 2026-11-27T11:34:29.114Z | create | sys_cache_flush/625af9f593f4d710076630a97bba1075 | name, level | applied |
+| 2026-11-27T11:35:24.488Z | update | sys_script/28d69ff2533b4c789b47b19b2f0f7c3a | name | applied |
+| 2026-11-27T11:35:25.400Z | update | sys_script/bd1889b5a3464f1fb008d538105528d2 | name | applied |
+| 2026-11-27T11:35:26.229Z | update | sys_script/fb2a75f593f4d710076630a97bba10cc | name | applied |
+| 2026-11-27T11:35:27.169Z | update | sys_script/2936c8e6ecdb4e8488ca8afb6b908cbc | name | applied |
+| 2026-11-27T11:35:28.093Z | update | sys_script/5b227555a45b4314b050ecdeb233bfe4 | name | applied |
+| 2026-11-27T11:35:29.082Z | update | sys_script/17a0c97b1af64a0c87c3069aaef153a2 | name | applied |
+| 2026-11-27T11:35:30.026Z | update | sys_script/056da53d9374d710076630a97bba10ef | name | applied |
+| 2026-11-27T11:35:30.915Z | update | sys_script/d26cad799374d710076630a97bba1030 | name | applied |
+| 2026-11-27T11:35:31.838Z | update | sys_script/d822a1f19334d710076630a97bba10da | name | applied |
+| 2026-11-27T11:35:32.667Z | create | sys_cache_flush/069af13993f4d710076630a97bba1051 | name, level | applied |
+| 2026-11-27T11:36:23.501Z | update | sp_page/b65737e993645b10076630a97bba104a | title | applied |
+| 2026-11-27T11:36:24.499Z | update | sp_page/d0bc936d93a05b10076630a97bba1076 | title | applied |
+| 2026-11-27T11:36:25.416Z | update | sys_script_client/4e57f545a64341a7a9da7c37699e9a6c | name | applied |
+| 2026-11-27T11:36:26.427Z | update | sys_script_client/bc7741bcce144810b1f86c477726285c | name | applied |
+| 2026-11-27T11:36:27.404Z | update | sys_script_client/ffc9771324fa4197b88de40425803101 | name | applied |
+| 2026-11-27T11:36:28.416Z | update | sys_ui_policy/7407318aaeca4e4db869b5f4d3f82002 | short_description | applied |
+| 2026-11-27T11:36:29.307Z | update | sys_ui_action/2c72e38293e81f10076630a97bba10e9 | name | applied |
+| 2026-11-27T11:36:30.776Z | create | sys_cache_flush/d4dab93993f4d710076630a97bba10fa | name, level | applied |
+| 2026-11-27T11:37:34.841Z | update | sp_portal/0c0cc72193605b10076630a97bba107b | title | applied |
+| 2026-11-27T11:37:35.272Z | create | sys_cache_flush/c81bb17993f4d710076630a97bba106d | name, level | applied |
+| 2026-11-27T11:38:55.261Z | update | sys_app_module/44afad2893285310076630a97bba10b8 | title, order | applied |
+| 2026-11-27T11:38:56.165Z | update | sys_app_module/4b9f4c02e42c4c19983e394cd388e9f8 | title, order | applied |
+| 2026-11-27T11:38:57.230Z | update | sys_app_module/6c3be409764a4320b75e7fc32535a052 | title, order | applied |
+| 2026-11-27T11:38:58.147Z | update | sys_app_module/891daede8b204e2a986f5635d9c11f23 | title, order | applied |
+| 2026-11-27T11:38:59.137Z | update | sys_app_module/586ee5a493285310076630a97bba1016 | title, order | applied |
+| 2026-11-27T11:39:00.117Z | update | sys_app_module/68c615abb0dc471eaf22b875daf28014 | title, order | applied |
+| 2026-11-27T11:39:01.097Z | update | sys_app_module/48b22117d24744ef9c1d1685f5555f5f | title, order | applied |
+| 2026-11-27T11:39:02.078Z | update | sys_app_module/74d3008c21d04d3f9c4a2428ee955c51 | title, order | applied |
+| 2026-11-27T11:39:02.876Z | update | sys_app_module/7cd3e1e093e45310076630a97bba1060 | title, order | applied |
+| 2026-11-27T11:39:03.662Z | update | sys_app_module/fa778d19fc634272880a620c904020fb | title, order | applied |
+| 2026-11-27T11:39:04.530Z | update | sys_app_module/cf655ab1b9e74bf2a6031548ab9e5a6a | title, order | applied |
+| 2026-11-27T11:39:05.446Z | update | sys_app_module/36fe2461ee7f462f9019f63f97d0db43 | title, order | applied |
+| 2026-11-27T11:39:06.230Z | update | sys_app_module/71033bce932c1f10076630a97bba1064 | title, order | applied |
+| 2026-11-27T11:39:06.671Z | create | sys_cache_flush/226bbd7993f4d710076630a97bba102a | name, level | applied |
+| 2026-11-27T11:39:51.326Z | update | sys_app_module/36fe2461ee7f462f9019f63f97d0db43 | roles | applied |
+| 2026-11-27T11:39:52.292Z | update | sys_app_module/48b22117d24744ef9c1d1685f5555f5f | roles | applied |
+| 2026-11-27T11:39:53.164Z | update | sys_app_module/4b9f4c02e42c4c19983e394cd388e9f8 | roles | applied |
+| 2026-11-27T11:39:54.049Z | update | sys_app_module/6c3be409764a4320b75e7fc32535a052 | roles | applied |
+| 2026-11-27T11:39:54.839Z | update | sys_app_module/891daede8b204e2a986f5635d9c11f23 | roles | applied |
+| 2026-11-27T11:39:55.647Z | update | sys_app_module/74d3008c21d04d3f9c4a2428ee955c51 | roles | applied |
+| 2026-11-27T11:39:56.432Z | update | sys_app_module/fa778d19fc634272880a620c904020fb | roles | applied |
+| 2026-11-27T11:39:57.292Z | update | sys_app_module/7cd3e1e093e45310076630a97bba1060 | roles | applied |
+| 2026-11-27T11:39:58.174Z | update | sys_app_module/586ee5a493285310076630a97bba1016 | filter | applied |
+| 2026-11-27T11:40:13.166Z | create | sys_script/2aab75b993f4d710076630a97bba10a0 | name, collection, when, order, action_insert, action_update, active, condition, script, description, sys_scope | applied |
+| 2026-11-27T11:40:13.684Z | create | sys_script/72abf5b993f4d710076630a97bba100a | name, collection, when, order, action_insert, action_update, active, condition, script, description, sys_scope | applied |
+| 2026-11-27T11:40:24.897Z | create | x_2203703_car_re_0_car_unavail/65bb39b993f4d710076630a97bba1073 | car, start_date, end_date, reason, notes | applied |
+| 2026-11-27T11:40:25.346Z | create | x_2203703_car_re_0_reservation | car, state, rental_duration, driver_name, drivers_license, client_type, guest_name, guest_email, guest_contact_number, start_date, end_date | refused |
+| 2026-11-27T11:40:25.702Z | create | x_2203703_car_re_0_reservation/71bb39b993f4d710076630a97bba10e4 | car, state, rental_duration, driver_name, drivers_license, client_type, guest_name, guest_email, guest_contact_number, start_date, end_date | applied |
+| 2026-11-27T11:40:26.142Z | create | x_2203703_car_re_0_car_unavail | car, start_date, end_date, reason | refused |
+| 2026-11-27T11:40:27.210Z | delete | x_2203703_car_re_0_reservation/71bb39b993f4d710076630a97bba10e4 | — | applied |
+| 2026-11-27T11:40:28.398Z | delete | x_2203703_car_re_0_car_unavail/65bb39b993f4d710076630a97bba1073 | — | applied |
+| 2026-11-27T11:40:51.468Z | update | sys_app_application/2198f43279b14c24937c6bb20918662e | roles | applied |
+| 2026-11-27T11:40:52.341Z | create | sys_cache_flush/44dbf9b993f4d710076630a97bba10ad | name, level | applied |
+| 2026-11-27T11:50:46.009Z | update | sp_widget/b482adf19334d710076630a97bba101c | script | applied |
+| 2026-11-27T11:50:47.264Z | update | sp_widget/800377e193645b10076630a97bba104e | script, template | applied |
+| 2026-11-27T11:50:48.644Z | update | sp_widget/1e95e7d893681310076630a97bba107d | script, template | applied |
+| 2026-11-27T11:50:49.454Z | create | sys_cache_flush/8e1ef9bd93f4d710076630a97bba1066 | name, level | applied |
