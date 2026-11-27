@@ -4,28 +4,6 @@ Rendered from `write-journal.jsonl` (the last 200 entries, newest last). The JSO
 
 | Time | Action | Target | Fields | Result |
 | --- | --- | --- | --- | --- |
-| 2026-11-27T09:45:55.575Z | create | x_2203703_car_re_0_cal_day/e08161b19334d710076630a97bba10dd | date, day_type, cutoff_time | applied |
-| 2026-11-27T09:45:56.068Z | create | x_2203703_car_re_0_cal_day/e88161b19334d710076630a97bba10e2 | date, day_type, cutoff_time | applied |
-| 2026-11-27T09:45:56.564Z | create | x_2203703_car_re_0_cal_day/3881a1b19334d710076630a97bba100d | date, day_type, cutoff_time | applied |
-| 2026-11-27T09:45:57.052Z | create | x_2203703_car_re_0_cal_day/bc81a1b19334d710076630a97bba1012 | date, day_type, cutoff_time | applied |
-| 2026-11-27T09:45:57.533Z | create | x_2203703_car_re_0_cal_day/8181a1b19334d710076630a97bba104a | date, day_type, cutoff_time | applied |
-| 2026-11-27T09:45:58.082Z | create | x_2203703_car_re_0_cal_day/8981a1b19334d710076630a97bba104f | date, day_type, cutoff_time | applied |
-| 2026-11-27T09:45:58.560Z | create | x_2203703_car_re_0_cal_day/9181a1b19334d710076630a97bba1055 | date, day_type, cutoff_time | applied |
-| 2026-11-27T09:48:39.278Z | create | sys_script/d822a1f19334d710076630a97bba10da | name, sys_name, collection, when, action_insert, action_update, action_delete, action_query, active, advanced, abort_action, add_message, order, priority, description, script, sys_scope | applied |
-| 2026-11-27T09:48:41.791Z | update | sp_widget/800377e193645b10076630a97bba104e | script, template, client_script | applied |
-| 2026-11-27T09:50:17.145Z | create | sp_widget/1c826df19334d710076630a97bba10c6 | name, sys_name, id, category, script, template, css, client_script, roles, data_table, internal, public, has_preview, option_schema, demo_data, docs, description, field_list, link, controller_as, sys_scope | applied |
-| 2026-11-27T09:50:19.309Z | create | sp_widget/b482adf19334d710076630a97bba101c | name, sys_name, id, category, script, template, css, client_script, roles, data_table, internal, public, has_preview, option_schema, demo_data, docs, description, field_list, link, controller_as, sys_scope | applied |
-| 2026-11-27T09:50:22.245Z | create | sp_page/6182adf19334d710076630a97bba108f | id, sys_name, title, category, public, internal, draft, omit_watcher, roles, home_page, role, css, dynamic_title_structure, human_readable_url_structure, seo_script, short_description, use_seo_script, sys_scope | applied |
-| 2026-11-27T09:50:24.482Z | create | sp_container/ce82adf19334d710076630a97bba10f4 | sp_page, title, class_name, order, sys_scope | applied |
-| 2026-11-27T09:50:26.576Z | create | sp_row/668221359334d710076630a97bba1011 | sp_container, order, class_name, aria_label, semantic_tag, sys_name, sys_scope | applied |
-| 2026-11-27T09:50:28.783Z | create | sp_column/438221359334d710076630a97bba105a | sp_row, order, size, class_name, aria_label, semantic_tag, sys_name, sys_scope | applied |
-| 2026-11-27T09:50:31.231Z | create | sp_instance/378221359334d710076630a97bba10cb | sp_column, sp_widget, title, order, active, color, size, class_name, roles, id, sys_scope | applied |
-| 2026-11-27T09:50:33.392Z | create | sp_page/589261359334d710076630a97bba1061 | id, sys_name, title, category, public, internal, draft, omit_watcher, roles, home_page, role, css, dynamic_title_structure, human_readable_url_structure, seo_script, short_description, use_seo_script, sys_scope | applied |
-| 2026-11-27T09:50:35.468Z | create | sp_container/b09261359334d710076630a97bba10c4 | sp_page, title, class_name, order, sys_scope | applied |
-| 2026-11-27T09:50:37.547Z | create | sp_row/919261359334d710076630a97bba10ff | sp_container, order, class_name, aria_label, semantic_tag, sys_name, sys_scope | applied |
-| 2026-11-27T09:50:39.583Z | create | sp_column/b992a1359334d710076630a97bba1046 | sp_row, order, size, class_name, aria_label, semantic_tag, sys_name, sys_scope | applied |
-| 2026-11-27T09:50:41.709Z | create | sp_instance/5692a1359334d710076630a97bba10b3 | sp_column, sp_widget, title, order, active, color, size, class_name, roles, id, sys_scope | applied |
-| 2026-11-27T09:50:43.438Z | update | sys_user/d58624b8932c9310076630a97bba107e | user_password, first_name, last_name, email, active | applied |
 | 2026-11-27T09:50:43.960Z | create | sys_user_role_contains/7e92e1359334d710076630a97bba102b | user, role | applied |
 | 2026-11-27T09:50:45.080Z | update | sys_user/4b6f9f0e93a81f10076630a97bba10bd | user_password, first_name, last_name, email, active | applied |
 | 2026-11-27T09:50:45.555Z | create | sys_user_role_contains/9f92e1359334d710076630a97bba1074 | user, role | applied |
@@ -204,3 +182,25 @@ Rendered from `write-journal.jsonl` (the last 200 entries, newest last). The JSO
 | 2026-11-27T11:04:52.364Z | create | sys_cache_flush/f893b17993b4d710076630a97bba105c | name, level | applied |
 | 2026-11-27T11:06:50.277Z | update | sp_widget/4df721319374d710076630a97bba1054 | script | applied |
 | 2026-11-27T11:06:50.762Z | create | sys_cache_flush/310431b993b4d710076630a97bba1009 | name, level | applied |
+| 2026-11-27T11:10:13.119Z | update | sp_widget/d340818d862145e5ab1d844020f6901e | css, template | applied |
+| 2026-11-27T11:10:13.894Z | create | sys_cache_flush/57c439f993b4d710076630a97bba10f0 | name, level | applied |
+| 2026-11-27T11:10:27.361Z | create | sys_ui_policy/2ed4b9f993b4d710076630a97bba10e3 | short_description, table, view, active, on_load, reverse_if_false, run_scripts, inherit, global, apply_to, order, sys_scope | applied |
+| 2026-11-27T11:10:29.734Z | create | sys_ui_policy_action/57d4f9f993b4d710076630a97bba1081 | ui_policy, field, table, sys_scope, visible, mandatory | applied |
+| 2026-11-27T11:10:31.917Z | create | sys_ui_policy_action/37d4f9f993b4d710076630a97bba10d8 | ui_policy, field, table, sys_scope, disabled, mandatory | applied |
+| 2026-11-27T11:10:34.140Z | create | sys_ui_policy_action/10e43df993b4d710076630a97bba103d | ui_policy, field, table, sys_scope, mandatory | applied |
+| 2026-11-27T11:10:36.171Z | create | sys_ui_policy_action/b4e43df993b4d710076630a97bba1091 | ui_policy, field, table, sys_scope, mandatory | applied |
+| 2026-11-27T11:10:38.200Z | create | sys_ui_policy_action/91e43df993b4d710076630a97bba10cd | ui_policy, field, table, sys_scope, mandatory | applied |
+| 2026-11-27T11:10:46.369Z | create | sys_cache_flush/13e47df993b4d710076630a97bba10a5 | name, level | applied |
+| 2026-11-27T11:11:26.100Z | update | item_option_new/42db47997ce2432cbe4c0b3d60a8aede | type, reference | applied |
+| 2026-11-27T11:11:28.358Z | create | question_choice/2115b13d93b4d710076630a97bba10d3 | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:30.627Z | create | question_choice/0e15f13d93b4d710076630a97bba1064 | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:32.817Z | create | question_choice/e615f13d93b4d710076630a97bba10db | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:34.933Z | create | question_choice/c315353d93b4d710076630a97bba1082 | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:37.207Z | create | question_choice/7315353d93b4d710076630a97bba10f5 | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:39.292Z | create | question_choice/d025753d93b4d710076630a97bba103f | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:41.532Z | create | question_choice/3425753d93b4d710076630a97bba10e3 | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:43.617Z | create | question_choice/1125b53d93b4d710076630a97bba105f | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:45.843Z | create | question_choice/3125b53d93b4d710076630a97bba10fb | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:48.070Z | create | question_choice/9a25f53d93b4d710076630a97bba1044 | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:50.751Z | create | question_choice/b625f53d93b4d710076630a97bba10f4 | question, value, text, order, inactive, sys_scope | applied |
+| 2026-11-27T11:11:52.311Z | create | sys_cache_flush/1b25393d93b4d710076630a97bba1072 | name, level | applied |
