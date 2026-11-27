@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="76117da7e55846029fb5cce6c7a4b031" extends="sys_import_set_row" label="Car Fleet Import" name="x_2203703_car_re_0_car_import" type="collection">
+        <element label="Name" max_length="100" name="name" type="string"/>
+        <element label="Type" max_length="40" name="type" type="string"/>
+        <element label="Seating capacity" max_length="40" name="seating_capacity" type="string"/>
+        <element label="Rent" max_length="40" name="rent" type="string"/>
+        <element label="Insurance" max_length="40" name="insurance" type="string"/>
+        <element label="Available" max_length="40" name="available" type="string"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+    </element>
+</database>

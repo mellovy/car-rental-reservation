@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_email_action">
+    <sysevent_email_action action="INSERT_OR_UPDATE">
+        <action_insert>false</action_insert>
+        <action_update>true</action_update>
+        <active>true</active>
+        <advanced_condition/>
+        <affected_field_on_event/>
+        <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
+        <collection>x_2203703_car_re_0_reservation</collection>
+        <condition table="x_2203703_car_re_0_reservation">carVALCHANGES^ORstart_dateVALCHANGES^ORstateVALCHANGES^ORrental_durationVALCHANGES^state!=closed^EQ<item endquery="false" field="car" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item endquery="false" field="start_date" goto="false" newquery="false" operator="VALCHANGES" or="true" value=""/>
+            <item endquery="false" field="state" goto="false" newquery="false" operator="VALCHANGES" or="true" value=""/>
+            <item display_value="-- None --" endquery="false" field="rental_duration" goto="false" newquery="false" operator="VALCHANGES" or="true" value=""/>
+            <item display_value="Closed" endquery="false" field="state" goto="false" newquery="false" operator="!=" or="false" value="closed"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
+        <content_type>text/html</content_type>
+        <default_digest>false</default_digest>
+        <default_interval/>
+        <description/>
+        <digest_from/>
+        <digest_html/>
+        <digest_reply_to/>
+        <digest_separator_html><![CDATA[<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>]]></digest_separator_html>
+        <digest_separator_text><![CDATA[--------------------------------------------------------------------------------
+]]></digest_separator_text>
+        <digest_subject/>
+        <digest_template/>
+        <digest_text/>
+        <digest_type>single</digest_type>
+        <digestable>false</digestable>
+        <enable_dynamic_translation>false</enable_dynamic_translation>
+        <event_name/>
+        <event_parm_1>false</event_parm_1>
+        <event_parm_2>false</event_parm_2>
+        <exclude_delegates>false</exclude_delegates>
+        <force_delivery>false</force_delivery>
+        <from/>
+        <generation_type>engine</generation_type>
+        <importance/>
+        <include_attachments>false</include_attachments>
+        <item>event.parm1</item>
+        <item_table/>
+        <mandatory>false</mandatory>
+        <message/>
+        <message_html><![CDATA[<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333333;max-width:600px;">
+  <div style="background-color:#1f4e79;color:#ffffff;padding:14px 20px;">
+    <h2 style="margin:0;font-size:18px;color:#ffffff;">Reservation Updated</h2>
+  </div>
+  <div style="padding:20px;border:1px solid #dddddd;border-top:none;">
+    <p style="margin:0 0 16px;">Hello,</p>
+    <p style="margin:0 0 16px;">The reservation for <b>${car}</b> starting <b>${start_date}</b> has been updated. Details are below.</p>
+
+    <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;font-size:14px;">
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;width:35%;"><b>Car</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${car}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Start date</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${start_date}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>End date</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${end_date}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Rental duration</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${rental_duration}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Status</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${state}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Updated by</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${sys_updated_by}</td>
+      </tr>
+    </table>
+
+    <h3 style="margin:20px 0 8px;font-size:15px;">Client</h3>
+    ${mail_script:Car Rental - Reservation Client Details}
+
+    <p style="margin:20px 0 0;">
+      <a href="${mail_script:Car Rental - Reservation Record Link}" style="background-color:#1f4e79;color:#ffffff;padding:10px 18px;text-decoration:none;border-radius:4px;display:inline-block;">Open reservation</a>
+    </p>
+  </div>
+  <p style="margin:16px 0 0;font-size:12px;color:#888888;">This is an automated message. Please do not reply.</p>
+</div>]]></message_html>
+        <message_list/>
+        <message_text/>
+        <name>24-Reservation updated – notify</name>
+        <omit_watermark>false</omit_watermark>
+        <order>100</order>
+        <push_message_only>false</push_message_only>
+        <recipient_fields/>
+        <recipient_groups name="Receptionists">677b27359320db10076630a97bba1019</recipient_groups>
+        <recipient_users/>
+        <reply_to/>
+        <send_self>true</send_self>
+        <sms_alternate/>
+        <style/>
+        <subject>Reservation updated: ${car} from ${start_date}</subject>
+        <subscribable>false</subscribable>
+        <sys_class_name>sysevent_email_action</sys_class_name>
+        <sys_created_by>4-andriano</sys_created_by>
+        <sys_created_on>2026-11-15 10:28:20</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e2c6733d9360db10076630a97bba1078</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>24-Reservation updated – notify</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sysevent_email_action_e2c6733d9360db10076630a97bba1078</sys_update_name>
+        <sys_updated_by>4-gaviola</sys_updated_by>
+        <sys_updated_on>2026-11-16 04:03:38</sys_updated_on>
+        <sys_version>2</sys_version>
+        <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
+        <type>email</type>
+        <weight>0</weight>
+    </sysevent_email_action>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>e2c6733d9360db10076630a97bba1078</id>
+        <sys_created_by>4-andriano</sys_created_by>
+        <sys_created_on>2026-11-15 10:33:46</sys_created_on>
+        <sys_id>6469b3f59360db10076630a97bba10af</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>4-andriano</sys_updated_by>
+        <sys_updated_on>2026-11-15 10:33:46</sys_updated_on>
+        <table>sysevent_email_action</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

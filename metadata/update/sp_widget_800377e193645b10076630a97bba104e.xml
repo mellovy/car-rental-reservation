@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($window) {
+  var c = this;
+
+  c.form = {
+    car: c.data.preselected || '',
+    rental_duration: 'daily',
+    start_date: null,
+    end_date: null,
+    driver_name: '',
+    drivers_license: '',
+    remarks: '',
+    guest_name: '',
+    guest_email: '',
+    guest_contact_number: ''
+  };
+  c.error = '';
+  c.success = '';
+  c.busy = false;
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function fmt(d) {
+    return d ? d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) : '';
+  }
+
+  c.days = function() {
+    if (!c.form.start_date || !c.form.end_date) return 0;
+    var diff = Math.round((c.form.end_date - c.form.start_date) / 86400000) + 1;
+    return diff > 0 ? diff : 0;
+  };
+
+  c.total = function() {
+    var rent = 0;
+    for (var i = 0; i < c.data.cars.length; i++) {
+      if (c.data.cars[i].sys_id == c.form.car) rent = c.data.cars[i].rent_value;
+    }
+    return rent * c.days();
+  };
+
+  c.startDateIssue = function() {
+    var d = fmt(c.form.start_date);
+    if (!d) return '';
+    var i;
+    for (i = 0; i < (c.data.business_days || []).length; i++) {
+      if (c.data.business_days[i].date == d) return '';
+    }
+    for (i = 0; i < (c.data.holidays || []).length; i++) {
+      if (c.data.holidays[i].date == d) {
+        return d + ' is a holiday' + (c.data.holidays[i].label ? ' (' + c.data.holidays[i].label + ')' : '') + ' and cannot be booked.';
+      }
+    }
+    return d + ' is not a registered business day.';
+  };
+
+  c.submit = function() {
+    c.error = '';
+    c.success = '';
+    if (!c.form.car || !c.form.start_date || !c.form.end_date) {
+      c.error = 'Please choose a car and both dates.';
+      return;
+    }
+    var issue = c.startDateIssue();
+    if (issue) {
+      c.error = issue;
+      return;
+    }
+    if (!$window.confirm('The estimated rent is ' + c.total().toFixed(2) + '. Continue with the reservation?'))
+      return;
+
+    var payload = angular.copy(c.form);
+    payload.start_date = fmt(c.form.start_date);
+    payload.end_date = fmt(c.form.end_date);
+
+    c.busy = true;
+    c.server.get({ action: 'submit', form: payload }).then(function(r) {
+      c.busy = false;
+      if (r.data.error) {
+        c.error = r.data.error;
+      } else if (r.data.success) {
+        c.success = r.data.success;
+        c.form.start_date = null;
+        c.form.end_date = null;
+        c.form.remarks = '';
+      }
+    });
+  };
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>reserve_a_car</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Reserve a Car</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  var CAR_TABLE = 'x_2203703_car_re_0_car';
+  var RES_TABLE = 'x_2203703_car_re_0_reservation';
+  var CAL_TABLE = 'x_2203703_car_re_0_cal_day';
+  var DEFAULT_CUTOFF = '15:00';
+
+  data.isGuest = !gs.isLoggedIn();
+  data.durations = [
+    { value: 'daily', label: 'Daily' },
+    { value: 'weekly', label: 'Weekly' },
+    { value: 'monthly', label: 'Monthly' }
+  ];
+  data.min_date = gs.dateFormat(gs.beginningOfToday(), 'yyyy-MM-dd');
+
+  function rentOf(gr) {
+    var r = String(gr.getValue('rent') || '0');
+    if (r.indexOf(';') > -1) r = r.split(';')[1];
+    return parseFloat(r) || 0;
+  }
+
+  function isStaff() {
+    var roles = gs.getUser().getRoles();
+    for (var i = 0; i < roles.length; i++) {
+      if (roles[i] == 'x_2203703_car_re_0.receptionist' || roles[i] == 'x_2203703_car_re_0.admin') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  data.business_days = [];
+  data.holidays = [];
+  var cal = new GlideRecord(CAL_TABLE);
+  cal.addQuery('date', '>=', data.min_date);
+  cal.orderBy('date');
+  cal.query();
+  while (cal.next()) {
+    var day = {
+      date: gs.dateFormat(cal.getValue('date'), 'yyyy-MM-dd'),
+      type: cal.getValue('day_type'),
+      label: cal.getValue('label') || '',
+      cutoff: cal.getValue('cutoff_time') || DEFAULT_CUTOFF
+    };
+    if (day.type == 'holiday') {
+      data.holidays.push(day);
+    } else {
+      data.business_days.push(day);
+    }
+  }
+  data.next_bookable_date = data.business_days.length ? data.business_days[0].date : '';
+
+  function dayFor(date) {
+    var i;
+    for (i = 0; i < data.business_days.length; i++) {
+      if (data.business_days[i].date == date) return data.business_days[i];
+    }
+    for (i = 0; i < data.holidays.length; i++) {
+      if (data.holidays[i].date == date) return data.holidays[i];
+    }
+    return null;
+  }
+
+  function validate(f) {
+    if (!f.car) return 'Please choose a car.';
+    var car = new GlideRecord(CAR_TABLE);
+    if (!car.get(f.car) || car.getValue('available') != '1')
+      return 'That car is not available.';
+
+    if (['daily', 'weekly', 'monthly'].indexOf(f.rental_duration) < 0)
+      return 'Please choose a rental duration.';
+
+    if (!f.start_date || !f.end_date) return 'Please enter both dates.';
+    if (f.end_date < f.start_date) return 'The end date cannot be before the start date.';
+    var today = new GlideDateTime().getLocalDate().getValue();
+    if (f.start_date < today) return 'The start date cannot be in the past.';
+
+    var day = dayFor(f.start_date);
+    if (!day) {
+      return 'Bookings can only start on a registered business day. ' + f.start_date + ' is not on the rental calendar.';
+    }
+    if (day.type == 'holiday') {
+      return 'Bookings are not allowed on ' + f.start_date + ' because it is marked as a holiday' + (day.label ? ' (' + day.label + ')' : '') + '.';
+    }
+    if (day.cutoff && !isStaff()) {
+      var closeAt = new GlideDateTime(f.start_date + ' ' + day.cutoff);
+      if (new GlideDateTime().getValue() >= closeAt.getValue()) {
+        return 'Bookings for ' + f.start_date + ' closed at ' + day.cutoff + '. Please choose a later business day.';
+      }
+    }
+
+    if (!f.driver_name || !f.drivers_license)
+      return "The driver's name and license are required.";
+
+    if (data.isGuest && (!f.guest_name || !f.guest_email || !f.guest_contact_number))
+      return 'Please enter your name, email and contact number.';
+
+    return '';
+  }
+
+  if (input && input.action == 'submit') {
+    var f = input.form || {};
+    var err = validate(f);
+    if (err) {
+      data.error = err;
+      return;
+    }
+
+    var gr = new GlideRecord(RES_TABLE);
+    gr.initialize();
+    gr.setValue('car', f.car);
+    gr.setValue('rental_duration', f.rental_duration);
+    gr.setValue('start_date', f.start_date);
+    gr.setValue('end_date', f.end_date);
+    gr.setValue('driver_name', f.driver_name);
+    gr.setValue('drivers_license', f.drivers_license);
+    gr.setValue('remarks', f.remarks || '');
+    gr.setValue('state', 'reserved');
+
+    if (data.isGuest) {
+      gr.setValue('client_type', 'guest');
+      gr.setValue('guest_name', f.guest_name);
+      gr.setValue('guest_email', f.guest_email);
+      gr.setValue('guest_contact_number', f.guest_contact_number);
+    } else {
+      gr.setValue('client_type', 'patron');
+      gr.setValue('applicant', gs.getUserID());
+    }
+
+    var id = gr.insert();
+    if (id) {
+      data.success = 'Your reservation has been saved. We will see you on ' + f.start_date + '.';
+    } else {
+      data.error = 'The reservation could not be saved. Check the dates, or contact the front desk.';
+    }
+    return;
+  }
+
+  data.cars = [];
+  var car = new GlideRecord(CAR_TABLE);
+  car.addQuery('available', true);
+  car.orderBy('name');
+  car.query();
+  while (car.next()) {
+    data.cars.push({
+      sys_id: car.getUniqueValue(),
+      name: car.getValue('name'),
+      type: car.getDisplayValue('type'),
+      rent_value: rentOf(car)
+    });
+  }
+  data.preselected = $sp.getParameter('car') || '';
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>4-bocado</sys_created_by>
+        <sys_created_on>2026-11-14 15:27:25</sys_created_on>
+        <sys_id>800377e193645b10076630a97bba104e</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Reserve a Car</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_widget_800377e193645b10076630a97bba104e</sys_update_name>
+        <sys_updated_by>4-bocado</sys_updated_by>
+        <sys_updated_on>2026-11-14 17:12:42</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">Reserve a Car</h3></div>
+  <div class="panel-body">
+
+    <div class="alert alert-danger" ng-if="c.error">{{c.error}}</div>
+    <div class="alert alert-success" ng-if="c.success">{{c.success}}</div>
+
+    <div class="alert alert-info" ng-if="c.data.business_days.length">
+      <strong>Bookable days</strong> (online bookings for a day close at that day's cutoff time):
+      <span ng-repeat="d in c.data.business_days | limitTo:10">{{d.date}}<span ng-if="d.cutoff"> (cutoff {{d.cutoff}})</span>{{$last ? '' : ', '}}</span>
+      <br/>
+      <span ng-if="c.data.holidays.length"><strong>Holidays (no bookings):</strong>
+        <span ng-repeat="d in c.data.holidays">{{d.date}}<span ng-if="d.label"> {{d.label}}</span>{{$last ? '' : ', '}}</span>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Car *</label>
+      <select class="form-control" ng-model="c.form.car"
+              ng-options="car.sys_id as (car.name + ' - ' + car.type) for car in c.data.cars">
+        <option value="">-- Choose a car --</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Rental Duration *</label>
+      <select class="form-control" ng-model="c.form.rental_duration"
+              ng-options="d.value as d.label for d in c.data.durations"></select>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Start Date *</label>
+        <input type="date" class="form-control" ng-model="c.form.start_date" min="{{c.data.min_date}}"/>
+        <div class="text-danger small" ng-if="c.startDateIssue()">{{c.startDateIssue()}}</div>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label>End Date *</label>
+        <input type="date" class="form-control" ng-model="c.form.end_date" min="{{c.data.min_date}}"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Driver Name *</label>
+        <input type="text" class="form-control" ng-model="c.form.driver_name"/>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label>Driver's License *</label>
+        <input type="text" class="form-control" ng-model="c.form.drivers_license"/>
+      </div>
+    </div>
+
+    <div ng-if="c.data.isGuest">
+      <hr/>
+      <p class="text-muted">You are reserving as a guest. Please leave your contact details.</p>
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" class="form-control" ng-model="c.form.guest_name"/>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label>Email *</label>
+          <input type="email" class="form-control" ng-model="c.form.guest_email"/>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label>Contact Number *</label>
+          <input type="text" class="form-control" ng-model="c.form.guest_contact_number"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Remarks</label>
+      <textarea class="form-control" rows="3" ng-model="c.form.remarks"></textarea>
+    </div>
+
+    <p ng-if="c.total() > 0"><strong>Estimated rent: {{c.total() | number:2}}</strong> ({{c.days()}} day/s)</p>
+
+    <button class="btn btn-primary" ng-click="c.submit()" ng-disabled="c.busy">Reserve</button>
+  </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>800377e193645b10076630a97bba104e</id>
+        <sys_created_by>4-bocado</sys_created_by>
+        <sys_created_on>2026-11-14 15:27:25</sys_created_on>
+        <sys_id>00037be193645b10076630a97bba102a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>4-bocado</sys_updated_by>
+        <sys_updated_on>2026-11-14 15:27:25</sys_updated_on>
+        <table>sp_widget</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

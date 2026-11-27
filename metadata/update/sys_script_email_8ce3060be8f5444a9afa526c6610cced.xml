@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>Car Rental - Reservation Client Details</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[/**
+ * Renders the "who booked this car" block for the reservation notifications.
+ *
+ * The `applicant` reference on a reservation is intentionally OPTIONAL: guest
+ * clients have no sys_user record at all, so for a guest booking `applicant` is
+ * empty and the real client details live on the reservation itself
+ * (guest_name / guest_email / guest_contact_number, with client_type = 'guest').
+ *
+ * Plain applicant.name / applicant.email notification tokens therefore render
+ * blank for every guest booking, which left the receptionist with no idea who
+ * booked. This script falls back to the guest columns and labels which kind of
+ * client submitted the reservation.
+ *
+ * Shared by notifications 23, 24 and 25 so the logic exists once.
+ */
+(function runMailScript(
+    /* GlideRecord */ current,
+    /* TemplatePrinter */ template,
+    /* Optional EmailOutbound */ email,
+    /* Optional GlideRecord */ email_action,
+    /* Optional GlideRecord */ event,
+) {
+    var NOT_PROVIDED = '(not provided)'
+    var clientType = String(current.getValue('client_type') || '')
+    var applicantId = current.getValue('applicant')
+
+    var kind = ''
+    var name = ''
+    var address = ''
+    var contact = ''
+
+    if (applicantId) {
+        kind = 'Registered patron (portal account)'
+        name = String(current.getDisplayValue('applicant') || '')
+        var user = new GlideRecord('sys_user')
+        if (user.get(applicantId)) {
+            address = String(user.getValue('email') || '')
+            contact = String(user.getValue('mobile_phone') || user.getValue('phone') || '')
+        }
+    } else {
+        kind = clientType === 'patron' ? 'Patron without a linked account' : 'Guest (no portal account)'
+        name = String(current.getValue('guest_name') || '')
+        address = String(current.getValue('guest_email') || '')
+        contact = String(current.getValue('guest_contact_number') || '')
+    }
+
+    var mailTo = address ? '<a href="mailto:' + esc(address) + '">' + esc(address) + '</a>' : NOT_PROVIDED
+
+    template.print(
+        '<table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;' +
+            'font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333333;">' +
+            row('Client type', esc(kind)) +
+            row('Name', esc(name) || NOT_PROVIDED) +
+            row('Email', mailTo) +
+            row('Contact number', esc(contact) || NOT_PROVIDED) +
+            '</table>',
+    )
+
+    function row(label, value) {
+        return (
+            '<tr><td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;width:35%;"><b>' +
+            label +
+            '</b></td><td style="padding:8px;border:1px solid #dddddd;">' +
+            value +
+            '</td></tr>'
+        )
+    }
+
+    function esc(value) {
+        return String(value || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+    }
+})(current, template, email, email_action, event);
+]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 10:53:18</sys_created_on>
+        <sys_id>8ce3060be8f5444a9afa526c6610cced</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Car Rental - Reservation Client Details</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_email_8ce3060be8f5444a9afa526c6610cced</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 10:53:18</sys_updated_on>
+    </sys_script_email>
+</record_update>

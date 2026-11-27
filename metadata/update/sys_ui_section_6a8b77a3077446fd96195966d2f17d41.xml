@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Car" section_id="6a8b77a3077446fd96195966d2f17d41" sys_domain="global" table="x_2203703_car_re_0_car" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>5ae2c617f2784b05a8f32f3d038168f9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>name</element>
+            <position>1</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>eec9f83f3b444b8c982ecc1dd70f7364</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <position>2</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>460f944bdabd4c018efe00f389cec02f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>seating_capacity</element>
+            <position>3</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>e25dc665c1da4a7d8a589fe0c8a1c435</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>available</element>
+            <position>4</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>400c6821f17b4d969ebc50cd9ab37469</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>5</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>18fbca77b8e447af8b4152b46a74b2a7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>rent</element>
+            <position>6</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>e5c0875d15e0419f95a21b0ae8a45e06</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>insurance</element>
+            <position>7</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>b9c037fe0b804d3fa23066006c0d5d45</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>add_ons</element>
+            <position>8</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>59fbedb25f9e4b6aac85ab7897601ede</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>9</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>9ad44ef702af42f19e203e9aa6abd980</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>description</element>
+            <position>10</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>2f1065332a704b80894ea0e7b2079b4b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Car" display_value="Car" name="x_2203703_car_re_0_car" sys_domain="global" view="Default view">6a8b77a3077446fd96195966d2f17d41</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Car</caption>
+            <header>false</header>
+            <name>x_2203703_car_re_0_car</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6a8b77a3077446fd96195966d2f17d41</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_2203703_car_re_0_car</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+            <sys_update_name>sys_ui_section_6a8b77a3077446fd96195966d2f17d41</sys_update_name>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

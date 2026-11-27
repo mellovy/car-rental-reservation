@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_2203703_car_re_0_reservation</collection>
+        <condition/>
+        <description>Aborts the reservation when the start date matches a Calendar Day marked as Holiday, or when no Business Day Calendar Day record exists for that date.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>20-Block booking on non-business days</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[/**
+ * 20-Block booking on non-business days
+ *
+ * Aborts the insert/update when the reservation start date falls on a Calendar
+ * Day flagged as a Holiday, or when no Business Day Calendar Day record exists
+ * for that date.
+ */
+(function executeRule(/** @type {any} */ current, /** @type {any} */ previous) {
+    if (!current.start_date.changes()) {
+        return;
+    }
+
+    var startDate = current.getValue('start_date');
+    if (!startDate) {
+        return;
+    }
+
+    var isHoliday = false;
+    var isBusinessDay = false;
+
+    var calDay = new GlideRecord('x_2203703_car_re_0_cal_day');
+    calDay.addQuery('date', startDate);
+    calDay.query();
+    while (calDay.next()) {
+        var dayType = calDay.getValue('day_type');
+        if (dayType === 'holiday') {
+            isHoliday = true;
+        } else if (dayType === 'business_day') {
+            isBusinessDay = true;
+        }
+    }
+
+    if (isHoliday) {
+        gs.addErrorMessage(
+            'Bookings are not allowed on ' + startDate + ' because it is marked as a holiday.'
+        );
+        current.setAbortAction(true);
+        return;
+    }
+
+    if (!isBusinessDay) {
+        gs.addErrorMessage(
+            'Bookings are only allowed on business days. ' +
+                startDate +
+                ' is not registered as a business day on the rental calendar.'
+        );
+        current.setAbortAction(true);
+    }
+})(current, previous);
+]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-09 15:48:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>2936c8e6ecdb4e8488ca8afb6b908cbc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>20-Block booking on non-business days</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_2936c8e6ecdb4e8488ca8afb6b908cbc</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-09 15:48:44</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=2936c8e6ecdb4e8488ca8afb6b908cbc"/>
+</record_update>

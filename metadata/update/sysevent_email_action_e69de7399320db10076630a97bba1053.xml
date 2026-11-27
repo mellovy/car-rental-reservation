@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_email_action">
+    <sysevent_email_action action="INSERT_OR_UPDATE">
+        <action_insert>true</action_insert>
+        <action_update>false</action_update>
+        <active>true</active>
+        <advanced_condition/>
+        <affected_field_on_event/>
+        <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
+        <collection>x_2203703_car_re_0_reservation</collection>
+        <condition/>
+        <content_type>text/html</content_type>
+        <default_digest>false</default_digest>
+        <default_interval/>
+        <description/>
+        <digest_from/>
+        <digest_html/>
+        <digest_reply_to/>
+        <digest_separator_html><![CDATA[<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>]]></digest_separator_html>
+        <digest_separator_text><![CDATA[--------------------------------------------------------------------------------
+]]></digest_separator_text>
+        <digest_subject/>
+        <digest_template/>
+        <digest_text/>
+        <digest_type>single</digest_type>
+        <digestable>false</digestable>
+        <enable_dynamic_translation>false</enable_dynamic_translation>
+        <event_name/>
+        <event_parm_1>false</event_parm_1>
+        <event_parm_2>false</event_parm_2>
+        <exclude_delegates>false</exclude_delegates>
+        <force_delivery>false</force_delivery>
+        <from/>
+        <generation_type>engine</generation_type>
+        <importance/>
+        <include_attachments>false</include_attachments>
+        <item>event.parm1</item>
+        <item_table/>
+        <mandatory>false</mandatory>
+        <message/>
+        <message_html><![CDATA[<div style="font-family: Arial,Helvetica,sans-serif; font-size: 14px; color: #333333; max-width: 600px;">
+<h2 style="margin: 0 0 12px; font-size: 18px;">New Car Reservation Received</h2>
+<p style="margin: 0 0 16px;">A new car reservation has been submitted.</p>
+<h3 style="margin: 0 0 8px; font-size: 15px;">Client</h3>
+${mail_script:Car Rental - Reservation Client Details}
+<h3 style="margin: 20px 0 8px; font-size: 15px;">Reservation</h3>
+<table style="border-collapse: collapse; width: 100%; font-size: 14px; height: 156.75px;" role="presentation" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 19.5938px;">
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); background-color: rgb(245, 245, 245); width: 35%; height: 19.5938px;"><strong>Car</strong></td>
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); height: 19.5938px;">${car.name}</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); background-color: rgb(245, 245, 245); height: 19.5938px;"><strong>Driver name</strong></td>
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); height: 19.5938px;">${driver_name}</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); background-color: rgb(245, 245, 245); height: 19.5938px;"><strong>Driver's licence</strong></td>
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); height: 19.5938px;">${drivers_license}</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); background-color: rgb(245, 245, 245); height: 19.5938px;"><strong>Start date</strong></td>
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); height: 19.5938px;">${start_date}</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); background-color: rgb(245, 245, 245); height: 19.5938px;"><strong>End date</strong></td>
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); height: 19.5938px;">${end_date}</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); background-color: rgb(245, 245, 245); height: 19.5938px;"><strong>Rental duration</strong></td>
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); height: 19.5938px;">${rental_duration}</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); background-color: rgb(245, 245, 245); height: 19.5938px;"><strong>State</strong></td>
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); height: 19.5938px;">${state}</td>
+</tr>
+<tr style="height: 19.5938px;">
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); background-color: rgb(245, 245, 245); height: 19.5938px;"><strong>Remarks</strong></td>
+<td style="padding: 8px; border: 1px solid rgb(221, 221, 221); height: 19.5938px;">${remarks}</td>
+</tr>
+</tbody>
+</table>
+<p style="margin: 20px 0 0;">Please review the reservation in the system.</p>
+<p style="margin: 16px 0 0; font-size: 12px; color: #888888;">This is an automated message. Please do not reply.</p>
+</div>]]></message_html>
+        <message_list/>
+        <message_text/>
+        <name>23-Car reserved – notify receptionist</name>
+        <omit_watermark>false</omit_watermark>
+        <order>100</order>
+        <push_message_only>false</push_message_only>
+        <recipient_fields/>
+        <recipient_groups name="Receptionists">677b27359320db10076630a97bba1019</recipient_groups>
+        <recipient_users/>
+        <reply_to/>
+        <send_self>true</send_self>
+        <sms_alternate/>
+        <style/>
+        <subject>New Car Reservation Received</subject>
+        <subscribable>false</subscribable>
+        <sys_class_name>sysevent_email_action</sys_class_name>
+        <sys_created_by>4-andriano</sys_created_by>
+        <sys_created_on>2026-11-15 09:44:56</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e69de7399320db10076630a97bba1053</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>23-Car reserved – notify receptionist</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sysevent_email_action_e69de7399320db10076630a97bba1053</sys_update_name>
+        <sys_updated_by>4-andriano</sys_updated_by>
+        <sys_updated_on>2026-11-25 04:45:35</sys_updated_on>
+        <sys_version>2</sys_version>
+        <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
+        <type>email</type>
+        <weight>0</weight>
+    </sysevent_email_action>
+</record_update>

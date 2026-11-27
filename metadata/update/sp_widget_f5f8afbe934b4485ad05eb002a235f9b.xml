@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function () {
+    /* No client behaviour needed - the CTA is a plain link. */
+    var c = this
+}
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>// Colours come from theme variables only - no raw hex values.
+.x-car-reserve-cta {
+    .x-car-cta-title {
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem;
+        color: $text-color;
+    }
+
+    .x-car-cta-text {
+        color: $text-muted;
+        margin-bottom: 1rem;
+    }
+
+    .btn-lg {
+        min-height: 2.75rem;
+    }
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_2203703_car_re_0_reserve_producer_link</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>Reserve a Car - Catalog Form Link</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[;(function () {
+    data.catalogItemPage = 'sc_cat_item'
+    data.producer = null
+
+    // Resolve the "Reserve a Car" record producer for the reservation table at
+    // run time instead of hardcoding a catalog item sys_id.
+    var producer = new GlideRecord('sc_cat_item_producer')
+    producer.addQuery('table_name', 'x_2203703_car_re_0_reservation')
+    producer.addQuery('active', true)
+    producer.orderBy('name')
+    producer.setLimit(1)
+    producer.query()
+
+    if (producer.next()) {
+        data.producer = {
+            sys_id: producer.getUniqueValue(),
+            name: producer.getDisplayValue('name'),
+            short_description: producer.getDisplayValue('short_description'),
+        }
+    }
+})()
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:52</sys_created_on>
+        <sys_id>f5f8afbe934b4485ad05eb002a235f9b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Reserve a Car - Catalog Form Link</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_widget_f5f8afbe934b4485ad05eb002a235f9b</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 08:42:52</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default x-car-reserve-cta">
+  <div class="panel-body" ng-if="c.data.producer">
+    <h2 class="x-car-cta-title">{{::c.data.producer.name}}</h2>
+    <p class="x-car-cta-text" ng-if="c.data.producer.short_description">{{::c.data.producer.short_description}}</p>
+    <p class="x-car-cta-text" ng-if="!c.data.producer.short_description">
+      ${Fill in the reservation form to book one of our available cars.}
+    </p>
+    <a class="btn btn-primary btn-lg"
+       ng-href="?id={{::c.data.catalogItemPage}}&sys_id={{::c.data.producer.sys_id}}"
+       aria-label="${Open the reservation form}">${Open the reservation form}</a>
+  </div>
+
+  <div class="panel-body" ng-if="!c.data.producer">
+    <p class="x-car-cta-text">${The reservation form is not available right now. Please try again later.}</p>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

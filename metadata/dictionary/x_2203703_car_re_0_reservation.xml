@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" audit="true" db_object_id="dc26e906de364689a71e1c880d79e7bf" label="Reservation" name="x_2203703_car_re_0_reservation" type="collection">
+        <element label="Applicant" max_length="32" name="applicant" reference="sys_user" type="reference"/>
+        <element label="Start Date" max_length="40" name="start_date" type="glide_date"/>
+        <element label="Guest email" max_length="100" name="guest_email" type="email"/>
+        <element label="Guest contact number" max_length="40" name="guest_contact_number" type="string"/>
+        <element choice="3" default="reserved" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Cancelled" sequence="3" value="cancelled"/>
+                <element inactive_on_update="false" label="Closed" sequence="2" value="closed"/>
+                <element inactive_on_update="false" label="Reserved" sequence="1" value="reserved"/>
+            </choice>
+        </element>
+        <element label="Car" mandatory="true" max_length="32" name="car" reference="x_2203703_car_re_0_car" type="reference"/>
+        <element label="End Date" max_length="40" name="end_date" type="glide_date"/>
+        <element label="Remarks" max_length="1000" name="remarks" type="string"/>
+        <element choice="1" label="Rental Duration" max_length="40" name="rental_duration" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Monthly" sequence="3" value="monthly"/>
+                <element inactive_on_update="false" label="Weekly" sequence="2" value="weekly"/>
+                <element inactive_on_update="false" label="Daily" sequence="1" value="daily"/>
+            </choice>
+        </element>
+        <element choice="3" default="patron" label="Client type" max_length="40" name="client_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Patron" sequence="1" value="patron"/>
+                <element inactive_on_update="false" label="Guest" sequence="2" value="guest"/>
+            </choice>
+        </element>
+        <element display="true" label="Driver Name" max_length="100" name="driver_name" type="string"/>
+        <element label="Drivers License" max_length="100" name="drivers_license" type="string"/>
+        <element label="Guest name" max_length="100" name="guest_name" type="string"/>
+        <index name="index">
+            <element name="applicant"/>
+        </index>
+        <index name="index2">
+            <element name="car"/>
+        </index>
+    </element>
+</database>

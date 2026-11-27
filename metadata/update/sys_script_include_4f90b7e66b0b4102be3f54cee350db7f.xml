@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_2203703_car_re_0.CarRentalAjax</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description>Returns rent information for a car record. Called from catalog client scripts via GlideAjax.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>CarRentalAjax</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var CarRentalAjax = Class.create()
+CarRentalAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    /**
+     * Returns the rent of a car as JSON:
+     * { found: boolean, name: string, rent: number, rent_display: string }
+     */
+    getCarRent: function () {
+        var carId = this.getParameter('sysparm_car_id')
+
+        // Never trust client input.
+        if (!carId || String(carId).length !== 32) {
+            return JSON.stringify({ found: false })
+        }
+
+        var car = new GlideRecord('x_2203703_car_re_0_car')
+        car.addQuery('sys_id', String(carId))
+        car.setLimit(1)
+        car.query()
+
+        if (!car.next()) {
+            return JSON.stringify({ found: false })
+        }
+
+        // Currency fields are stored as "CODE;amount".
+        var raw = String(car.getValue('rent') || '0')
+        if (raw.indexOf(';') > -1) {
+            raw = raw.split(';')[1]
+        }
+
+        return JSON.stringify({
+            found: true,
+            name: car.getDisplayValue('name'),
+            rent: parseFloat(raw) || 0,
+            rent_display: car.getDisplayValue('rent'),
+            available: car.getValue('available') === '1',
+        })
+    },
+
+    type: 'CarRentalAjax',
+})
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:53</sys_created_on>
+        <sys_id>4f90b7e66b0b4102be3f54cee350db7f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CarRentalAjax</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_include_4f90b7e66b0b4102be3f54cee350db7f</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 08:42:53</sys_updated_on>
+    </sys_script_include>
+</record_update>

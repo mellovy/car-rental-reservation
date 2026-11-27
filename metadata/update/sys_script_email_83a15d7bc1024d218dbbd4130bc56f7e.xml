@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>Car Rental - CC Receptionists</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[/**
+ * Car Rental - CC Receptionists
+ *
+ * Adds every active member of the receptionist group as a CC recipient on the
+ * notification that references this script.
+ *
+ * WHY A MAIL SCRIPT: `sysevent_email_action` has no CC column (it offers only
+ * "Users", "Groups" and "Users/Groups in fields", all of which resolve to To),
+ * and the Fluent `EmailNotification` API exposes no cc/copied property either.
+ * `email.addAddress('cc', ...)` from a mail script is the platform mechanism
+ * for a true CC, so requirement 25 ("the client is notified, with receptionists
+ * in cc") cannot be met with recipient configuration alone.
+ *
+ * Group members are resolved at send time rather than hard-coding addresses
+ * here, so adding or removing a receptionist in the group is picked up
+ * automatically with no change to this app.
+ */
+(function runMailScript(
+    /** @type {any} */ current,
+    /** @type {any} */ template,
+    /** @type {any} */ email,
+    /** @type {any} */ email_action,
+    /** @type {any} */ event
+) {
+    // Receptionist group - the same group notifications 23 and 24 notify.
+    var RECEPTIONIST_GROUP = '677b27359320db10076630a97bba1019';
+
+    var member = new GlideRecord('sys_user_grmember');
+    member.addQuery('group', RECEPTIONIST_GROUP);
+    member.query();
+
+    while (member.next()) {
+        var userId = member.getValue('user');
+        if (!userId) {
+            continue;
+        }
+
+        // Each member is read with an explicit GlideRecord rather than by
+        // dot-walking, which is not reliable for a scoped mail script.
+        var user = new GlideRecord('sys_user');
+        if (!user.get(userId)) {
+            continue;
+        }
+
+        // Skip deactivated staff accounts - their mailboxes are usually closed
+        // and every undeliverable address counts against the notification.
+        if (user.getValue('active') !== '1') {
+            continue;
+        }
+
+        var address = user.getValue('email');
+        if (address) {
+            email.addAddress('cc', address, user.getValue('name'));
+        }
+    }
+
+    // Deliberately prints nothing: this script only manipulates the recipient
+    // list, so the rendered body is unchanged.
+})(current, template, email, email_action, event);
+]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 12:01:10</sys_created_on>
+        <sys_id>83a15d7bc1024d218dbbd4130bc56f7e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Car Rental - CC Receptionists</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_email_83a15d7bc1024d218dbbd4130bc56f7e</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 12:01:10</sys_updated_on>
+    </sys_script_email>
+</record_update>

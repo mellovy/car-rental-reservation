@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Complaint" section_id="08508746bdc347d0aef9f4c419632648" sys_domain="global" table="x_2203703_car_re_0_complaint" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>car</element>
+            <position>0</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>f687422053a74db1a027f7b99756e9eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Complaint" display_value="Complaint" name="x_2203703_car_re_0_complaint" sys_domain="global" view="Default view">08508746bdc347d0aef9f4c419632648</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>issue_type</element>
+            <position>1</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>c8f7a0bb64694f1eb1aae448a1552430</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Complaint" display_value="Complaint" name="x_2203703_car_re_0_complaint" sys_domain="global" view="Default view">08508746bdc347d0aef9f4c419632648</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>description</element>
+            <position>2</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_id>f7d4a7bed88340ab93f9230918bae5bb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Complaint" display_value="Complaint" name="x_2203703_car_re_0_complaint" sys_domain="global" view="Default view">08508746bdc347d0aef9f4c419632648</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Complaint</caption>
+            <header>false</header>
+            <name>x_2203703_car_re_0_complaint</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-09 15:27:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>08508746bdc347d0aef9f4c419632648</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_2203703_car_re_0_complaint</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+            <sys_update_name>sys_ui_section_08508746bdc347d0aef9f4c419632648</sys_update_name>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-09 15:27:29</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

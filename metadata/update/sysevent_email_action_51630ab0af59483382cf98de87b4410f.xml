@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_email_action">
+    <sysevent_email_action action="INSERT_OR_UPDATE">
+        <action_insert>false</action_insert>
+        <action_update>true</action_update>
+        <active>true</active>
+        <advanced_condition/>
+        <affected_field_on_event/>
+        <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
+        <collection>x_2203703_car_re_0_reservation</collection>
+        <condition table="x_2203703_car_re_0_reservation">carVALCHANGES^state!=cancelled^EQ<item endquery="false" field="car" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item display_value="Cancelled" endquery="false" field="state" goto="false" newquery="false" operator="!=" or="false" value="cancelled"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
+        <content_type>text/html</content_type>
+        <default_digest>false</default_digest>
+        <default_interval/>
+        <description>Tells the client (patron via applicant, guest via guest_email) that the car on their reservation has been changed.</description>
+        <digest_from/>
+        <digest_html/>
+        <digest_reply_to/>
+        <digest_separator_html><![CDATA[<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>]]></digest_separator_html>
+        <digest_separator_text><![CDATA[--------------------------------------------------------------------------------
+]]></digest_separator_text>
+        <digest_subject/>
+        <digest_template/>
+        <digest_text/>
+        <digest_type>single</digest_type>
+        <digestable>false</digestable>
+        <enable_dynamic_translation>false</enable_dynamic_translation>
+        <event_name/>
+        <event_parm_1>false</event_parm_1>
+        <event_parm_2>false</event_parm_2>
+        <exclude_delegates>false</exclude_delegates>
+        <force_delivery>false</force_delivery>
+        <from/>
+        <generation_type>engine</generation_type>
+        <importance/>
+        <include_attachments>false</include_attachments>
+        <item>event.parm1</item>
+        <item_table/>
+        <mandatory>false</mandatory>
+        <message/>
+        <message_html><![CDATA[<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333333;max-width:600px;">
+  <div style="background-color:#1f4e79;color:#ffffff;padding:14px 20px;">
+    <h2 style="margin:0;font-size:18px;color:#ffffff;">Your reserved car has changed</h2>
+  </div>
+  <div style="padding:20px;border:1px solid #dddddd;border-top:none;">
+    <p style="margin:0 0 16px;">Hello,</p>
+    <p style="margin:0 0 16px;">We have had to change the car assigned to your rental booking. Your rental dates have not changed - only the vehicle.</p>
+
+    <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;font-size:14px;">
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;width:35%;"><b>Your new car</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${car}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Rental from</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${start_date}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Rental until</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${end_date}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Rental duration</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${rental_duration}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Driver</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${driver_name}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid #dddddd;background-color:#f5f5f5;"><b>Booking status</b></td>
+        <td style="padding:8px;border:1px solid #dddddd;">${state}</td>
+      </tr>
+    </table>
+
+    <p style="margin:20px 0 0;">If this change does not work for you, please contact the rental desk and we will do our best to find an alternative.</p>
+    <p style="margin:16px 0 0;">Thank you for renting with us.</p>
+  </div>
+  <p style="margin:16px 0 0;font-size:12px;color:#888888;">This is an automated message. Please do not reply.</p>
+</div>
+<!-- Puts the receptionist group in CC. Renders as nothing - see the CC note above. -->
+${mail_script:Car Rental - CC Receptionists}]]></message_html>
+        <message_list/>
+        <message_text/>
+        <name>25-Reserved car changed – notify client</name>
+        <omit_watermark>false</omit_watermark>
+        <order>100</order>
+        <push_message_only>false</push_message_only>
+        <recipient_fields>applicant,guest_email</recipient_fields>
+        <recipient_groups/>
+        <recipient_users/>
+        <reply_to/>
+        <send_self>false</send_self>
+        <sms_alternate/>
+        <style/>
+        <subject>Your reserved car has been changed</subject>
+        <subscribable>false</subscribable>
+        <sys_class_name>sysevent_email_action</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 10:53:19</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>51630ab0af59483382cf98de87b4410f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>25-Reserved car changed – notify client</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sysevent_email_action_51630ab0af59483382cf98de87b4410f</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 10:53:19</sys_updated_on>
+        <sys_version>2</sys_version>
+        <template/>
+        <type>email</type>
+        <weight>0</weight>
+    </sysevent_email_action>
+</record_update>

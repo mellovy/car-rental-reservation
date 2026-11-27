@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="client_type" table="x_2203703_car_re_0_complaint" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>client_type</element>
+            <name>x_2203703_car_re_0_complaint</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-22 10:41:52</sys_created_on>
+            <sys_id>2889c95837d84186a2b4f082965b9af1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>client_type</sys_name>
+            <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+            <sys_update_name>sys_choice_x_2203703_car_re_0_complaint_client_type</sys_update_name>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-22 10:41:52</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>client_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Patron</label>
+            <language>en</language>
+            <name>x_2203703_car_re_0_complaint</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-22 12:01:09</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c42db0d89f5140e8b2f47a94c1bef470</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-22 12:01:09</sys_updated_on>
+            <value>patron</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>client_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Guest</label>
+            <language>en</language>
+            <name>x_2203703_car_re_0_complaint</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-22 12:01:09</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>01c3d0cdab354d7ab6382bd88970f210</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-22 12:01:09</sys_updated_on>
+            <value>guest</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

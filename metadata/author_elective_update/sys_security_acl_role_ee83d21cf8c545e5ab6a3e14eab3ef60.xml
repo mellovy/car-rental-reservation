@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+  <sys_security_acl_role action="DELETE" apply_defaults="true">
+    <sys_id>ee83d21cf8c545e5ab6a3e14eab3ef60</sys_id>
+    <sys_scope display_value="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_scope>
+    <sys_update_name>sys_security_acl_role_ee83d21cf8c545e5ab6a3e14eab3ef60</sys_update_name>
+    <sys_security_acl>e537f8b46c334ff7bcc66b75ba3c01ba</sys_security_acl>
+    <sys_user_role name="NULL">7b30457095b04298aaaac28241344f6e</sys_user_role>
+  </sys_security_acl_role>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</application>
+        <file_path/>
+        <instance_id>567a911e93a9c794d9f6ddd548373c76</instance_id>
+        <instance_name>dev409824</instance_name>
+        <name>sys_security_acl_role_ee83d21cf8c545e5ab6a3e14eab3ef60</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+  <sys_security_acl_role action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ee83d21cf8c545e5ab6a3e14eab3ef60</sys_id>
+    <sys_scope display_value="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_scope>
+    <sys_update_name>sys_security_acl_role_ee83d21cf8c545e5ab6a3e14eab3ef60</sys_update_name>
+    <sys_security_acl>e537f8b46c334ff7bcc66b75ba3c01ba</sys_security_acl>
+    <sys_user_role name="NULL">7b30457095b04298aaaac28241344f6e</sys_user_role>
+  </sys_security_acl_role>
+</record_update>]]></payload>
+        <payload_hash>242079646</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>76bd928d93b49310076630a97bba1038</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-25 06:13:37</sys_created_on>
+        <sys_id>8bbd928d93b49310076630a97bba107d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a2115699030000001</sys_recorded_at>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-25 06:13:37</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>4bbd928dd1b49310245e55556affbb7c</update_guid>
+        <update_guid_history>4bbd928dd1b49310245e55556affbb7c:-304455600</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_2203703_car_re_0_complaint.">6b0e5e8d93b49310076630a97bba10a7</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-25 06:15:01</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>2c58221caf3842ba911c94a4abac5a81</sys_id>
+        <sys_metadata>ee83d21cf8c545e5ab6a3e14eab3ef60</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_2203703_car_re_0_complaint.</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_parent display_value="x_2203703_car_re_0_complaint">e537f8b46c334ff7bcc66b75ba3c01ba</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_scope_delete display_value="">4dbe8c6d9e05468caa89f2346c50fa31</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_ee83d21cf8c545e5ab6a3e14eab3ef60</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_ee83d21cf8c545e5ab6a3e14eab3ef60">8bbd928d93b49310076630a97bba107d</sys_update_version>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-25 06:15:01</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function (spUtil) {
+    var c = this
+
+    c.refresh = function () {
+        spUtil.update(c)
+    }
+}
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>// Colours come from theme variables only - no raw hex values.
+.x-car-my-reservations {
+    .panel-title {
+        font-size: 1.125rem;
+        margin: 0;
+        color: $text-color;
+    }
+
+    .x-car-table {
+        margin-bottom: 0;
+
+        th {
+            color: $table-heading;
+            white-space: nowrap;
+        }
+
+        td,
+        th {
+            vertical-align: middle;
+        }
+    }
+
+    .x-car-actions {
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    .panel-footer {
+        background-color: $background-secondary;
+
+        .btn + .btn {
+            margin-left: 0.5rem;
+        }
+    }
+
+    // Stack the table into cards on small screens.
+    @media (max-width: 767px) {
+        .x-car-table {
+            thead {
+                display: none;
+            }
+
+            tr {
+                display: block;
+                border-bottom: 1px solid $table-border-color;
+                padding: 0.5rem 0;
+            }
+
+            td {
+                display: block;
+                border: 0;
+
+                &amp;::before {
+                    content: attr(data-th) ': ';
+                    font-weight: 700;
+                    color: $text-muted;
+                }
+            }
+
+            .x-car-actions {
+                text-align: left;
+
+                &amp;::before {
+                    content: '';
+                }
+            }
+        }
+    }
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_2203703_car_re_0_my_reservations</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>My Car Reservations</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[;(function () {
+    data.table = 'x_2203703_car_re_0_reservation'
+    data.formPage = 'form'
+    data.loggedIn = gs.isLoggedIn()
+    data.reservations = []
+
+    if (!data.loggedIn) {
+        return
+    }
+
+    var stateClasses = {
+        reserved: 'label-info',
+        closed: 'label-success',
+        cancelled: 'label-danger',
+    }
+
+    var gr = new GlideRecord(data.table)
+    gr.addQuery('applicant', gs.getUserID())
+    gr.orderByDesc('start_date')
+    gr.setLimit(50)
+    gr.query()
+
+    while (gr.next()) {
+        var state = gr.getValue('state') || ''
+        data.reservations.push({
+            sys_id: gr.getUniqueValue(),
+            car: gr.getDisplayValue('car'),
+            rental_duration: gr.getDisplayValue('rental_duration'),
+            start_date: gr.getDisplayValue('start_date'),
+            end_date: gr.getDisplayValue('end_date'),
+            state: gr.getDisplayValue('state'),
+            state_value: state,
+            state_class: stateClasses[state] || 'label-default',
+            driver_name: gr.getDisplayValue('driver_name'),
+        })
+    }
+
+    data.count = data.reservations.length
+})()
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:52</sys_created_on>
+        <sys_id>d340818d862145e5ab1d844020f6901e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>My Car Reservations</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_widget_d340818d862145e5ab1d844020f6901e</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 08:42:52</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default x-car-my-reservations">
+  <div class="panel-heading">
+    <h2 class="panel-title">${My Reservations}</h2>
+  </div>
+
+  <!-- Guests have no reservations of their own -->
+  <div class="panel-body" ng-if="!c.data.loggedIn">
+    <p>${Sign in to see and update the reservations you have made.}</p>
+    <a class="btn btn-primary" href="?id=reserve_a_car">${Reserve a car}</a>
+  </div>
+
+  <div class="panel-body" ng-if="c.data.loggedIn && c.data.count === 0">
+    <p>${You do not have any reservations yet.}</p>
+    <a class="btn btn-primary" href="?id=reserve_a_car">${Reserve a car}</a>
+  </div>
+
+  <div class="table-responsive" ng-if="c.data.loggedIn && c.data.count > 0">
+    <table class="table table-striped table-hover x-car-table">
+      <caption class="sr-only">${Your car reservations}</caption>
+      <thead>
+        <tr>
+          <th scope="col">${Car}</th>
+          <th scope="col">${Rental duration}</th>
+          <th scope="col">${Start date}</th>
+          <th scope="col">${End date}</th>
+          <th scope="col">${State}</th>
+          <th scope="col"><span class="sr-only">${Actions}</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="r in c.data.reservations track by r.sys_id">
+          <td data-th="${Car}">{{r.car}}</td>
+          <td data-th="${Rental duration}">{{r.rental_duration}}</td>
+          <td data-th="${Start date}">{{r.start_date}}</td>
+          <td data-th="${End date}">{{r.end_date}}</td>
+          <td data-th="${State}"><span class="label" ng-class="r.state_class">{{r.state}}</span></td>
+          <td class="x-car-actions">
+            <a class="btn btn-default btn-sm"
+               ng-href="?id={{::c.data.formPage}}&table={{::c.data.table}}&sys_id={{::r.sys_id}}&view=sp"
+               aria-label="${Open reservation for} {{r.car}}">${Open / update}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel-footer" ng-if="c.data.loggedIn">
+    <button type="button" class="btn btn-default btn-sm" ng-click="c.refresh()">${Refresh}</button>
+    <a class="btn btn-primary btn-sm" href="?id=reserve_a_car">${Reserve another car}</a>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

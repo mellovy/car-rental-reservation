@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>Car Rental - Reservation Record Link</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[/**
+ * Prints an absolute URL to the reservation record.
+ *
+ * Built from gs.getProperty('glide.servlet.uri') rather than the ${URI} /
+ * ${URI_REF} notification tokens so the link resolves correctly on every
+ * instance (dev / test / prod) and renders as a real href instead of the
+ * platform's own anchor markup.
+ */
+(function runMailScript(
+    /* GlideRecord */ current,
+    /* TemplatePrinter */ template,
+    /* Optional EmailOutbound */ email,
+    /* Optional GlideRecord */ email_action,
+    /* Optional GlideRecord */ event,
+) {
+    var base = String(gs.getProperty('glide.servlet.uri') || '')
+    if (base && base.charAt(base.length - 1) !== '/') {
+        base += '/'
+    }
+    template.print(base + current.getTableName() + '.do?sys_id=' + current.getUniqueValue())
+})(current, template, email, email_action, event);
+]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 10:53:18</sys_created_on>
+        <sys_id>1c03ae840f414f218df70b178782f4a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Car Rental - Reservation Record Link</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_email_1c03ae840f414f218df70b178782f4a3</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 10:53:18</sys_updated_on>
+    </sys_script_email>
+</record_update>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="8677667a40a241b58dc04e686f54e15f" sys_domain="global" table="x_2203703_car_re_0_car_unavail" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-22 12:01:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>60c5ece3f05c4fcb8af35b12276783a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_2203703_car_re_0_car_unavail" name="x_2203703_car_re_0_car_unavail" sys_domain="global" view="Default view">8677667a40a241b58dc04e686f54e15f</sys_ui_form>
+            <sys_ui_section caption="Car Unavailability" display_value="Car Unavailability" name="x_2203703_car_re_0_car_unavail" sys_domain="global" view="Default view">8ec218c758d145fd8672956f414afb71</sys_ui_section>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-22 12:01:11</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_2203703_car_re_0_car_unavail</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>4-cabahug</sys_created_by>
+            <sys_created_on>2026-11-22 12:01:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8677667a40a241b58dc04e686f54e15f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_2203703_car_re_0_car_unavail</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+            <sys_update_name>sys_ui_form_sections_8677667a40a241b58dc04e686f54e15f</sys_update_name>
+            <sys_updated_by>4-cabahug</sys_updated_by>
+            <sys_updated_on>2026-11-22 12:01:11</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

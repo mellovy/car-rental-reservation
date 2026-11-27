@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
+    <sp_portal action="INSERT_OR_UPDATE">
+        <alternate_portal/>
+        <communication_channels/>
+        <css_variables/>
+        <dark_theme/>
+        <default>false</default>
+        <embeddable_macroponents/>
+        <enable_ais>false</enable_ais>
+        <enable_certificate_based_authentication>false</enable_certificate_based_authentication>
+        <enable_embeddables>false</enable_embeddables>
+        <enable_favorites>false</enable_favorites>
+        <hide_portal_name>false</hide_portal_name>
+        <homepage display_value="car_availability">d0bc936d93a05b10076630a97bba1076</homepage>
+        <icon/>
+        <inactive>false</inactive>
+        <kb_knowledge_base/>
+        <kb_knowledge_page/>
+        <login_page/>
+        <logo>a1a3974a6b8b28032ef81da262c9d5ec</logo>
+        <logo_alt_text>13-Car Rental Portal</logo_alt_text>
+        <notfound_page/>
+        <quick_start_config/>
+        <rtl_enabled>false</rtl_enabled>
+        <sc_catalog/>
+        <sc_catalog_page/>
+        <sc_category_page/>
+        <search_application/>
+        <search_results_configuration/>
+        <sp_chat_queue/>
+        <sp_rectangle_menu display_value="Car Rental Portal Menu">25686efc4e5b40da9b3dd1af37b3f361</sp_rectangle_menu>
+        <sys_class_name>sp_portal</sys_class_name>
+        <sys_created_by>4-bocado</sys_created_by>
+        <sys_created_on>2026-11-14 12:39:52</sys_created_on>
+        <sys_id>0c0cc72193605b10076630a97bba107b</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>13-Car Rental Portal</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_portal_0c0cc72193605b10076630a97bba107b</sys_update_name>
+        <sys_updated_by>4-bocado</sys_updated_by>
+        <sys_updated_on>2026-11-14 14:12:05</sys_updated_on>
+        <theme display_value="Car Rental Portal Theme">9b46ecd8e949487f974a3ccdb9d4f736</theme>
+        <title>13-Car Rental Portal</title>
+        <ts_index_group/>
+        <url_suffix>carrental</url_suffix>
+    </sp_portal>
+    <sys_translated_text action="delete_multiple" query="documentkey=0c0cc72193605b10076630a97bba107b"/>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color/>
+        <chunk_size_bytes>933336</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/svg+xml</content_type>
+        <file_name>logo</file_name>
+        <hash>8e14e78ba6571749a2508c8a45a321d807277a877999ae4dc431254f35b99ae0</hash>
+        <image_height/>
+        <image_width/>
+        <size_bytes>659</size_bytes>
+        <size_compressed>358</size_compressed>
+        <state>available</state>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:52</sys_created_on>
+        <sys_id>a1a3974a6b8b28032ef81da262c9d5ec</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>guest</sys_updated_by>
+        <sys_updated_on>2026-11-22 08:43:14</sys_updated_on>
+        <table_name>ZZ_YYsp_portal</table_name>
+        <table_sys_id>0c0cc72193605b10076630a97bba107b</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAw==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="logo" sys_id="a1a3974a6b8b28032ef81da262c9d5ec">a1a3974a6b8b28032ef81da262c9d5ec</sys_attachment>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:52</sys_created_on>
+        <sys_id>20c4234b6a69ffcc895a233481f3da9b</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>nVLdaoMwFL7fUxzObmvU1LV1qGBLxy66MWQvkNq0BlItMWjXp9+JuI6NwcaUkJOT8/3wkaTtDnA+6rpNsbL2dO/7fd+zfsoac/B5EAQ+TSD0amerFKmBUEl1qGyKEdWdkv2yOacYQAB0C65pGi1TVEfCCaOEp8VW6hRXwkAhays0vDSGNsxuABIjSwuOAeGNSK9aU/4p5WpDMwuEvdLEdRssZ+s4Rn+gOAlbwS7FpznwqAoX2uOMezPGBQdOxuj3QhbTmlZezBZf20DtjUNeruwPwzeyl8qUWkJJ+mHI7hBK8slnrjJUMPL2C4wHf4dZeR7iiOieAGFMY01tvb04Kk2NR6k7aVUpJpBTuHoCrahbr5VG7cfRVl0o/5CiHI79GOK20bvv+WWrvIBi/fyabxLfSf/kwaX/Tw/hVXA6j6Iox6yQNNYJq5p6fAYfwol7atnNO/iW+jqTAgAA</data>
+        <length>464</length>
+        <position>1</position>
+        <sys_attachment display_value="logo" sys_id="a1a3974a6b8b28032ef81da262c9d5ec">a1a3974a6b8b28032ef81da262c9d5ec</sys_attachment>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:52</sys_created_on>
+        <sys_id>88d6bd7a8770a003b861a7c3ed31f980</sys_id>
+    </sys_attachment_doc>
+</record_update>

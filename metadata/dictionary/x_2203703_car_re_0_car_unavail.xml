@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" audit="true" db_object_id="6720bf2e540f4387a29a434cbb9b7cc3" label="Car Unavailability" name="x_2203703_car_re_0_car_unavail" type="collection">
+        <element display="true" label="Car" mandatory="true" max_length="32" name="car" reference="x_2203703_car_re_0_car" type="reference"/>
+        <element choice="3" default="maintenance" label="Reason" max_length="40" name="reason" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Maintenance" sequence="1" value="maintenance"/>
+                <element inactive_on_update="false" label="Other" sequence="5" value="other"/>
+                <element inactive_on_update="false" label="Reserved (internal use)" sequence="4" value="reserved_internal"/>
+                <element inactive_on_update="false" label="Repair" sequence="2" value="repair"/>
+                <element inactive_on_update="false" label="Inspection" sequence="3" value="inspection"/>
+            </choice>
+        </element>
+        <element label="End Date" mandatory="true" max_length="40" name="end_date" type="glide_date"/>
+        <element label="Notes" max_length="1000" name="notes" type="string"/>
+        <element label="Start Date" mandatory="true" max_length="40" name="start_date" type="glide_date"/>
+        <index name="index">
+            <element name="car"/>
+        </index>
+    </element>
+</database>

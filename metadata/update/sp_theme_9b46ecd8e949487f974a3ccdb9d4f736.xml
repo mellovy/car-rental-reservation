@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_theme">
+    <sp_theme action="INSERT_OR_UPDATE">
+        <css_variables>// Car Rental Portal theme variables.
+// Structure and token names are taken from the live OOTB Coral theme
+// (sp_theme 281507c44317d210ca4c1f425db8f2fd) so the OOTB Stock Header compiles,
+// with car-rental brand colours supplied as the sp-rgb() fallbacks.
+// Every colour uses an sp-rgb() UXF token so dark mode keeps working.
+
+// Grays
+$gray-base: #000000;
+$gray-dark: sp-rgb(--now-color--neutral-16, #1d272b) !default;
+$gray-darker: sp-rgb(--now-color--neutral-18, #10171a) !default;
+$gray-light: sp-rgb(--now-color--neutral-9, #616d74) !default;
+$gray-lighter: sp-rgb(--now-color--neutral-1, #f5f6f7) !default;
+$gray: sp-rgb(--now-color--neutral-11, #3d4a50) !default;
+
+////// Branding variables //////
+$brand-primary: sp-rgb(--now-color--primary-1, #0b6e99) !default;
+$body-bg: sp-rgb(--now-color_background--primary, #ffffff) !default;
+$body-bg-tertiary: sp-rgb(--now-color_background--tertiary, #e2e5e7) !default;
+$brand-success: sp-rgb(--now-color_alert--positive-3, #3e8600) !default;
+$brand-warning: sp-rgb(--now-color_alert--warning-3, #b29800) !default;
+$brand-danger: sp-rgb(--now-color_alert--critical-3, #e52239) !default;
+$brand-info: sp-rgb(--now-color_alert--info-3, #007ac9) !default;
+$text-color: sp-rgb(--now-color_text--primary, #10171a) !default;
+$text-muted: sp-rgb(--now-color_text--tertiary, #37444a) !default;
+$link-color: sp-rgb(--now-color--link-2, #1955be);
+$link-hover-color: sp-rgb(--now-color--link-3, #113a82);
+$link-hover-decoration: underline !default;
+
+// Navbar (OOTB Stock Header)
+$navbar-inverse-bg: sp-rgb(--now-color_background--primary, #ffffff) !default;
+$navbar-inverse-link-color: sp-rgb(--now-color_text--primary, #10171a) !default;
+$navbar-inverse-link-hover-color: sp-rgb(--now-color_text--primary, #10171a) !default;
+$navbar-inverse-link-hover-bg: sp-rgb(--now-color--primary-0, #d6eaf2) !default;
+$navbar-inverse-link-active-bg: sp-rgb(--now-color_background--secondary, #f5f6f7);
+$sp-navbar-divider-color: sp-rgb(--now-color_divider--tertiary, #cfd5d7) !default;
+$sp-navbar-bottom-width: 0.125rem !default;
+$sp-navbar-toggle-border-color: rgba($navbar-inverse-link-hover-color, 0.25);
+$sp-logo-margin-x: 15px !default;
+$sp-tagline-color: sp-rgb(--now-color_text--primary, #10171a) !default;
+$navbar-inverse-link-active-color: $sp-tagline-color !default;
+////////////////////////////////
+
+// Background / border / text scales
+$background-primary: sp-rgb(--now-color_background--primary, #ffffff);
+$background-secondary: sp-rgb(--now-color_background--secondary, #f5f6f7);
+$background-tertiary: sp-rgb(--now-color_background--tertiary, #e2e5e7);
+$border-primary: sp-rgb(--now-color_border--primary, #737f84);
+$border-secondary: sp-rgb(--now-color_border--secondary, #aab2b6);
+$border-tertiary: sp-rgb(--now-color_border--tertiary, #cfd5d7);
+$text-primary: sp-rgb(--now-color_text--primary, #10171a);
+$text-secondary: sp-rgb(--now-color_text--secondary, #232e33) !default;
+$text-tertiary: sp-rgb(--now-color_text--tertiary, #37444a);
+
+// Brand ramp
+$brand-primary-dark: sp-rgb(--now-color--primary-2, #084d6b) !default;
+$brand-primary-darker: sp-rgb(--now-color--primary-3, #042c3d) !default;
+$brand-primary-light: sp-rgb(--now-color--interactive-1, #5eafc5) !default;
+$brand-primary-lighter: sp-rgb(--now-color--primary-0, #d6eaf2) !default;
+$primary: $brand-primary;
+
+// Buttons
+$btn-primary-color: sp-rgb(--now-color_text--primary-actionable, #ffffff) !default;
+$btn-primary-bg: $brand-primary-dark;
+$btn-primary-border: $brand-primary-dark;
+$btn-default-bg: $background-primary;
+$btn-default-color: $brand-primary-dark;
+$btn-default-border: sp-rgb(--now-color_border--tertiary, #cfd5d7) !default;
+$btn-success-bg: $brand-success;
+$btn-success-border: $brand-success;
+$btn-success-color: $btn-primary-color;
+
+// Panels
+$panel-bg: $background-primary;
+$panel-default-border: $border-tertiary;
+$panel-inner-border: $border-tertiary;
+$panel-default-heading-bg: $background-secondary;
+$panel-primary-border: $brand-primary;
+$panel-primary-heading-bg: $brand-primary;
+$panel-primary-text: sp-rgb(--now-color_text--primary-actionable, #ffffff) !default;
+$panel-list-item: $brand-primary-lighter;
+
+// Alerts / states
+$state-success-bg: sp-rgb(--now-color_alert--positive-0, #c7dcb5) !default;
+$state-success-border: $brand-success;
+$state-warning-bg: sp-rgb(--now-color_alert--warning-0, #ece5bf) !default;
+$state-warning-border: $brand-warning;
+$state-warning-text: $text-color;
+$state-danger-bg: sp-rgb(--now-color_alert--critical-0, #f9c8ce) !default;
+$state-danger-border: $brand-danger;
+$state-danger-text: $brand-danger;
+$state-info-bg: sp-rgb(--now-color_alert--info-0, #bddcf1) !default;
+$state-info-border: $brand-info;
+$state-info-text: $text-color;
+
+// Tables / inputs
+$table-bg: transparent;
+$table-bg-accent: $background-secondary;
+$table-bg-hover: $background-secondary;
+$table-border-color: $border-tertiary;
+$table-heading: sp-rgb(--now-color_text--primary, #10171a) !default;
+$input-border: sp-rgb(--now-color_border--primary, #737f84) !default;
+$input-border-focus: sp-rgb(--now-color--focus-ring, #359325) !default;
+$input-color: $text-color;
+
+// Page background
+$sp-page-bg: sp-rgb(--now-color_background--secondary, #f5f6f7);
+</css_variables>
+        <footer/>
+        <footer_fixed>true</footer_fixed>
+        <header display_value="Stock Header">bf5ec2f2cb10120000f8d856634c9c0c</header>
+        <icon/>
+        <logo/>
+        <logo_alt_text/>
+        <matching_now_experience_theme/>
+        <name>Car Rental Portal Theme</name>
+        <navbar_fixed>true</navbar_fixed>
+        <sys_class_name>sp_theme</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:52</sys_created_on>
+        <sys_id>9b46ecd8e949487f974a3ccdb9d4f736</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Car Rental Portal Theme</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sp_theme_9b46ecd8e949487f974a3ccdb9d4f736</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 08:42:52</sys_updated_on>
+        <turn_off_scss_compilation>false</turn_off_scss_compilation>
+    </sp_theme>
+    <sys_translated_text action="delete_multiple" query="documentkey=9b46ecd8e949487f974a3ccdb9d4f736"/>
+</record_update>

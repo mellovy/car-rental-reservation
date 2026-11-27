@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="user_criteria">
+    <user_criteria action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <advanced>true</advanced>
+        <company/>
+        <department/>
+        <group/>
+        <location/>
+        <match_all>false</match_all>
+        <name>All Car Rental Clients</name>
+        <role/>
+        <script><![CDATA[answer = true;]]></script>
+        <script_result_type/>
+        <short_description>Matches every user, including guest/transient clients, so any client can reserve a car from the portal.</short_description>
+        <sys_class_name>user_criteria</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 08:42:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>213be9f81d9d4953ab9d1e07733d8aa1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>All Car Rental Clients</sys_name>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>user_criteria_213be9f81d9d4953ab9d1e07733d8aa1</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-22 08:42:53</sys_updated_on>
+        <user/>
+    </user_criteria>
+    <sys_translated_text action="delete_multiple" query="documentkey=213be9f81d9d4953ab9d1e07733d8aa1"/>
+</record_update>
