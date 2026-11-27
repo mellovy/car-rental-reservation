@@ -32,7 +32,28 @@
 .cr-chip{background:#f1f5f8;border:1px solid #e6ecf1;border-radius:8px;padding:5px 9px;font-size:11.5px;color:#3b4a56;white-space:nowrap}
 .cr-chip b{font-weight:600;color:#16232e}
 .cr-empty{color:#9aa9b6;font-size:13px;padding:14px 0}
-@media(max-width:700px){.cr-table{display:block;overflow-x:auto;white-space:nowrap}}</css>
+@media(max-width:700px){.cr-table{display:block;overflow-x:auto;white-space:nowrap}}
+.cal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.cal-legend{display:flex;align-items:center;gap:6px;font-size:12px;color:#7b8794;white-space:nowrap}
+.cal-key{width:8px;height:8px;border-radius:50%;display:inline-block;margin-left:10px}
+.cal-key.ok{background:#2f9e6b;margin-left:0}
+.cal-key.no{background:#d9534f}
+.cal-months{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:6px}
+.cal-month{background:#fafbfc;border:1px solid #eceff2;border-radius:10px;padding:12px}
+.cal-mlabel{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#13758a;margin-bottom:10px}
+.cal-grid{display:flex;flex-wrap:wrap;gap:6px}
+.cal-day{width:42px;padding:5px 0;text-align:center;background:#fff;border:1px solid #e3e8ec;border-radius:7px}
+.cal-n{display:block;font-size:15px;font-weight:600;color:#22303c;line-height:1.1}
+.cal-w{display:block;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:#8b98a5}
+.cal-hols{margin-top:10px;border-top:1px dashed #e1e6ea;padding-top:8px}
+.cal-hol{font-size:12px;color:#a13b32;display:flex;align-items:center;gap:6px;padding:2px 0}
+.cal-hol .cal-key{margin:0}
+.dash-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(320px,1fr);gap:16px;align-items:start}
+.dash-grid .cr-card{margin-bottom:0}
+.dash-grid .cal-months{grid-template-columns:1fr;gap:12px}
+.dash-grid .cal-day{width:38px}
+.dash-grid .cal-month{padding:10px}
+@media(max-width:991px){.dash-grid{grid-template-columns:1fr}}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description>Fleet overview and business day / holiday calendar.</description>
@@ -42,7 +63,7 @@
         <id>car_rental_admin</id>
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
-        <name>Admin Console</name>
+        <name>Dashboard</name>
         <option_schema/>
         <public>true</public>
         <roles>x_2203703_car_re_0.admin</roles>
@@ -59,6 +80,7 @@
   data.business_days = [];
   data.holidays = [];
   data.calendar = [];
+  data.months = [];
   data.today = '';
   data.err = '';
 
@@ -70,37 +92,74 @@
   try {
     var today = ymd(new GlideDateTime().getLocalDate().getValue());
     data.today = today;
-    var available = 0;
-    var car = new GlideRecord(CAR_TABLE);
-    car.orderBy('name');
-    car.query();
-    while (car.next()) {
-      var isAvail = car.getValue('available') == '1';
-      if (isAvail) available++;
-      data.cars.push({
-        name: car.getValue('name'),
-        type: car.getDisplayValue('type'),
-        seats: car.getValue('seating_capacity'),
-        rent: car.getDisplayValue('rent') || '',
-        available: isAvail
-      });
-    }
-    data.total_cars = data.cars.length;
-    data.available_cars = available;
 
+    // reservations: today's rentals + next upcoming per car
+    var byCar = {};
     var active = 0;
     var outToday = 0;
     var res = new GlideRecord(RES_TABLE);
     res.addQuery('state', 'reserved');
+    res.addQuery('end_date', '>=', today);
+    res.orderBy('start_date');
     res.query();
     while (res.next()) {
       active++;
       var s = ymd(res.getValue('start_date'));
       var e = ymd(res.getValue('end_date'));
-      if (s && e && s <= today && e >= today) outToday++;
+      var carId = res.getValue('car');
+      var onRent = (s && e && s <= today && e >= today) ? true : false;
+      if (onRent) outToday++;
+      if (!byCar[carId]) byCar[carId] = { onRent: false, next: '' };
+      if (onRent) byCar[carId].onRent = true;
+      if (!byCar[carId].next || s < byCar[carId].next) byCar[carId].next = s;
     }
     data.active_reservations = active;
     data.out_today = outToday;
+
+
+    // out-of-service windows
+    var oos = {};
+    var uv = new GlideRecord('x_2203703_car_re_0_car_unavail');
+    uv.addQuery('end_date', '>=', today);
+    uv.query();
+    while (uv.next()) {
+      var uc = uv.getValue('car');
+      if (!uc) continue;
+      if (!oos[uc]) oos[uc] = [];
+      oos[uc].push({ start: ymd(uv.getValue('start_date')), end: ymd(uv.getValue('end_date')) });
+    }
+
+    var free = 0;
+    var car = new GlideRecord(CAR_TABLE);
+    car.orderBy('name');
+    car.query();
+    while (car.next()) {
+      var id = car.getUniqueValue();
+      var inService = car.getValue('available') == '1';
+      var b = byCar[id];
+      var status = 'Available';
+      var cls = 'ok';
+      var covered = false;
+      var w = oos[id];
+      if (w) for (var wi = 0; wi < w.length; wi++) if (w[wi].start <= today && w[wi].end >= today) covered = true;
+      if (!inService) { status = 'Out of service'; cls = 'no'; }
+      else if (covered) { status = 'Out of service (dates)'; cls = 'no'; }
+      else if (b && b.onRent) { status = 'On rent'; cls = 'no'; }
+      else if (b && b.next) { status = 'Booked ' + b.next; cls = 'day'; }
+      else { free++; }
+      data.cars.push({
+        name: car.getValue('name'),
+        type: car.getDisplayValue('type'),
+        seats: car.getValue('seating_capacity'),
+        rent: car.getDisplayValue('rent') || '',
+        available: inService,
+        status: status,
+        status_class: cls,
+        next: (b && b.next) ? b.next : ''
+      });
+    }
+    data.total_cars = data.cars.length;
+    data.available_cars = free;
 
     var cal = new GlideRecord(CAL_TABLE);
     cal.addQuery('date', '>=', today);
@@ -116,6 +175,30 @@
       data.calendar.push(entry);
       if (entry.type == 'holiday') data.holidays.push(entry); else data.business_days.push(entry);
     }
+
+    var MN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var DW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var mk = {};
+    for (var i = 0; i < data.calendar.length; i++) {
+      var d = data.calendar[i];
+      var key = d.date.substring(0, 7);
+      if (!mk[key]) {
+        var mi = parseInt(key.substring(5, 7), 10) - 1;
+        mk[key] = { label: MN[mi] + ' ' + key.substring(0, 4), days: [], holidays: [] };
+      }
+      var dow = DW[new Date(parseInt(d.date.substring(0, 4), 10), parseInt(d.date.substring(5, 7), 10) - 1, parseInt(d.date.substring(8, 10), 10), 12).getDay()];
+      var item = {
+        date: d.date,
+        dnum: d.date.substring(8, 10),
+        dow: dow,
+        full: d.date,
+        mday: d.date.substring(5, 7) + '/' + d.date.substring(8, 10),
+        label: d.label,
+        cutoff: d.cutoff || '15:00'
+      };
+      if (d.type == 'holiday') mk[key].holidays.push(item); else mk[key].days.push(item);
+    }
+    for (var k in mk) data.months.push(mk[k]);
   } catch (e) {
     data.err = String(e && e.message ? e.message : e);
     gs.error('Admin Console: ' + data.err);
@@ -126,26 +209,31 @@
         <sys_created_by>4-cabahug</sys_created_by>
         <sys_created_on>2026-11-27 09:50:19</sys_created_on>
         <sys_id>b482adf19334d710076630a97bba101c</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>Admin Console</sys_name>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Dashboard</sys_name>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sp_widget_b482adf19334d710076630a97bba101c</sys_update_name>
         <sys_updated_by>4-cabahug</sys_updated_by>
-        <sys_updated_on>2026-11-27 11:01:32</sys_updated_on>
+        <sys_updated_on>2026-11-27 11:50:45</sys_updated_on>
         <template><![CDATA[<div class="cr-head">
-  <h1>Admin console</h1>
+  <h1>Dashboard</h1>
   <p>Fleet status, demand and the business-day calendar.</p>
+  <div class="cr-chips" style="margin-top:12px">
+    <a class="cr-chip" style="background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.55);color:#fff;text-decoration:none;font-weight:600" href="?id=admin_console">Dashboard</a>
+    <a class="cr-chip" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.45);color:#fff;text-decoration:none" href="?id=desk">Desk</a>
+  </div>
 </div>
 
 <div class="cr-stats">
   <div class="cr-stat"><div class="v">{{data.total_cars}}</div><div class="k">Cars in fleet</div></div>
-  <div class="cr-stat"><div class="v">{{data.available_cars}}</div><div class="k">Available</div></div>
+  <div class="cr-stat"><div class="v">{{data.available_cars}}</div><div class="k">Free right now</div></div>
   <div class="cr-stat"><div class="v">{{data.active_reservations}}</div><div class="k">Active reservations</div></div>
   <div class="cr-stat"><div class="v">{{data.out_today}}</div><div class="k">On the road today</div></div>
 </div>
 
+<div class="dash-grid">
 <div class="cr-card">
   <h3>Fleet</h3>
   <p class="cr-sub">All vehicles and their bookable state.</p>
@@ -157,25 +245,35 @@
         <td style="text-transform:capitalize">{{c.type}}</td>
         <td>{{c.seats}}</td>
         <td>{{c.rent}}</td>
-        <td><span class="cr-tag" ng-class="c.available ? 'ok' : 'no'">{{c.available ? 'Available' : 'Out of service'}}</span></td>
+        <td><span class="cr-tag" ng-class="c.status_class">{{c.status}}</span></td>
       </tr>
     </tbody>
   </table>
 </div>
 
 <div class="cr-card">
-  <h3>Business days &amp; holidays</h3>
-  <p class="cr-sub">Online bookings for a day close at its cutoff. Holidays accept no online bookings.</p>
-  <div class="cr-chips">
-    <span class="cr-chip" ng-repeat="d in data.business_days">
-      <b>{{d.date}}</b> <span ng-if="d.cutoff">· closes {{d.cutoff}}</span>
-    </span>
+  <div class="cal-head">
+    <div>
+      <h3>Business days &amp; holidays</h3>
+      <p class="cr-sub">Bookings for a day close at its cutoff. Holidays accept no bookings.</p>
+    </div>
+    <div class="cal-legend"><span class="cal-key ok"></span>Open<span class="cal-key no"></span>Holiday</div>
   </div>
-  <div class="cr-chips" style="margin-top:12px" ng-if="data.calendar.length">
-    <span class="cr-chip" ng-repeat="d in data.holidays" style="background:#fdecea;border-color:#f5d2cd;color:#a13b32">
-      <b>{{d.date}}</b> · {{d.label || 'Holiday'}}
-    </span>
+  <div class="cal-months">
+    <div class="cal-month" ng-repeat="m in data.months">
+      <div class="cal-mlabel">{{m.label}}</div>
+      <div class="cal-grid">
+        <div class="cal-day" ng-repeat="d in m.days" title="{{d.full}} — online bookings close at {{d.cutoff}}">
+          <span class="cal-n">{{d.dnum}}</span>
+          <span class="cal-w">{{d.dow}}</span>
+        </div>
+      </div>
+      <div class="cal-hols" ng-if="m.holidays.length">
+        <div class="cal-hol" ng-repeat="h in m.holidays"><span class="cal-key no"></span><b>{{h.mday}}</b> {{h.label || 'Holiday'}}</div>
+      </div>
+    </div>
   </div>
+</div>
 </div>]]></template>
     </sp_widget>
 </record_update>

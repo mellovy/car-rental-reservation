@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_2203703_car_re_0_reservation</collection>
+        <condition/>
+        <description>Aborts the reservation when a Car Unavailability window for the selected car overlaps the requested rental dates. Complements "22-Car unavailability", which enforces the global available flag.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Car booked for those dates</name>
+        <order>95</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[/**
+ * 22b-Car unavailable for selected dates
+ *
+ * Blocks the reservation when the selected Car has a Car Unavailability window
+ * that overlaps the requested rental dates.
+ *
+ * Only evaluated when the car or either date is set or changed - the same guard
+ * pattern rule 22 uses - so a reservation that is already on the books can
+ * still be closed or cancelled after its car goes out of service. Without the
+ * guard, a car going into the workshop would trap its existing bookings in the
+ * "reserved" state for ever.
+ */
+(function executeRule(/** @type {any} */ current, /** @type {any} */ previous) {
+    if (!current.car.changes() && !current.start_date.changes() && !current.end_date.changes()) {
+        return;
+    }
+
+    var carId = current.getValue('car');
+    var startDate = current.getValue('start_date');
+    if (!carId || !startDate) {
+        return;
+    }
+
+    // A booking with a start date but no end date is a single-day rental, so
+    // the window collapses to that one day. Leaving end empty must not turn the
+    // overlap test into "no upper bound", which would match every outage.
+    var endDate = current.getValue('end_date') || startDate;
+
+    // Standard inclusive overlap test: two date ranges overlap when each one
+    // starts on or before the other one ends.
+    var unavailable = new GlideRecord('x_2203703_car_re_0_car_unavail');
+    unavailable.addQuery('car', carId);
+    unavailable.addQuery('start_date', '<=', endDate);
+    unavailable.addQuery('end_date', '>=', startDate);
+    unavailable.orderBy('start_date');
+    unavailable.setLimit(1);
+    unavailable.query();
+
+    if (!unavailable.next()) {
+        return;
+    }
+
+    var carName = current.getDisplayValue('car');
+    var reason = unavailable.getDisplayValue('reason');
+
+    gs.addErrorMessage(
+        'The car "' +
+            carName +
+            '" is out of service from ' +
+            unavailable.getValue('start_date') +
+            ' to ' +
+            unavailable.getValue('end_date') +
+            ' (' +
+            reason +
+            ') and cannot be reserved for ' +
+            startDate +
+            ' to ' +
+            endDate +
+            '.'
+    );
+    current.setAbortAction(true);
+})(current, previous);
+]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>4-cabahug</sys_created_by>
+        <sys_created_on>2026-11-22 12:01:10</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>bd1889b5a3464f1fb008d538105528d2</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Car booked for those dates</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
+        <sys_update_name>sys_script_bd1889b5a3464f1fb008d538105528d2</sys_update_name>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 11:35:25</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=bd1889b5a3464f1fb008d538105528d2"/>
+</record_update>

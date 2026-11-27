@@ -3,21 +3,32 @@
         <category>custom</category>
         <client_script><![CDATA[api.controller = function($window, $timeout, $document) {
   var c = this;
-  var HIDE = ['Home', 'Reserve a Car', 'My Reservations', 'File a Complaint'];
-  $timeout(function() {
-    var links = $document[0].querySelectorAll('header a, .navbar a, nav a, .sp-nav a');
+  var HIDE = ['Home', 'Reserve a Car', 'My Reservations', 'File a Complaint', 'Tours'];
+  function hideNow() {
+    var links = $document[0].querySelectorAll('header a, .navbar a, nav a, .sp-nav a, .sp-header a');
+    var hits = 0;
     for (var i = 0; i < links.length; i++) {
       var txt = (links[i].textContent || '').replace(/\s+/g, ' ').trim();
       for (var j = 0; j < HIDE.length; j++) {
         if (txt === HIDE[j]) {
           var el = links[i];
-          while (el && el.tagName !== 'LI' && el !== $document[0].body) el = el.parentNode;
+          while (el && el.tagName !== 'LI' && el.tagName !== 'UL' && el !== $document[0].body) el = el.parentNode;
           (el && el.tagName === 'LI' ? el : links[i]).style.display = 'none';
+          hits++;
           break;
         }
       }
     }
+    return hits;
+  }
+  if (!c.data.staff) return;
+  var tries = 0;
+  var timer = $window ? null : null;
+  var iv = setInterval(function() {
+    hideNow();
+    if (++tries > 12) clearInterval(iv);
   }, 400);
+  $timeout(hideNow, 0);
 };]]></client_script>
         <controller_as>c</controller_as>
         <css>.cr-head{background:linear-gradient(135deg,#0f5c6b 0%,#17879c 100%);border-radius:12px;margin-bottom:16px}
@@ -37,17 +48,18 @@
         <public>true</public>
         <roles>x_2203703_car_re_0.receptionist,x_2203703_car_re_0.admin</roles>
         <script><![CDATA[(function() {
+  data.staff = false;
   data.links = [];
   var u = gs.getUser();
   try {
     if (u.hasRole('x_2203703_car_re_0.admin')) {
-      data.links.push({ label: 'Admin console', id: 'admin_console' });
+      data.staff = true;
+      data.links.push({ label: 'Dashboard', id: 'admin_console' });
       data.links.push({ label: 'Desk', id: 'desk' });
     } else if (u.hasRole('x_2203703_car_re_0.receptionist')) {
+      data.staff = true;
       data.links.push({ label: 'Desk', id: 'desk' });
       data.links.push({ label: 'My reservations', id: 'my_reservations' });
-    } else {
-      data.links.push({ label: 'Home', id: 'car_availability' });
     }
   } catch (e) {
     gs.error('Staff Links: ' + e.message);
@@ -58,19 +70,14 @@
         <sys_created_by>4-cabahug</sys_created_by>
         <sys_created_on>2026-11-27 10:14:05</sys_created_on>
         <sys_id>4df721319374d710076630a97bba1054</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Staff Links</sys_name>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sp_widget_4df721319374d710076630a97bba1054</sys_update_name>
         <sys_updated_by>4-cabahug</sys_updated_by>
-        <sys_updated_on>2026-11-27 11:06:50</sys_updated_on>
-        <template><![CDATA[<div class="cr-head" style="padding:16px 22px">
-  <div class="cr-chips" style="gap:10px">
-    <a class="cr-chip" style="background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff;text-decoration:none"
-       ng-repeat="l in data.links" ng-href="?id={{l.id}}">{{l.label}}</a>
-  </div>
-</div>]]></template>
+        <sys_updated_on>2026-11-27 11:27:29</sys_updated_on>
+        <template><![CDATA[<!-- nav is rendered inside each staff widget; this instance only hides the patron header links for staff -->]]></template>
     </sp_widget>
 </record_update>

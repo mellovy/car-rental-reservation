@@ -16,12 +16,12 @@
         <mobile_title>11-Close Reservations</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
         <name>x_2203703_car_re_0_reservation</name>
-        <order>110</order>
+        <order>650</order>
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
         <require_confirmation>true</require_confirmation>
-        <roles>x_2203703_car_re_0.receptionist</roles>
+        <roles>x_2203703_car_re_0.receptionist,x_2203703_car_re_0.admin</roles>
         <route/>
         <screen/>
         <sys_class_name>sys_app_module</sys_class_name>
@@ -30,17 +30,17 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>7cd3e1e093e45310076630a97bba1060</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>11-Close Reservations</sys_name>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Close Reservations</sys_name>
         <sys_overrides/>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sys_app_module_7cd3e1e093e45310076630a97bba1060</sys_update_name>
-        <sys_updated_by>4-suganob</sys_updated_by>
-        <sys_updated_on>2026-11-11 02:30:06</sys_updated_on>
+        <sys_updated_by>4-cabahug</sys_updated_by>
+        <sys_updated_on>2026-11-27 11:39:57</sys_updated_on>
         <timeline_page/>
-        <title>11-Close Reservations</title>
+        <title>Close Reservations</title>
         <uncancelable>false</uncancelable>
         <ux_list/>
         <view_name/>

@@ -64,7 +64,7 @@
         <docs/>
         <field_list/>
         <has_preview>false</has_preview>
-        <id>car_availabity</id>
+        <id>car_availability</id>
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {
   
@@ -118,6 +118,21 @@
       });
     }
 
+    var uv = new GlideRecord('x_2203703_car_re_0_car_unavail');
+    uv.addQuery('end_date', '>=', today);
+    uv.orderBy('start_date');
+    uv.query();
+    while (uv.next()) {
+      var uc = uv.getValue('car');
+      if (!uc) continue;
+      if (!bookings[uc]) bookings[uc] = [];
+      bookings[uc].push({
+        start: fmtDate(uv.getValue('start_date')),
+        end: fmtDate(uv.getValue('end_date')),
+        oos: true
+      });
+    }
+
     var gr = new GlideRecord(CAR_TABLE);
     gr.orderBy('name');
     gr.query();
@@ -149,14 +164,14 @@
         <sys_created_by>4-andriano</sys_created_by>
         <sys_created_on>2026-11-10 17:17:35</sys_created_on>
         <sys_id>1e95e7d893681310076630a97bba107d</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>Car Availability</sys_name>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sp_widget_1e95e7d893681310076630a97bba107d</sys_update_name>
         <sys_updated_by>4-cabahug</sys_updated_by>
-        <sys_updated_on>2026-11-27 10:50:27</sys_updated_on>
+        <sys_updated_on>2026-11-27 11:50:48</sys_updated_on>
         <template><![CDATA[<div class="cr-alert" style="background:#fdecea;color:#a13b32;border:1px solid #f5d2cd;border-radius:9px;padding:12px 14px;margin-bottom:16px" ng-if="c.data.err">{{c.data.err}}</div>
 
 <div class="ca-hero">
@@ -188,7 +203,7 @@
       <span class="ca-badge-off" ng-if="!car.available">Out of service</span>
       <span class="ca-badge-free" ng-if="car.available && !car.bookings.length">Available now</span>
       <span ng-if="car.available && car.bookings.length">
-        <span class="ca-pill" ng-repeat="b in car.bookings track by $index">{{b.start}} &rarr; {{b.end}}</span>
+        <span class="ca-pill" ng-repeat="b in car.bookings track by $index">{{b.start}} &rarr; {{b.end}}<span ng-if="b.oos"> &middot; maintenance</span></span>
         <span class="ca-pill" ng-if="car.more">+{{car.more}} more</span>
         <div style="margin-top:4px">Next free: <strong>{{car.next_free}}</strong></div>
       </span>

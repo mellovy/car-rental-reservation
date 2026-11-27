@@ -207,6 +207,13 @@ textarea.cr-input{resize:vertical;min-height:74px}
     if (conflict)
       return 'That car is already reserved from ' + conflict.start + ' to ' + conflict.end + '. Please choose another car or different dates.';
 
+    for (var i = 0; i < data.bookings.length; i++) {
+      var u = data.bookings[i];
+      if (!u.oos || u.car != f.car) continue;
+      if (u.start <= f.end_date && u.end >= f.start_date)
+        return 'That car is out of service (maintenance) from ' + u.start + ' to ' + u.end + '. Please choose another car or different dates.';
+    }
+
     if (!f.driver_name || !f.drivers_license) return "The driver's name and license are required.";
     if (data.isGuest && (!f.guest_name || !f.guest_email || !f.guest_contact_number))
       return 'Please enter your name, email and contact number.';
@@ -246,6 +253,19 @@ textarea.cr-input{resize:vertical;min-height:74px}
       if (!cid) continue;
       if (!data.bookings_by_car[cid]) data.bookings_by_car[cid] = [];
       data.bookings_by_car[cid].push({ start: rec.start, end: rec.end });
+    }
+
+    var uv = new GlideRecord('x_2203703_car_re_0_car_unavail');
+    uv.addQuery('end_date', '>=', today);
+    uv.orderBy('start_date');
+    uv.query();
+    while (uv.next()) {
+      var uc = uv.getValue('car');
+      if (!uc) continue;
+      var uw = { car: uc, start: ymd(uv.getValue('start_date')), end: ymd(uv.getValue('end_date')), oos: true };
+      data.bookings.push(uw);
+      if (!data.bookings_by_car[uc]) data.bookings_by_car[uc] = [];
+      data.bookings_by_car[uc].push({ start: uw.start, end: uw.end, oos: true });
     }
 
     if (input && input.action == 'submit') {
@@ -307,14 +327,14 @@ textarea.cr-input{resize:vertical;min-height:74px}
         <sys_created_by>4-bocado</sys_created_by>
         <sys_created_on>2026-11-14 15:27:25</sys_created_on>
         <sys_id>800377e193645b10076630a97bba104e</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Reserve a Car</sys_name>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sp_widget_800377e193645b10076630a97bba104e</sys_update_name>
         <sys_updated_by>4-cabahug</sys_updated_by>
-        <sys_updated_on>2026-11-27 10:56:46</sys_updated_on>
+        <sys_updated_on>2026-11-27 11:50:47</sys_updated_on>
         <template><![CDATA[<div class="cr-head">
   <h1>Reserve a car</h1>
   <p>Pick-up must start on a business day. Online bookings close at each day's cutoff time.</p>
@@ -336,7 +356,7 @@ textarea.cr-input{resize:vertical;min-height:74px}
           <option value="">-- Choose a car --</option>
         </select>
         <div class="cr-muted" style="margin-top:6px" ng-if="c.carBookings().length">
-          Already reserved: <span class="cr-chip" ng-repeat="b in c.carBookings()">{{b.start}} &rarr; {{b.end}}</span>
+          Already reserved: <span class="cr-chip" ng-repeat="b in c.carBookings()">{{b.start}} &rarr; {{b.end}}<span ng-if="b.oos"> &middot; maintenance</span></span>
         </div>
       </div>
 

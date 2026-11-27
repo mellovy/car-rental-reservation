@@ -58,7 +58,7 @@
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {
 }]]></link>
-        <name>My Car Reservations</name>
+        <name>My Reservations</name>
         <option_schema/>
         <public>true</public>
         <roles/>
@@ -119,14 +119,14 @@
         <sys_created_by>4-cabahug</sys_created_by>
         <sys_created_on>2026-11-22 08:42:52</sys_created_on>
         <sys_id>d340818d862145e5ab1d844020f6901e</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>My Car Reservations</sys_name>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>My Reservations</sys_name>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sp_widget_d340818d862145e5ab1d844020f6901e</sys_update_name>
         <sys_updated_by>4-cabahug</sys_updated_by>
-        <sys_updated_on>2026-11-27 11:10:13</sys_updated_on>
+        <sys_updated_on>2026-11-27 11:33:02</sys_updated_on>
         <template><![CDATA[<div class="cr-head">
   <h1>My reservations</h1>
   <p>Cancel an active booking up to 72 hours before pick-up.</p>

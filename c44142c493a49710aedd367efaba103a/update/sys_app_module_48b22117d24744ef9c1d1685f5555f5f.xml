@@ -11,7 +11,7 @@
         <karuna_route/>
         <link_type>NEW</link_type>
         <map_page/>
-        <mobile_title/>
+        <mobile_title>New Car Availability</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
         <name>x_2203703_car_re_0_car</name>
         <order>500</order>
@@ -19,7 +19,7 @@
         <query/>
         <report/>
         <require_confirmation>true</require_confirmation>
-        <roles>x_2203703_car_re_0.receptionist,admin</roles>
+        <roles>x_2203703_car_re_0.receptionist,x_2203703_car_re_0.admin</roles>
         <route/>
         <screen/>
         <sys_class_name>sys_app_module</sys_class_name>
@@ -28,17 +28,17 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>48b22117d24744ef9c1d1685f5555f5f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>8-New Car Availability</sys_name>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>New Car Availability</sys_name>
         <sys_overrides/>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sys_app_module_48b22117d24744ef9c1d1685f5555f5f</sys_update_name>
         <sys_updated_by>4-cabahug</sys_updated_by>
-        <sys_updated_on>2026-11-09 15:37:21</sys_updated_on>
+        <sys_updated_on>2026-11-27 11:39:52</sys_updated_on>
         <timeline_page/>
-        <title>8-New Car Availability</title>
+        <title>New Car Availability</title>
         <uncancelable>false</uncancelable>
         <ux_list/>
         <view_name/>

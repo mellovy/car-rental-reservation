@@ -47,7 +47,7 @@
 <div style="padding-top:26px;color:#6b7c8a;font-size:13px">Thank you,<br/>Car Rental Team</div></div>]]></message_html>
         <message_list/>
         <message_text/>
-        <name>23-Reservation received - notify client</name>
+        <name>Notify client: Reservation received</name>
         <omit_watermark>false</omit_watermark>
         <order>100</order>
         <push_message_only>false</push_message_only>
@@ -66,15 +66,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e69de7399320db10076630a97bba1053</sys_id>
-        <sys_mod_count>8</sys_mod_count>
-        <sys_name>23-Reservation received - notify client</sys_name>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Notify client: Reservation received</sys_name>
         <sys_overrides/>
         <sys_package display_value="Car Rental Management System" source="x_2203703_car_re_0">c44142c493a49710aedd367efaba103a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Car Rental Management System">c44142c493a49710aedd367efaba103a</sys_scope>
         <sys_update_name>sysevent_email_action_e69de7399320db10076630a97bba1053</sys_update_name>
         <sys_updated_by>4-cabahug</sys_updated_by>
-        <sys_updated_on>2026-11-27 10:42:51</sys_updated_on>
+        <sys_updated_on>2026-11-27 11:32:57</sys_updated_on>
         <sys_version>2</sys_version>
         <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
         <type>email</type>
